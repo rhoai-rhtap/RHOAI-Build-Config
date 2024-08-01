@@ -1,0 +1,9 @@
+patch:
+  olm.package:
+    defaultChannel: stable
+  olm.channels:
+    - name: stable
+      entries:
+      - name: rhods-operator.2.12.0
+        replaces: rhods-operator.2.11.0
+        skipRange: '>=2.11.0 <2.12.0'
