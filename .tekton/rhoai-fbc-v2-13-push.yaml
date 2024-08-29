@@ -130,6 +130,21 @@ spec:
         - name: kind
           value: task
         resolver: bundles
+    - name: my-custom-git-task
+      params:
+      - name: username
+        value: Deepak
+      taskRef:
+        params:
+          - name: url
+            value: https://github.com/rhoai-rhtap/fbc-utils.git
+          - name: revision
+            value: main
+          - name: pathInRepo
+            value: tekton/my-custom-task.yaml
+        resolver: "git"
+      runAfter:
+      - init
     - name: clone-repository
       params:
       - name: url
@@ -141,7 +156,7 @@ spec:
       - name: ociArtifactExpiresAfter
         value: $(params.image-expires-after)
       runAfter:
-      - init
+      - my-custom-git-task
       taskRef:
         params:
         - name: name
