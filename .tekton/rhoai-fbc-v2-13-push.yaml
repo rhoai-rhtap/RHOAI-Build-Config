@@ -130,10 +130,14 @@ spec:
         - name: kind
           value: task
         resolver: bundles
-    - name: my-custom-git-task
+    - name: process-fbc-fragment
       params:
-      - name: username
-        value: Deepak
+      - name: branch
+        value: '{{target_branch}}'
+      - name: rhoai-version
+        value: 'v2.13'
+      - name: pipelinerun-name
+        value: $(context.pipelineRun.name)
       taskRef:
         params:
           - name: url
@@ -141,7 +145,7 @@ spec:
           - name: revision
             value: main
           - name: pathInRepo
-            value: tekton/my-custom-task.yaml
+            value: tekton/fbc-processing-task.yaml
         resolver: "git"
       runAfter:
       - init
@@ -156,7 +160,7 @@ spec:
       - name: ociArtifactExpiresAfter
         value: $(params.image-expires-after)
       runAfter:
-      - my-custom-git-task
+      - process-fbc-fragment
       taskRef:
         params:
         - name: name
