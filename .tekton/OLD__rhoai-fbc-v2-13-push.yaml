@@ -11,8 +11,8 @@ metadata:
       == "rhoai-2.13"
   creationTimestamp: null
   labels:
-    appstudio.openshift.io/application: rhoai-v2-13
-    appstudio.openshift.io/component: rhoai-fbc-v2-13
+    appstudio.openshift.io/application: rhoai-v2-13-old
+    appstudio.openshift.io/component: rhoai-fbc-v2-13-old
     pipelines.appstudio.openshift.io/type: build
   name: rhoai-fbc-v2-13-on-push
   namespace: rhoai-tenant
