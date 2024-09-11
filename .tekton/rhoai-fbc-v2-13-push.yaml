@@ -1,7 +1,6 @@
 apiVersion: tekton.dev/v1
 kind: PipelineRun
 metadata:
-  #test7
   annotations:
     build.appstudio.openshift.io/repo: https://github.com/rhoai-rhtap/RHOAI-Build-Config?rev={{revision}}
     build.appstudio.redhat.com/commit_sha: '{{revision}}'
@@ -145,25 +144,6 @@ spec:
         - name: kind
           value: task
         resolver: bundles
-    - name: process-fbc-fragment
-      params:
-      - name: branch
-        value: '{{target_branch}}'
-      - name: rhoai-version
-        value: 'v2.13'
-      - name: pipelinerun-name
-        value: $(context.pipelineRun.name)
-      taskRef:
-        params:
-          - name: url
-            value: https://github.com/rhoai-rhtap/fbc-utils.git
-          - name: revision
-            value: main
-          - name: pathInRepo
-            value: tekton/fbc-processing-task.yaml
-        resolver: "git"
-      runAfter:
-      - init
     - name: clone-repository
       params:
       - name: url
@@ -171,7 +151,7 @@ spec:
       - name: revision
         value: $(params.revision)
       runAfter:
-      - process-fbc-fragment
+      - init
       taskRef:
         params:
         - name: name
@@ -330,7 +310,7 @@ spec:
         - name: name
           value: fbc-validation
         - name: bundle
-          value: quay.io/konflux-ci/tekton-catalog/task-fbc-validation:0.1@sha256:17777744bfc66e2bc001e20d1cfb5bb29651128736c20691416dd4e782b9df1a
+          value: quay.io/konflux-ci/tekton-catalog/task-fbc-validation:0.1@sha256:609412569e14e25cc4a1f9430fe1c464c5e2bf9ff0b1ce3894a194ad288ca541
         - name: kind
           value: task
         resolver: bundles
