@@ -7,7 +7,7 @@ metadata:
     build.appstudio.redhat.com/target_branch: '{{target_branch}}'
     pipelinesascode.tekton.dev/max-keep-runs: "3"
     pipelinesascode.tekton.dev/on-cel-expression: event == "push" && target_branch
-      == "rhoai-2.13" && ( !".tekton/**".pathChanged() || ".tekton/odh-operator-bundle-v2-13-push.yaml".pathChanged())
+      == "rhoai-2.13"
   creationTimestamp: null
   labels:
     appstudio.openshift.io/application: rhoai-v2-13
