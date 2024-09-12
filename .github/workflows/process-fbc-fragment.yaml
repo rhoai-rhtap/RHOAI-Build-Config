@@ -4,7 +4,8 @@ on:
   workflow_dispatch:
 
 jobs:
-  check-status:
+  process-fbc:
+    runs-on: ubuntu-latest
     container:
       image: quay.io/rhoai/rhoai-task-toolset:latest
     steps:
