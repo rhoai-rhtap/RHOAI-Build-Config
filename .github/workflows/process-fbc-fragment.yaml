@@ -13,15 +13,15 @@ jobs:
         run: echo "branch=${GITHUB_HEAD_REF:-${GITHUB_REF#refs/heads/}}" >> $GITHUB_OUTPUT
         id: get_branch
       - name: Git checkout RBC main
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
         ref: main
         path: main
       - name: Git checkout RBC release
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
         ref: ${{ steps.get_branch.outputs.branch }}
         path: ${{ steps.get_branch.outputs.branch }}
       - name: Git checkout utils
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
         repository: rhoai-rhtap/RHOAI-Konflux-Automation
         ref: main
         path: utils
