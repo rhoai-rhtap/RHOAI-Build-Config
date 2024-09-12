@@ -55,9 +55,7 @@ jobs:
           OPENSHIFT_VERSION=v4.13
           RHOAI_VERSION=v${BRANCH/rhoai-/}
           COMPONENT_SUFFIX=${RHOAI_VERSION/./-}
-          OPERATOR_BUNDLE_COMPONENT_NAME=rhoai-operator-bundle-${COMPONENT_SUFFIX}
-          RBC_REPO_URL="github.com/red-hat-data-services/RHOAI-Build-Config.git"
-          UTILS_REPO_URL="github.com/rhoai-rhtap/fbc-utils.git"
+          OPERATOR_BUNDLE_COMPONENT_NAME=odh-operator-bundle-${COMPONENT_SUFFIX}
           
           OC_TOKEN=$(echo $OC_TOKEN | awk '{$1=$1};1' | tr -d '\n')
           
