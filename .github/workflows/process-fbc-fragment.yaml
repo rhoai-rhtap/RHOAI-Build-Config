@@ -14,17 +14,20 @@ jobs:
         id: get_branch
       - name: Git checkout RBC main
         uses: actions/checkout@v4
-        ref: main
-        path: main
+        with:
+          ref: main
+          path: main
       - name: Git checkout RBC release
         uses: actions/checkout@v4
-        ref: ${{ steps.get_branch.outputs.branch }}
-        path: ${{ steps.get_branch.outputs.branch }}
+        with:
+          ref: ${{ steps.get_branch.outputs.branch }}
+          path: ${{ steps.get_branch.outputs.branch }}
       - name: Git checkout utils
         uses: actions/checkout@v4
-        repository: rhoai-rhtap/RHOAI-Konflux-Automation
-        ref: main
-        path: utils
+        with:
+          repository: rhoai-rhtap/RHOAI-Konflux-Automation
+          ref: main
+          path: utils
       - name: Install dependencies
         run: |
           os="$(uname -s | tr '[:upper:]' '[:lower:]')"
