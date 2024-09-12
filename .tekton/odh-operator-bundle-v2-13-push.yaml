@@ -22,7 +22,7 @@ spec:
   - name: revision
     value: '{{revision}}'
   - name: output-image
-    value: quay.io/odh-operator-bundle-rhel8:{{revision}}
+    value: quay.io/rhoai/odh-operator-bundle-rhel8:{{revision}}
   - name: dockerfile
     value: bundle/Dockerfile
   pipelineSpec:
