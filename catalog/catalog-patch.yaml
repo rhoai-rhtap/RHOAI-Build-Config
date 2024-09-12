@@ -1,0 +1,13 @@
+patch:
+  olm.package:
+    name: rhods-operator
+    defaultChannel: fast
+  olm.channels:
+    - name: stable
+      entries:
+      - name: rhods-operator.2.13.0
+        replaces: rhods-operator.2.12.0
+        skipRange: '>=2.10.0 <2.13.0'
+  olm.bundle:
+    - quay.io/redhat-user-workloads/rhoai-tenant/rhoai-operator/rhoai-operator-bundle-v2-13@sha256:63cc4b958859340037cc5d633e69ab93bee37f1b9116b0ae6c59e9e41f5a2b12
+    # only for nudging purpose
