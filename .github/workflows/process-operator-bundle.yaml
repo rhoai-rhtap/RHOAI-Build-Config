@@ -51,6 +51,8 @@ jobs:
           BRANCH: ${{ steps.get_branch.outputs.branch }}
           OC_TOKEN: ${{ secrets.KONFLUX_INTERNAL_OC_TOKEN }}
           CLUSTER: p02
+          RHOAI_QUAY_RO_USERNAME: ${{ secrets.RHOAI_QUAY_RO_USERNAME }}
+          RHOAI_QUAY_RO_TOKEN: ${{ secrets.RHOAI_QUAY_RO_TOKEN }}
         run: |
           #Declare basic variables
           OPENSHIFT_VERSION=v4.13
@@ -88,6 +90,7 @@ jobs:
           
           echo "API_SERVER = ${API_SERVER}"
           #oc login --token="${OC_TOKEN}" --server=${API_SERVER}
+          podman login quay.io -u ${RHOAI_QUAY_RO_USERNAME} -p ${RHOAI_QUAY_RO_TOKEN}
           APPLICATION_NAME=rhoai-${COMPONENT_SUFFIX}
           echo "APPLICATION_NAME = $APPLICATION_NAME"
           
