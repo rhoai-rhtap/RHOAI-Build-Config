@@ -93,15 +93,15 @@ jobs:
           fi
           
           echo "API_SERVER = ${API_SERVER}"
-          oc login --token="${OC_TOKEN}" --server=${API_SERVER}
+          #oc login --token="${OC_TOKEN}" --server=${API_SERVER}
           APPLICATION_NAME=rhoai-${COMPONENT_SUFFIX}
           echo "APPLICATION_NAME = $APPLICATION_NAME"
         
           
-          SNAPSHOT_JSON_PATH=utils/snapshot.json
+          SNAPSHOT_JSON_PATH=${BRANCH}/config/snapshot.json
           LATEST_SNAPSHOT=$(oc get snapshots -l "pac.test.appstudio.openshift.io/event-type in (push, Push),appstudio.openshift.io/application=${APPLICATION_NAME}" --sort-by=.metadata.creationTimestamp | tail -1 | awk '{print $1}')
           echo "LATEST_SNAPSHOT = ${LATEST_SNAPSHOT}"
-          oc get snapshots ${LATEST_SNAPSHOT} -o json > ${SNAPSHOT_JSON_PATH}
+          #oc get snapshots ${LATEST_SNAPSHOT} -o json > ${SNAPSHOT_JSON_PATH}
           echo "component-suffix = $COMPONENT_SUFFIX"
           
           #Invoke the FBC processor to extract the snapshot images
