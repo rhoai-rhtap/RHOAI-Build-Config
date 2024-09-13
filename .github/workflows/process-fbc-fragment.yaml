@@ -103,7 +103,7 @@ jobs:
           
           echo "API_SERVER = ${API_SERVER}"
           #oc login --token="${OC_TOKEN}" --server=${API_SERVER}
-          echo "whoami = $(whoami)
+          whoami
           podman login quay.io -u ${RHOAI_QUAY_RO_USERNAME} -p ${RHOAI_QUAY_RO_TOKEN}
           
           APPLICATION_NAME=rhoai-${COMPONENT_SUFFIX}
