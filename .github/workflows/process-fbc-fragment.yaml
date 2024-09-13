@@ -52,12 +52,12 @@ jobs:
           ln -fs "$opm_filename" opm
           cp "$opm_filename" /usr/local/bin/opm
           pip install -r utils/utils/fbc-processor/requirements.txt
-      - name: Podman Login
-        uses: redhat-actions/podman-login@v1
-        with:
-          registry: quay.io
-          username: ${{ secrets.RHOAI_QUAY_RO_USERNAME }}
-          password: ${{ secrets.RHOAI_QUAY_RO_TOKEN }}
+#      - name: Podman Login
+#        uses: redhat-actions/podman-login@v1
+#        with:
+#          registry: quay.io
+#          username: ${{ secrets.RHOAI_QUAY_RO_USERNAME }}
+#          password: ${{ secrets.RHOAI_QUAY_RO_TOKEN }}
 
       - name: Process FBC Fragment
         env:
@@ -103,7 +103,8 @@ jobs:
           
           echo "API_SERVER = ${API_SERVER}"
           #oc login --token="${OC_TOKEN}" --server=${API_SERVER}
-          #podman login quay.io -u ${RHOAI_QUAY_RO_USERNAME} -p ${RHOAI_QUAY_RO_TOKEN}
+          echo "whoami = $(whoami)
+          podman login quay.io -u ${RHOAI_QUAY_RO_USERNAME} -p ${RHOAI_QUAY_RO_TOKEN}
           
           APPLICATION_NAME=rhoai-${COMPONENT_SUFFIX}
           echo "APPLICATION_NAME = $APPLICATION_NAME"
