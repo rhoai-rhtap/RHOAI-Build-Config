@@ -5,7 +5,8 @@ on:
 #  push:
 #    paths:
 #      - catalog/catalog-patch.yaml
-
+permissions:
+  contents: write
 jobs:
   process-fbc:
     runs-on: ubuntu-latest
@@ -132,7 +133,7 @@ jobs:
         
           #Invoke FBC processor to patch the catalog
           python3 utils/utils/fbc-processor/fbc-processor.py -op catalog-patch -b ${BUILD_CONFIG_PATH} -c ${CATALOG_YAML_PATH} -p ${PATCH_YAML_PATH} -s ${SINGLE_BUNDLE_PATH} -o ${OUTPUT_CATALOG_PATH}
-          cat ${OUTPUT_CATALOG_PATH}
+          #cat ${OUTPUT_CATALOG_PATH}
       - name: Commit and push the changes to release branch
         uses: actions-js/push@master
         with:
