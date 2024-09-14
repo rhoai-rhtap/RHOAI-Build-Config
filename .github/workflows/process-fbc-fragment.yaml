@@ -45,7 +45,7 @@ jobs:
           ln -s $yq_filename yq
           cp $yq_filename /usr/local/bin/yq
   
-          opm_version="v1.27.1"
+          opm_version="v1.47.0"
           opm_filename="opm-$opm_version"
           echo "-> Downloading opm" >&2
           curl -sSfLo "$opm_filename" "https://github.com/operator-framework/operator-registry/releases/download/$opm_version/$os-$arch-opm"
@@ -105,7 +105,7 @@ jobs:
           echo "API_SERVER = ${API_SERVER}"
           #oc login --token="${OC_TOKEN}" --server=${API_SERVER}
           whoami
-          podman login quay.io -u ${RHOAI_QUAY_RO_USERNAME} -p ${RHOAI_QUAY_RO_TOKEN}
+          #podman login quay.io -u ${RHOAI_QUAY_RO_USERNAME} -p ${RHOAI_QUAY_RO_TOKEN}
           BASE64_AUTH=$(echo "${RHOAI_QUAY_RO_USERNAME}:${RHOAI_QUAY_RO_TOKEN}" | base64 -w 0)
           mkdir ${HOME}/.docker
           echo '{"auths":{"quay.io/rhoai/odh-operator-bundle-rhel8":{"username":"'"${RHOAI_QUAY_RO_USERNAME}"'","password":"'"${RHOAI_QUAY_RO_TOKEN}"'","email":"","auth":"'"${BASE64_AUTH}"'"}}}' > ${HOME}/.docker/config.json
@@ -128,7 +128,7 @@ jobs:
           echo "LATEST_BUNDLE_IMAGE = $LATEST_BUNDLE_IMAGE"
           yq e -i '.stable.bundles[0].image = "$LATEST_BUNDLE_IMAGE"' utils/utils/fbc-processor/fbc-semver-template.yaml
           LATEST_BUNDLE_IMAGE="$LATEST_BUNDLE_IMAGE" yq e -i '.stable.bundles[0].image = env(LATEST_BUNDLE_IMAGE)' utils/utils/fbc-processor/fbc-semver-template.yaml
-          opm alpha render-template semver -o yaml utils/utils/fbc-processor/fbc-semver-template.yaml > ${SINGLE_BUNDLE_PATH}
+          DOCKER_CONFIG=${HOME}/.docker/config.json opm alpha render-template semver -o yaml utils/utils/fbc-processor/fbc-semver-template.yaml > ${SINGLE_BUNDLE_PATH}
         
           #Invoke FBC processor to patch the catalog
           python3 utils/utils/fbc-processor/fbc-processor.py -op catalog-patch -b ${BUILD_CONFIG_PATH} -c ${CATALOG_YAML_PATH} -p ${PATCH_YAML_PATH} -s ${SINGLE_BUNDLE_PATH} -o ${OUTPUT_CATALOG_PATH}
