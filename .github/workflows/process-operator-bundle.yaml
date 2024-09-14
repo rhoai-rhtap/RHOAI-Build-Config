@@ -5,6 +5,8 @@ on:
 #  push:
 #    paths:
 #      - bundle/bundle-patch.yaml
+permissions:
+  contents: write
 jobs:
   process-fbc:
     runs-on: ubuntu-latest
