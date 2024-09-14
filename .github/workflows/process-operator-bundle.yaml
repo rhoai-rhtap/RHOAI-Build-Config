@@ -1,28 +1,20 @@
-name: Process FBC Fragment
-run-name: Process FBC Fragment
+name: Process Operator Bundle
+run-name: Process Operator Bundle
 on:
   workflow_dispatch:
 #  push:
 #    paths:
-#      - catalog/catalog-patch.yaml
-permissions:
-  contents: write
+#      - bundle/bundle-patch.yaml
 jobs:
   process-fbc:
     runs-on: ubuntu-latest
     container:
       image: quay.io/rhoai/rhoai-task-toolset:latest
-      options: --privileged
     steps:
       - name: Get Current branch name
         shell: bash
         run: echo "branch=${GITHUB_HEAD_REF:-${GITHUB_REF#refs/heads/}}" >> $GITHUB_OUTPUT
         id: get_branch
-      - name: Git checkout RBC main
-        uses: actions/checkout@v4
-        with:
-          ref: main
-          path: main
       - name: Git checkout RBC release
         uses: actions/checkout@v4
         with:
@@ -46,28 +38,12 @@ jobs:
           ln -s $yq_filename yq
           cp $yq_filename /usr/local/bin/yq
   
-          opm_version="v1.47.0"
-          opm_filename="opm-$opm_version"
-          echo "-> Downloading opm" >&2
-          curl -sSfLo "$opm_filename" "https://github.com/operator-framework/operator-registry/releases/download/$opm_version/$os-$arch-opm"
-          chmod +x "$opm_filename"
-          ln -fs "$opm_filename" opm
-          cp "$opm_filename" /usr/local/bin/opm
           pip install -r utils/utils/fbc-processor/requirements.txt
-#      - name: Podman Login
-#        uses: redhat-actions/podman-login@v1
-#        with:
-#          registry: quay.io
-#          username: ${{ secrets.RHOAI_QUAY_RO_USERNAME }}
-#          password: ${{ secrets.RHOAI_QUAY_RO_TOKEN }}
-
-      - name: Process FBC Fragment
+      - name: Process Operator Bundle
         env:
           BRANCH: ${{ steps.get_branch.outputs.branch }}
           OC_TOKEN: ${{ secrets.KONFLUX_INTERNAL_OC_TOKEN }}
           CLUSTER: p02
-          RHOAI_QUAY_RO_USERNAME: ${{ secrets.RHOAI_QUAY_RO_USERNAME }}
-          RHOAI_QUAY_RO_TOKEN: ${{ secrets.RHOAI_QUAY_RO_TOKEN }}
         run: |
           #Declare basic variables
           OPENSHIFT_VERSION=v4.13
@@ -83,12 +59,12 @@ jobs:
           
           #Declare FBC processing variables
           BUILD_CONFIG_PATH=${BRANCH}/config/build-config.yaml
-          CATALOG_YAML_PATH=main/catalog/${OPENSHIFT_VERSION}/rhods-operator/catalog.yaml
-          PATCH_YAML_PATH=${BRANCH}/catalog/catalog-patch.yaml
+          BUNDLE_CSV_PATH=${BRANCH}/bundle/manifests/rhods-operator.clusterserviceversion.yml
+          PATCH_YAML_PATH=${BRANCH}/bundle/bundle-patch.yaml
           SINGLE_BUNDLE_PATH=utils/utils/single_bundle_catalog_semver.yaml
-          OUTPUT_CATALOG_PATH=${BRANCH}/catalog/${OPENSHIFT_VERSION}/rhods-operator/catalog.yaml
+          OUTPUT_FILE_PATH=${BRANCH}/bundle/manifests/rhods-operator.clusterserviceversion.yml
           
-          #Generate the catalog for the latest bundle
+          #Generate the snapshot json for the latest image refs
           API_SERVER=""
           oc
           
@@ -105,14 +81,9 @@ jobs:
           
           echo "API_SERVER = ${API_SERVER}"
           #oc login --token="${OC_TOKEN}" --server=${API_SERVER}
-          whoami
-          #podman login quay.io -u ${RHOAI_QUAY_RO_USERNAME} -p ${RHOAI_QUAY_RO_TOKEN}
-          BASE64_AUTH=$(echo -n "${RHOAI_QUAY_RO_USERNAME}:${RHOAI_QUAY_RO_TOKEN}" | base64 -w 0)
-          mkdir ${HOME}/.docker
-          echo '{"auths":{"quay.io/rhoai/odh-operator-bundle-rhel8":{"username":"'"${RHOAI_QUAY_RO_USERNAME}"'","password":"'"${RHOAI_QUAY_RO_TOKEN}"'","email":"","auth":"'"${BASE64_AUTH}"'"}}}' > ${HOME}/.docker/config.json
           APPLICATION_NAME=rhoai-${COMPONENT_SUFFIX}
           echo "APPLICATION_NAME = $APPLICATION_NAME"
-        
+          
           
           SNAPSHOT_JSON_PATH=${BRANCH}/config/snapshot.json
           LATEST_SNAPSHOT=$(oc get snapshots -l "pac.test.appstudio.openshift.io/event-type in (push, Push),appstudio.openshift.io/application=${APPLICATION_NAME}" --sort-by=.metadata.creationTimestamp | tail -1 | awk '{print $1}')
@@ -120,28 +91,17 @@ jobs:
           #oc get snapshots ${LATEST_SNAPSHOT} -o json > ${SNAPSHOT_JSON_PATH}
           echo "component-suffix = $COMPONENT_SUFFIX"
           
-          #Invoke the FBC processor to extract the snapshot images
-          python3 utils/utils/fbc-processor/fbc-processor.py -op extract-snapshot-images -sn ${SNAPSHOT_JSON_PATH} -o utils/snapshot_images.json
-          #cat ${SNAPSHOT_JSON_PATH}
-          #cat utils/snapshot_images.json
-          echo "OPERATOR_BUNDLE_COMPONENT_NAME = $OPERATOR_BUNDLE_COMPONENT_NAME"
-          LATEST_BUNDLE_IMAGE=$(jq --arg OPERATOR_BUNDLE_COMPONENT_NAME "$OPERATOR_BUNDLE_COMPONENT_NAME" -r '.[]   | select(.name == $OPERATOR_BUNDLE_COMPONENT_NAME) | .imageUri' utils/snapshot_images.json)
-          echo "LATEST_BUNDLE_IMAGE = $LATEST_BUNDLE_IMAGE"
-          yq e -i '.stable.bundles[0].image = "$LATEST_BUNDLE_IMAGE"' utils/utils/fbc-processor/fbc-semver-template.yaml
-          LATEST_BUNDLE_IMAGE="$LATEST_BUNDLE_IMAGE" yq e -i '.stable.bundles[0].image = env(LATEST_BUNDLE_IMAGE)' utils/utils/fbc-processor/fbc-semver-template.yaml
-          DOCKER_CONFIG=${HOME}/.docker/ opm alpha render-template semver -o yaml utils/utils/fbc-processor/fbc-semver-template.yaml > ${SINGLE_BUNDLE_PATH}
-        
-          #Invoke FBC processor to patch the catalog
-          python3 utils/utils/fbc-processor/fbc-processor.py -op catalog-patch -b ${BUILD_CONFIG_PATH} -c ${CATALOG_YAML_PATH} -p ${PATCH_YAML_PATH} -s ${SINGLE_BUNDLE_PATH} -o ${OUTPUT_CATALOG_PATH}
-          #cat ${OUTPUT_CATALOG_PATH}
+          
+          #Invoke Bundle processor to patch the catalog
+          python3 utils/utils/bundle-processor/bundle-processor.py -op bundle-patch -b ${BUILD_CONFIG_PATH} -c ${BUNDLE_CSV_PATH} -p ${PATCH_YAML_PATH} -sn ${SNAPSHOT_JSON_PATH} -o ${OUTPUT_FILE_PATH}
+          cat ${OUTPUT_FILE_PATH}
       - name: Commit and push the changes to release branch
         uses: actions-js/push@master
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           branch: ${{ steps.get_branch.outputs.branch }}
-          message: "Updating the catalog.yaml with latest images and patches"
+          message: "Updating the bundle-csv with latest images"
           repository: rhoai-rhtap/RHOAI-Build-Config
           directory: ${{ steps.get_branch.outputs.branch }}
           author_name: Openshift-AI DevOps
           author_email: openshift-ai-devops@redhat.com
-
