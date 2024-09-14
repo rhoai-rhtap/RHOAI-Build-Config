@@ -8,7 +8,7 @@ on:
 permissions:
   contents: write
 jobs:
-  process-fbc:
+  process-bundle:
     runs-on: ubuntu-latest
     container:
       image: quay.io/rhoai/rhoai-task-toolset:latest
@@ -40,7 +40,7 @@ jobs:
           ln -s $yq_filename yq
           cp $yq_filename /usr/local/bin/yq
   
-          pip install -r utils/utils/fbc-processor/requirements.txt
+          pip install -r utils/utils/bundle-processor/requirements.txt
       - name: Process Operator Bundle
         env:
           BRANCH: ${{ steps.get_branch.outputs.branch }}
@@ -59,7 +59,7 @@ jobs:
           echo "current dir $(pwd)"
           echo "contents $(ls -l)"
           
-          #Declare FBC processing variables
+          #Declare Bundle processing variables
           BUILD_CONFIG_PATH=${BRANCH}/config/build-config.yaml
           BUNDLE_CSV_PATH=${BRANCH}/bundle/manifests/rhods-operator.clusterserviceversion.yml
           PATCH_YAML_PATH=${BRANCH}/bundle/bundle-patch.yaml
