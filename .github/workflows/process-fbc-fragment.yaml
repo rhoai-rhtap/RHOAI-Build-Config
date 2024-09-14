@@ -106,7 +106,7 @@ jobs:
           #oc login --token="${OC_TOKEN}" --server=${API_SERVER}
           whoami
           #podman login quay.io -u ${RHOAI_QUAY_RO_USERNAME} -p ${RHOAI_QUAY_RO_TOKEN}
-          BASE64_AUTH=$(echo "${RHOAI_QUAY_RO_USERNAME}:${RHOAI_QUAY_RO_TOKEN}" | base64 -w 0)
+          BASE64_AUTH=$(echo -n "${RHOAI_QUAY_RO_USERNAME}:${RHOAI_QUAY_RO_TOKEN}" | base64 -w 0)
           mkdir ${HOME}/.docker
           echo '{"auths":{"quay.io/rhoai/odh-operator-bundle-rhel8":{"username":"'"${RHOAI_QUAY_RO_USERNAME}"'","password":"'"${RHOAI_QUAY_RO_TOKEN}"'","email":"","auth":"'"${BASE64_AUTH}"'"}}}' > ${HOME}/.docker/config.json
           APPLICATION_NAME=rhoai-${COMPONENT_SUFFIX}
@@ -143,3 +143,4 @@ jobs:
           directory: ${{ steps.get_branch.outputs.branch }}
           author_name: Openshift-AI DevOps
           author_email: openshift-ai-devops@redhat.com
+
