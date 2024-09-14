@@ -1,4 +1,3 @@
----
 apiVersion: operators.coreos.com/v1alpha1
 kind: ClusterServiceVersion
 metadata:
@@ -187,8 +186,7 @@ metadata:
     features.operators.openshift.io/token-auth-aws: "false"
     features.operators.openshift.io/token-auth-azure: "false"
     features.operators.openshift.io/token-auth-gcp: "false"
-    description:
-      Operator for deployment and management of Red Hat OpenShift AI
+    description: Operator for deployment and management of Red Hat OpenShift AI
     support: Red Hat OpenShift AI
     operators.openshift.io/valid-subscription: '["OpenShift AI"]'
     operatorframework.io/suggested-namespace: redhat-ods-operator
@@ -1653,7 +1651,7 @@ spec:
       deployments:
       - label:
           name: rhods-operator
-        name: rhods-operator # WEN
+        name: rhods-operator
         spec:
           replicas: 1
           selector:
@@ -1682,43 +1680,43 @@ spec:
                 - name: DEFAULT_MANIFESTS_PATH
                   value: /opt/manifests
                 - name: RELATED_IMAGE_ODH_DASHBOARD_IMAGE
-                  value: "registry-proxy.engineering.redhat.com/rh-osbs/managed-open-data-hub-odh-dashboard-rhel8:v2.12.0-12"
+                  value: "quay.io/redhat-user-workloads/rhoai-tenant/rhoai-v2-13/odh-dashboard-v2-13@sha256:595fb02d98824950458e18dbf406322aa7aa5eca28bc49e6734ee23e76371fed"
                 - name: RELATED_IMAGE_ODH_KF_NOTEBOOK_CONTROLLER_IMAGE
-                  value: "registry-proxy.engineering.redhat.com/rh-osbs/managed-open-data-hub-odh-kf-notebook-controller-rhel8:v2.12.0-6"
+                  value: "quay.io/rhoai/odh-kf-notebook-controller@sha256:c0b2c4dc60f76bd82ab32330325004b4a01c163ff803be96813c8535e0cef37f"
                 - name: RELATED_IMAGE_ODH_NOTEBOOK_CONTROLLER_IMAGE
-                  value: "registry-proxy.engineering.redhat.com/rh-osbs/managed-open-data-hub-odh-notebook-controller-rhel8:v2.12.0-6"
+                  value: "quay.io/rhoai/odh-notebook-controller@sha256:0dcd4948b05f87285305419008fd84abbc7c6ba714b1beabe3c218744115d9f0"
                 - name: RELATED_IMAGE_ODH_ML_PIPELINES_PERSISTENCEAGENT_IMAGE
-                  value: "registry-proxy.engineering.redhat.com/rh-osbs/managed-open-data-hub-odh-ml-pipelines-persistenceagent-container-rhel8:v2.12.0-6"
+                  value: "quay.io/rhoai/odh-ml-pipelines-persistenceagent-v2@sha256:60759f10e9aaea3af580c90d2e7e3a9e75c9c4609bacf72e9cda53a55b223174"
                 - name: RELATED_IMAGE_ODH_ML_PIPELINES_API_SERVER_IMAGE
-                  value: "registry-proxy.engineering.redhat.com/rh-osbs/managed-open-data-hub-odh-ml-pipelines-api-server-container-rhel8:v2.12.0-6"
+                  value: "quay.io/redhat-user-workloads/rhoai-tenant/rhoai-v2-13/odh-ml-pipelines-api-server-v2-v2-13@sha256:834aed6b1578be51b70b2165005fe725a4e90ec122ebcdeb15765978eebfa048"
                 - name: RELATED_IMAGE_ODH_ML_PIPELINES_CACHE_IMAGE
                   value: "registry-proxy.engineering.redhat.com/rh-osbs/managed-open-data-hub-odh-ml-pipelines-cache-container-rhel8:v2.12.0-6"
                 - name: RELATED_IMAGE_ODH_ML_PIPELINES_SCHEDULEDWORKFLOW_IMAGE
-                  value: "registry-proxy.engineering.redhat.com/rh-osbs/managed-open-data-hub-odh-ml-pipelines-scheduledworkflow-container-rhel8:v2.12.0-6"
+                  value: "quay.io/rhoai/odh-ml-pipelines-scheduledworkflow@sha256:5fa9560976589735b276c46b69acdd5abb12900275a1c502a9c8d0c82f50e215"
                 - name: RELATED_IMAGE_ODH_ML_PIPELINES_ARTIFACT_MANAGER_IMAGE
-                  value: "registry-proxy.engineering.redhat.com/rh-osbs/managed-open-data-hub-odh-ml-pipelines-artifact-manager-container-rhel8:v2.12.0-5"
+                  value: "quay.io/rhoai/odh-ml-pipelines-artifact-manager@sha256:7a03796d555ee50291d12f39e92119f6b466e76f7d3422124087b106a2fc1a19"
                 - name: RELATED_IMAGE_ODH_DATA_SCIENCE_PIPELINES_OPERATOR_CONTROLLER_IMAGE
-                  value: "registry-proxy.engineering.redhat.com/rh-osbs/managed-open-data-hub-odh-data-science-pipelines-operator-controller-rhel8:v2.12.0-7"
+                  value: "quay.io/rhoai/odh-data-science-pipelines-operator-controller@sha256:0ccab38b94e9f22385e860168d16ede9030b887c3df1b33b5b6232c9b6ea6dbe"
                 - name: RELATED_IMAGE_ODH_MODELMESH_CONTROLLER_IMAGE
                   value: "registry-proxy.engineering.redhat.com/rh-osbs/managed-open-data-hub-odh-modelmesh-serving-controller-rhel8:v2.12.0-4"
                 - name: RELATED_IMAGE_ODH_MODEL_CONTROLLER_IMAGE
-                  value: "registry-proxy.engineering.redhat.com/rh-osbs/managed-open-data-hub-odh-model-controller-rhel8:v2.12.0-10"
+                  value: "quay.io/rhoai/odh-model-controller@sha256:d7145187be700c91da7f4864b59fb3132fca30f545a1fa22e6140f8e9f1250f6"
                 - name: RELATED_IMAGE_ODH_MM_REST_PROXY_IMAGE
-                  value: "registry-proxy.engineering.redhat.com/rh-osbs/managed-open-data-hub-odh-mm-rest-proxy-rhel8:v2.12.0-5"
+                  value: "quay.io/rhoai/odh-mm-rest-proxy@sha256:6233e994a20aac8c3b45ce58374e724c06370149b2ea99baf63b136fb488848f"
                 - name: RELATED_IMAGE_ODH_MODELMESH_IMAGE
-                  value: "registry-proxy.engineering.redhat.com/rh-osbs/managed-open-data-hub-odh-modelmesh-rhel8:v2.12.0-10"
+                  value: "quay.io/redhat-user-workloads/rhoai-tenant/rhoai-v2-13/odh-modelmesh-v2-13@sha256:07f8d0ffdb265ab37b54f0707bbdbe68008204d64c95479dfd650dd22c999528"
                 - name: RELATED_IMAGE_ODH_MODELMESH_RUNTIME_ADAPTER_IMAGE
-                  value: "registry-proxy.engineering.redhat.com/rh-osbs/managed-open-data-hub-odh-modelmesh-runtime-adapter-container-rhel8:v2.12.0-5"
+                  value: "quay.io/redhat-user-workloads/rhoai-tenant/rhoai-v2-13/odh-modelmesh-runtime-adapter-v2-13@sha256:ee30a8de2c7a6d8da8b26c8165ce270610d85939a1adcd3aae77484bc086569d"
                 - name: RELATED_IMAGE_ODH_TRUSTYAI_SERVICE_IMAGE
-                  value: "registry-proxy.engineering.redhat.com/rh-osbs/managed-open-data-hub-odh-trustyai-service-rhel8:v2.12.0-13"
+                  value: "quay.io/redhat-user-workloads/rhoai-tenant/rhoai-v2-13/odh-trustyai-service-v2-13@sha256:3ca0747905985e0e7f57b56d1c17a92cebc675953dab15a2412079dbfbffc21f"
                 - name: RELATED_IMAGE_ODH_TRUSTYAI_SERVICE_OPERATOR_IMAGE
-                  value: "registry-proxy.engineering.redhat.com/rh-osbs/managed-open-data-hub-odh-trustyai-service-operator-rhel8:v2.12.0-8"
+                  value: "quay.io/rhoai/odh-trustyai-service-operator@sha256:cd893e77fdadcf2953abaac19e848f1afe56b4b0d78ae4b106748202082d1820"
                 - name: RELATED_IMAGE_ODH_CODEFLARE_OPERATOR_IMAGE
-                  value: "registry-proxy.engineering.redhat.com/rh-osbs/managed-open-data-hub-odh-codeflare-operator-container-rhel8:v2.12.0-12"
+                  value: "quay.io/rhoai/odh-codeflare-operator@sha256:67f01df6fcb64db6a5bd3497f8add3edef1eb897181e9e9479a67321f3ae8256"
                 - name: RELATED_IMAGE_ODH_KUBERAY_OPERATOR_CONTROLLER_IMAGE
-                  value: "registry-proxy.engineering.redhat.com/rh-osbs/managed-open-data-hub-odh-kuberay-operator-controller-container-rhel8:v2.12.0-4"
+                  value: "quay.io/rhoai/odh-kuberay-operator-controller@sha256:c916583fd6d1992435590e86a725439a7c5e466bcf28cdf5aaa547796013aa70"
                 - name: RELATED_IMAGE_ODH_KUEUE_CONTROLLER_IMAGE
-                  value: "registry-proxy.engineering.redhat.com/rh-osbs/managed-open-data-hub-odh-kueue-controller-rhel8:v2.12.0-4"
+                  value: "quay.io/rhoai/odh-kueue-controller@sha256:306276d68eb533f8fd929001c0ed78ebbe5b76e1d2c8a050d7af92967448a62c"
                 - name: RELATED_IMAGE_ODH_MLMD_GRPC_SERVER_IMAGE
                   value: "registry-proxy.engineering.redhat.com/rh-osbs/managed-open-data-hub-odh-mlmd-grpc-server-container-rhel8:v2.12.0-4"
                 - name: RELATED_IMAGE_ODH_ML_PIPELINES_API_SERVER_V2_IMAGE
@@ -1728,15 +1726,19 @@ spec:
                 - name: RELATED_IMAGE_ODH_ML_PIPELINES_SCHEDULEDWORKFLOW_V2_IMAGE
                   value: "registry-proxy.engineering.redhat.com/rh-osbs/managed-open-data-hub-odh-ml-pipelines-scheduledworkflow-v2-rhel8:v2.12.0-5"
                 - name: RELATED_IMAGE_ODH_ML_PIPELINES_DRIVER_IMAGE
-                  value: "registry-proxy.engineering.redhat.com/rh-osbs/managed-open-data-hub-odh-ml-pipelines-driver-rhel8:v2.12.0-5"
+                  value: "quay.io/rhoai/odh-ml-pipelines-driver@sha256:c15d3b05c8e9dd4217c5d038a6cd5c55922da85b42029db90d7384fce1666308"
                 - name: RELATED_IMAGE_ODH_ML_PIPELINES_LAUNCHER_IMAGE
-                  value: "registry-proxy.engineering.redhat.com/rh-osbs/managed-open-data-hub-odh-ml-pipelines-launcher-rhel8:v2.12.0-5"
+                  value: "quay.io/rhoai/odh-ml-pipelines-launcher@sha256:b3709360a706b6d854932c09d60ba5871e627d3162391dcaab88deaa6b905d79"
                 - name: RELATED_IMAGE_ODH_DATA_SCIENCE_PIPELINES_ARGO_ARGOEXEC_IMAGE
-                  value: "registry-proxy.engineering.redhat.com/rh-osbs/managed-open-data-hub-odh-data-science-pipelines-argo-argoexec-rhel8:v2.12.0-4"
+                  value: "quay.io/rhoai/odh-data-science-pipelines-argo-argoexec@sha256:26c25840a2372af4415f5f3e6a502da9689019d976445a86f694ae80f8d3d7d9"
                 - name: RELATED_IMAGE_ODH_DATA_SCIENCE_PIPELINES_ARGO_WORKFLOWCONTROLLER_IMAGE
-                  value: "registry-proxy.engineering.redhat.com/rh-osbs/managed-open-data-hub-odh-data-science-pipelines-argo-workflowcontroller-rhel8:v2.12.0-4"
+                  value: "quay.io/rhoai/odh-data-science-pipelines-argo-workflowcontroller@sha256:7abb620d23009859713f5da02253f302ab3bcae223425d34b6236fcc55abe559"
                 - name: RELATED_IMAGE_ODH_TRAINING_OPERATOR_IMAGE
-                  value: "registry-proxy.engineering.redhat.com/rh-osbs/managed-open-data-hub-odh-training-operator-rhel8:v2.12.0-5"
+                  value: "quay.io/rhoai/odh-training-operator@sha256:bbcb62907449eef53d160163d1e1c0205f0a4bbe91dabe68bd93409c0a702517"
+                - name: RELATED_IMAGE_ODH_OPERATOR_IMAGE
+                  value: "quay.io/rhoai/odh-operator-rhel8@sha256:c0227f12c8c5387da8e907292efb85f412e0e6f062641df7d3a0bcef705b3daf"
+                - name: RELATED_IMAGE_ODH_MODELMESH_SERVING_CONTROLLER_IMAGE
+                  value: "quay.io/rhoai/odh-modelmesh-serving-controller@sha256:8985d51f117a842d20f2bf20324de6a926c6cf8a0acab9143c817989996147ea"
                 command:
                 - /manager
                 image: "registry-proxy.engineering.redhat.com/rh-osbs/managed-open-data-hub-odh-rhel8-operator:v2.12.0-18"
