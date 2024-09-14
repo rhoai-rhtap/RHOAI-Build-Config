@@ -38,21 +38,12 @@ jobs:
           ln -s $yq_filename yq
           cp $yq_filename /usr/local/bin/yq
   
-          opm_version="v1.27.1"
-          opm_filename="opm-$opm_version"
-          echo "-> Downloading opm" >&2
-          curl -sSfLo "$opm_filename" "https://github.com/operator-framework/operator-registry/releases/download/$opm_version/$os-$arch-opm"
-          chmod +x "$opm_filename"
-          ln -fs "$opm_filename" opm
-          cp "$opm_filename" /usr/local/bin/opm
           pip install -r utils/utils/fbc-processor/requirements.txt
       - name: Process Operator Bundle
         env:
           BRANCH: ${{ steps.get_branch.outputs.branch }}
           OC_TOKEN: ${{ secrets.KONFLUX_INTERNAL_OC_TOKEN }}
           CLUSTER: p02
-          RHOAI_QUAY_RO_USERNAME: ${{ secrets.RHOAI_QUAY_RO_USERNAME }}
-          RHOAI_QUAY_RO_TOKEN: ${{ secrets.RHOAI_QUAY_RO_TOKEN }}
         run: |
           #Declare basic variables
           OPENSHIFT_VERSION=v4.13
@@ -73,7 +64,7 @@ jobs:
           SINGLE_BUNDLE_PATH=utils/utils/single_bundle_catalog_semver.yaml
           OUTPUT_FILE_PATH=${BRANCH}/bundle/manifests/rhods-operator.clusterserviceversion.yml
           
-          #Generate the catalog for the latest bundle
+          #Generate the snapshot json for the latest image refs
           API_SERVER=""
           oc
           
@@ -90,7 +81,6 @@ jobs:
           
           echo "API_SERVER = ${API_SERVER}"
           #oc login --token="${OC_TOKEN}" --server=${API_SERVER}
-          podman login quay.io -u ${RHOAI_QUAY_RO_USERNAME} -p ${RHOAI_QUAY_RO_TOKEN}
           APPLICATION_NAME=rhoai-${COMPONENT_SUFFIX}
           echo "APPLICATION_NAME = $APPLICATION_NAME"
           
@@ -102,7 +92,7 @@ jobs:
           echo "component-suffix = $COMPONENT_SUFFIX"
           
           
-          #Invoke FBC processor to patch the catalog
+          #Invoke Bundle processor to patch the catalog
           python3 utils/utils/bundle-processor/bundle-processor.py -op bundle-patch -b ${BUILD_CONFIG_PATH} -c ${BUNDLE_CSV_PATH} -p ${PATCH_YAML_PATH} -sn ${SNAPSHOT_JSON_PATH} -o ${OUTPUT_FILE_PATH}
           cat ${OUTPUT_FILE_PATH}
       - name: Commit and push the changes to release branch
