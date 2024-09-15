@@ -3,54 +3,54 @@
     "kind": "Snapshot",
     "metadata": {
         "annotations": {
-            "build.appstudio.openshift.io/repo": "https://github.com/rhoai-rhtap/kubeflow?rev=4105542cd745ca23291f9c038a3df56afe1d89bd",
-            "build.appstudio.redhat.com/commit_sha": "4105542cd745ca23291f9c038a3df56afe1d89bd",
+            "build.appstudio.openshift.io/repo": "https://github.com/rhoai-rhtap/modelmesh-serving?rev=ad576031c5587eac62a15a75aaebec0e473803c7",
+            "build.appstudio.redhat.com/commit_sha": "ad576031c5587eac62a15a75aaebec0e473803c7",
             "build.appstudio.redhat.com/target_branch": "rhoai-2.13",
             "pac.test.appstudio.openshift.io/branch": "rhoai-2.13",
-            "pac.test.appstudio.openshift.io/check-run-id": "30103352197",
+            "pac.test.appstudio.openshift.io/check-run-id": "30160131686",
             "pac.test.appstudio.openshift.io/controller-info": "{\"name\":\"default\",\"configmap\":\"pipelines-as-code\",\"secret\":\"pipelines-as-code-secret\", \"gRepo\": \"pipelines-as-code\"}",
             "pac.test.appstudio.openshift.io/event-type": "push",
-            "pac.test.appstudio.openshift.io/git-auth-secret": "pac-gitauth-hmrshp",
+            "pac.test.appstudio.openshift.io/git-auth-secret": "pac-gitauth-dnufsd",
             "pac.test.appstudio.openshift.io/git-provider": "github",
             "pac.test.appstudio.openshift.io/installation-id": "53269930",
-            "pac.test.appstudio.openshift.io/log-url": "https://konflux.apps.stone-prod-p02.hjvn.p1.openshiftapps.com/application-pipeline/ns/rhoai-tenant/pipelinerun/odh-kf-notebook-controller-v2-13-on-push-dltn2",
+            "pac.test.appstudio.openshift.io/log-url": "https://konflux.apps.stone-prod-p02.hjvn.p1.openshiftapps.com/application-pipeline/ns/rhoai-tenant/pipelinerun/odh-modelmesh-serving-controller-v2-13-on-push-4bbbh",
             "pac.test.appstudio.openshift.io/max-keep-runs": "3",
             "pac.test.appstudio.openshift.io/on-cel-expression": "event == \"push\" \u0026\u0026 target_branch == \"rhoai-2.13\"",
-            "pac.test.appstudio.openshift.io/original-prname": "odh-kf-notebook-controller-v2-13-on-push",
-            "pac.test.appstudio.openshift.io/repo-url": "https://github.com/rhoai-rhtap/kubeflow",
-            "pac.test.appstudio.openshift.io/repository": "nb-c1",
-            "pac.test.appstudio.openshift.io/sender": "MohammadiIram",
-            "pac.test.appstudio.openshift.io/sha": "4105542cd745ca23291f9c038a3df56afe1d89bd",
-            "pac.test.appstudio.openshift.io/sha-title": "Update odh-notebook-controller-v2-13-push.yaml",
-            "pac.test.appstudio.openshift.io/sha-url": "https://github.com/rhoai-rhtap/kubeflow/commit/4105542cd745ca23291f9c038a3df56afe1d89bd",
+            "pac.test.appstudio.openshift.io/original-prname": "odh-modelmesh-serving-controller-v2-13-on-push",
+            "pac.test.appstudio.openshift.io/repo-url": "https://github.com/rhoai-rhtap/modelmesh-serving",
+            "pac.test.appstudio.openshift.io/repository": "b1-serving",
+            "pac.test.appstudio.openshift.io/sender": "dchourasia",
+            "pac.test.appstudio.openshift.io/sha": "ad576031c5587eac62a15a75aaebec0e473803c7",
+            "pac.test.appstudio.openshift.io/sha-title": "Update odh-modelmesh-serving-controller-v2-13-push.yaml",
+            "pac.test.appstudio.openshift.io/sha-url": "https://github.com/rhoai-rhtap/modelmesh-serving/commit/ad576031c5587eac62a15a75aaebec0e473803c7",
             "pac.test.appstudio.openshift.io/source-branch": "refs/heads/rhoai-2.13",
-            "pac.test.appstudio.openshift.io/source-repo-url": "https://github.com/rhoai-rhtap/kubeflow",
+            "pac.test.appstudio.openshift.io/source-repo-url": "https://github.com/rhoai-rhtap/modelmesh-serving",
             "pac.test.appstudio.openshift.io/state": "completed",
             "pac.test.appstudio.openshift.io/url-org": "rhoai-rhtap",
-            "pac.test.appstudio.openshift.io/url-repository": "kubeflow",
-            "test.appstudio.openshift.io/pipelinerunstarttime": "1726224311",
-            "test.appstudio.openshift.io/source-repo-url": "https://github.com/rhoai-rhtap/kubeflow",
-            "test.appstudio.openshift.io/status": "[{\"scenario\":\"rhoai-v2-13-enterprise-contract\",\"status\":\"TestPassed\",\"lastUpdateTime\":\"2024-09-13T11:01:51.630348192Z\",\"details\":\"Integration test passed\",\"startTime\":\"2024-09-13T10:57:21.934109945Z\",\"completionTime\":\"2024-09-13T11:01:51.630348192Z\",\"testPipelineRunName\":\"rhoai-v2-13-2mks4-hmn56\"}]"
+            "pac.test.appstudio.openshift.io/url-repository": "modelmesh-serving",
+            "test.appstudio.openshift.io/pipelinerunstarttime": "1726386017",
+            "test.appstudio.openshift.io/source-repo-url": "https://github.com/rhoai-rhtap/modelmesh-serving",
+            "test.appstudio.openshift.io/status": "[{\"scenario\":\"rhoai-v2-13-enterprise-contract\",\"status\":\"TestFail\",\"lastUpdateTime\":\"2024-09-15T08:51:44.439178496Z\",\"details\":\"Integration test failed\",\"startTime\":\"2024-09-15T08:47:48.925566713Z\",\"completionTime\":\"2024-09-15T08:51:44.439178496Z\",\"testPipelineRunName\":\"rhoai-v2-13-wwkjd-6pdxd\"}]"
         },
-        "creationTimestamp": "2024-09-13T10:57:21Z",
+        "creationTimestamp": "2024-09-15T08:47:48Z",
         "generateName": "rhoai-v2-13-",
         "generation": 1,
         "labels": {
             "appstudio.openshift.io/application": "rhoai-v2-13",
-            "appstudio.openshift.io/build-pipelinerun": "odh-kf-notebook-controller-v2-13-on-push-dltn2",
-            "appstudio.openshift.io/component": "odh-kf-notebook-controller-v2-13",
-            "pac.test.appstudio.openshift.io/check-run-id": "30103352197",
+            "appstudio.openshift.io/build-pipelinerun": "odh-modelmesh-serving-controller-v2-13-on-push-4bbbh",
+            "appstudio.openshift.io/component": "odh-modelmesh-serving-controller-v2-13",
+            "pac.test.appstudio.openshift.io/check-run-id": "30160131686",
             "pac.test.appstudio.openshift.io/event-type": "push",
-            "pac.test.appstudio.openshift.io/original-prname": "odh-kf-notebook-controller-v2-13-on-push",
-            "pac.test.appstudio.openshift.io/repository": "nb-c1",
-            "pac.test.appstudio.openshift.io/sha": "4105542cd745ca23291f9c038a3df56afe1d89bd",
+            "pac.test.appstudio.openshift.io/original-prname": "odh-modelmesh-serving-controller-v2-13-on-push",
+            "pac.test.appstudio.openshift.io/repository": "b1-serving",
+            "pac.test.appstudio.openshift.io/sha": "ad576031c5587eac62a15a75aaebec0e473803c7",
             "pac.test.appstudio.openshift.io/state": "completed",
             "pac.test.appstudio.openshift.io/url-org": "rhoai-rhtap",
-            "pac.test.appstudio.openshift.io/url-repository": "kubeflow",
-            "test.appstudio.openshift.io/pipelinerunfinishtime": "1726225039",
+            "pac.test.appstudio.openshift.io/url-repository": "modelmesh-serving",
+            "test.appstudio.openshift.io/pipelinerunfinishtime": "1726390067",
             "test.appstudio.openshift.io/type": "component"
         },
-        "name": "rhoai-v2-13-2mks4",
+        "name": "rhoai-v2-13-wwkjd",
         "namespace": "rhoai-tenant",
         "ownerReferences": [
             {
@@ -62,67 +62,198 @@
                 "uid": "38b8e101-abc2-49b1-bdec-6c466d8987e6"
             }
         ],
-        "resourceVersion": "278800311",
-        "uid": "669d72ce-cf91-4550-9a11-da4f470f5780"
+        "resourceVersion": "283311137",
+        "uid": "d1e0ad3f-37ea-4dc0-944c-6a3b07ee5cfa"
     },
     "spec": {
         "application": "rhoai-v2-13",
         "artifacts": {},
         "components": [
             {
-                "containerImage": "quay.io/rhoai/odh-kf-notebook-controller@sha256:c0b2c4dc60f76bd82ab32330325004b4a01c163ff803be96813c8535e0cef37f",
-                "name": "odh-kf-notebook-controller-v2-13",
-                "source": {
-                    "git": {
-                        "revision": "4105542cd745ca23291f9c038a3df56afe1d89bd",
-                        "url": "https://github.com/rhoai-rhtap/kubeflow"
-                    }
-                }
-            },
-            {
-                "containerImage": "quay.io/rhoai/odh-codeflare-operator@sha256:67f01df6fcb64db6a5bd3497f8add3edef1eb897181e9e9479a67321f3ae8256",
-                "name": "odh-codeflare-operator-v2-13",
+                "containerImage": "quay.io/rhoai/odh-ml-pipelines-launcher-rhel8@sha256:213f414ed2a4194486dca521cf597dabf79fd1c8c1666a6dab746503acc14fab",
+                "name": "odh-ml-pipelines-launcher-v2-13",
                 "source": {
                     "git": {
                         "context": "./",
-                        "dockerfileUrl": "Dockerfile",
-                        "revision": "1b6246ca456b8464c07c4b525fdf0886053edf9b",
-                        "url": "https://github.com/rhoai-rhtap/codeflare-operator.git"
-                    }
-                }
-            },
-            {
-                "containerImage": "quay.io/rhoai/odh-ml-pipelines-persistenceagent@sha256:d598594480dbaad87ecf827bd6ebc1c31237a9c80a6983229c4d643907329cb3",
-                "name": "odh-ml-pipelines-persistenceagent-v2-13",
-                "source": {
-                    "git": {
-                        "context": "./",
-                        "dockerfileUrl": "backend/Dockerfile.persistenceagent",
-                        "revision": "d656e6f112e3df4abffbc3338e7025300d635da1",
-                        "url": "https://github.com/rhoai-rhtap/data-science-pipelines-tekton.git"
-                    }
-                }
-            },
-            {
-                "containerImage": "quay.io/rhoai/odh-ml-pipelines-scheduledworkflow-v2@sha256:8d6dc8d953e030f2c56973fe3a707258712ac68f03754fc530ea1a12e45fdb8c",
-                "name": "odh-ml-pipelines-scheduledworkflow-v2-v2-13",
-                "source": {
-                    "git": {
-                        "context": "./",
-                        "dockerfileUrl": "backend/Dockerfile.scheduledworkflow",
-                        "revision": "3b59cc5789d39b39d3e3f10f272685d412205865",
+                        "dockerfileUrl": "backend/Dockerfile.launcher",
+                        "revision": "24d0870a89dddc7a88b597333ed4b479c5f1be3a",
                         "url": "https://github.com/rhoai-rhtap/data-science-pipelines-dsp.git"
                     }
                 }
             },
             {
-                "containerImage": "quay.io/rhoai/odh-model-controller@sha256:d7145187be700c91da7f4864b59fb3132fca30f545a1fa22e6140f8e9f1250f6",
+                "containerImage": "quay.io/rhoai/odh-ml-pipelines-driver-rhel8@sha256:85f5558ac90024732b60fd87c7724c0103005692d95a1b06bd5c9946e0143dc0",
+                "name": "odh-ml-pipelines-driver-v2-13",
+                "source": {
+                    "git": {
+                        "context": "./",
+                        "dockerfileUrl": "backend/Dockerfile.driver",
+                        "revision": "1e541aa0e515b64fc16fb7f00548dcf0c0099da1",
+                        "url": "https://github.com/rhoai-rhtap/data-science-pipelines-dsp.git"
+                    }
+                }
+            },
+            {
+                "containerImage": "quay.io/rhoai/odh-data-science-pipelines-argo-workflowcontroller-rhel8@sha256:ca8badf10d8f5cc6fd93480c4c683489916b5a0aad8441c26ed13cd376a27b1a",
+                "name": "odh-data-science-pipelines-argo-workflowcontroller-v2-13",
+                "source": {
+                    "git": {
+                        "context": "./",
+                        "dockerfileUrl": "rhoai/Dockerfile.workflowcontroller",
+                        "revision": "838962d7cc19beb5d79d3879b01a36732e4908f1",
+                        "url": "https://github.com/rhoai-rhtap/argo-workflows.git"
+                    }
+                }
+            },
+            {
+                "containerImage": "quay.io/rhoai/odh-kuberay-operator-controller-rhel8@sha256:109e3c67ae6862d43474d6df1ffdedd39b30f8d07416992a692b89430b6b863f",
+                "name": "odh-kuberay-operator-controller-v2-13",
+                "source": {
+                    "git": {
+                        "context": "./ray-operator/",
+                        "dockerfileUrl": "./ray-operator/Dockerfile",
+                        "revision": "f370ab0c175dd815802a2a786bbe84324428cc0a",
+                        "url": "https://github.com/rhoai-rhtap/kuberay.git"
+                    }
+                }
+            },
+            {
+                "containerImage": "quay.io/rhoai/odh-data-science-pipelines-operator-controller-rhel8@sha256:c13b457211f70fc03ab6c5ddd5783bd28bbc93b7a3b653e880dae8dadf65d40f",
+                "name": "odh-data-science-pipelines-operator-controller-v2-13",
+                "source": {
+                    "git": {
+                        "context": "./",
+                        "dockerfileUrl": "Dockerfile",
+                        "revision": "17d40beb3004ad070e5f4a50ec8e74f2e72f646b",
+                        "url": "https://github.com/rhoai-rhtap/data-science-pipelines-operator.git"
+                    }
+                }
+            },
+            {
+                "containerImage": "quay.io/rhoai/odh-modelmesh-serving-controller-rhel8@sha256:67c74e316671efd348b6856a0ffea41ab75d5b9535d982ae0ba896d27dab1b15",
+                "name": "odh-modelmesh-serving-controller-v2-13",
+                "source": {
+                    "git": {
+                        "revision": "ad576031c5587eac62a15a75aaebec0e473803c7",
+                        "url": "https://github.com/rhoai-rhtap/modelmesh-serving"
+                    }
+                }
+            },
+            {
+                "containerImage": "quay.io/rhoai/odh-data-science-pipelines-argo-argoexec-rhel8@sha256:ae887499ae47e948288fccf08349024f1e6d81a5b85a6af289dc0db59df288a7",
+                "name": "odh-data-science-pipelines-argo-argoexec-v2-13",
+                "source": {
+                    "git": {
+                        "context": "./",
+                        "dockerfileUrl": "rhoai/Dockerfile.argoexec",
+                        "revision": "3b67fd24535710a783714ddd1b6913c403ff1d93",
+                        "url": "https://github.com/rhoai-rhtap/argo-workflows.git"
+                    }
+                }
+            },
+            {
+                "containerImage": "quay.io/rhoai/odh-operator-bundle-rhel8@sha256:decebfee16c5395f2a472b897dfbb1a9a5dc8ff8f9652d18587d97dc3bbe6008",
+                "name": "odh-operator-bundle-v2-13",
+                "source": {
+                    "git": {
+                        "dockerfileUrl": "bundle/Dockerfile",
+                        "revision": "3ab0b6cbd309002efa6517860456f99e6a3d839e",
+                        "url": "https://github.com/rhoai-rhtap/RHOAI-Build-Config"
+                    }
+                }
+            },
+            {
+                "containerImage": "quay.io/rhoai/odh-notebook-controller-rhel8@sha256:d516185b7c94dc8d60f128ee06094b57d94d51772a725ae5ab717f71ac5ea81a",
+                "name": "odh-notebook-controller-v2-13",
+                "source": {
+                    "git": {
+                        "context": "./components/",
+                        "dockerfileUrl": "odh-notebook-controller/Dockerfile",
+                        "revision": "f4957d7499b9ac4d1b98abd82392c9d736be332b",
+                        "url": "https://github.com/rhoai-rhtap/kubeflow.git"
+                    }
+                }
+            },
+            {
+                "containerImage": "quay.io/rhoai/odh-training-operator-rhel8@sha256:8d39584b343214039abb8490d0e895f937c1c9c316335d1773cf0e3bc3bea255",
+                "name": "odh-training-operator-v2-13",
+                "source": {
+                    "git": {
+                        "context": "./",
+                        "dockerfileUrl": "build/images/training-operator/Dockerfile",
+                        "revision": "4d96e7100d2c77ac7894de0ae3a645112686e4a2",
+                        "url": "https://github.com/rhoai-rhtap/training-operator.git"
+                    }
+                }
+            },
+            {
+                "containerImage": "quay.io/rhoai/odh-trustyai-service-operator-rhel8@sha256:61d995cc961ef6a2682896369d478be011822232017fb9673fc49fcf5fd9f363",
+                "name": "odh-trustyai-service-operator-v2-13",
+                "source": {
+                    "git": {
+                        "context": "./",
+                        "dockerfileUrl": "Dockerfile",
+                        "revision": "828c36b07fe88ae8c938d033068f84c054fc0216",
+                        "url": "https://github.com/rhoai-rhtap/trustyai-service-operator.git"
+                    }
+                }
+            },
+            {
+                "containerImage": "quay.io/rhoai/odh-kf-notebook-controller-rhel8@sha256:05a5f74e8adaff4fb85d57cec7eb9c5607944658423871e0013039b6e14531de",
+                "name": "odh-kf-notebook-controller-v2-13",
+                "source": {
+                    "git": {
+                        "context": "./components/",
+                        "dockerfileUrl": "notebook-controller/Dockerfile",
+                        "revision": "f4957d7499b9ac4d1b98abd82392c9d736be332b",
+                        "url": "https://github.com/rhoai-rhtap/kubeflow.git"
+                    }
+                }
+            },
+            {
+                "containerImage": "quay.io/rhoai/odh-codeflare-operator-rhel8@sha256:4dd069d5ff3b7639195e2b8c985bf8947b09354e6accc4224ed9e56c83ffece9",
+                "name": "odh-codeflare-operator-v2-13",
+                "source": {
+                    "git": {
+                        "context": "./",
+                        "dockerfileUrl": "Dockerfile",
+                        "revision": "ce4ee2fa5e90fa9954bc9f35e86229f15d5ba594",
+                        "url": "https://github.com/rhoai-rhtap/codeflare-operator.git"
+                    }
+                }
+            },
+            {
+                "containerImage": "quay.io/rhoai/odh-ml-pipelines-persistenceagent-rhel8@sha256:1538b3dbadf1e0df3321dc5da65871194c448fd3d92a0d0f4c4e1c13ee1eb554",
+                "name": "odh-ml-pipelines-persistenceagent-v2-13",
+                "source": {
+                    "git": {
+                        "context": "./",
+                        "dockerfileUrl": "backend/Dockerfile.persistenceagent",
+                        "revision": "987a9289f83469d2e66e1e0918584fef8ea05502",
+                        "url": "https://github.com/rhoai-rhtap/data-science-pipelines-tekton.git"
+                    }
+                }
+            },
+            {
+                "containerImage": "quay.io/rhoai/odh-ml-pipelines-scheduledworkflow-v2-rhel8@sha256:c41e696cdb58393b923d193d941dfcd1588a570286079c565cd6cd2f1194faf7",
+                "name": "odh-ml-pipelines-scheduledworkflow-v2-v2-13",
+                "source": {
+                    "git": {
+                        "context": "./",
+                        "dockerfileUrl": "backend/Dockerfile.scheduledworkflow",
+                        "revision": "1e541aa0e515b64fc16fb7f00548dcf0c0099da1",
+                        "url": "https://github.com/rhoai-rhtap/data-science-pipelines-dsp.git"
+                    }
+                }
+            },
+            {
+                "containerImage": "quay.io/rhoai/odh-model-controller-rhel8@sha256:a822dced137e6333f162a3582d0db290687a08ef7781990586a75c50873146f7",
                 "name": "odh-model-controller-v2-13",
                 "source": {
                     "git": {
                         "context": "./",
                         "dockerfileUrl": "Containerfile",
-                        "revision": "1747b8bc0017348e10b0a8cdc18c4ac9c13af1af",
+                        "revision": "c8c6d987a026207fc390a1b740a8c96a6fbb336a",
                         "url": "https://github.com/rhoai-rhtap/odh-model-controller.git"
                     }
                 }
@@ -140,13 +271,13 @@
                 }
             },
             {
-                "containerImage": "quay.io/rhoai/odh-ml-pipelines-artifact-manager@sha256:7a03796d555ee50291d12f39e92119f6b466e76f7d3422124087b106a2fc1a19",
+                "containerImage": "quay.io/rhoai/odh-ml-pipelines-artifact-manager-rhel8@sha256:821164f9ac7da02bd4e34ce5fa26987687df4bc99b86378d8d47d18bcbf28ad0",
                 "name": "odh-ml-pipelines-artifact-manager-v2-13",
                 "source": {
                     "git": {
                         "context": "./",
                         "dockerfileUrl": "backend/artifact_manager/Dockerfile",
-                        "revision": "d656e6f112e3df4abffbc3338e7025300d635da1",
+                        "revision": "987a9289f83469d2e66e1e0918584fef8ea05502",
                         "url": "https://github.com/rhoai-rhtap/data-science-pipelines-tekton.git"
                     }
                 }
@@ -188,204 +319,73 @@
                 }
             },
             {
-                "containerImage": "quay.io/rhoai/odh-kueue-controller@sha256:306276d68eb533f8fd929001c0ed78ebbe5b76e1d2c8a050d7af92967448a62c",
+                "containerImage": "quay.io/rhoai/odh-kueue-controller-rhel8@sha256:a1d1f00d6a70ccf81494e40bc07c8304b9a817a58a68339ebbf3ebd19668651e",
                 "name": "odh-kueue-controller-v2-13",
                 "source": {
                     "git": {
                         "context": "./",
                         "dockerfileUrl": "Dockerfile.rhoai",
-                        "revision": "4bb32f4015926319eda396f650e515921d4cb1e7",
+                        "revision": "e34a306083bc351a65d057a9d45720893c940d30",
                         "url": "https://github.com/rhoai-rhtap/kueue.git"
                     }
                 }
             },
             {
-                "containerImage": "quay.io/rhoai/odh-operator-rhel8@sha256:c0227f12c8c5387da8e907292efb85f412e0e6f062641df7d3a0bcef705b3daf",
+                "containerImage": "quay.io/rhoai/odh-rhel8-operator@sha256:1b57a0ae693834257519fd530ae34fb4365da600141a61687022af325a7cc992",
                 "name": "odh-operator-v2-13",
                 "source": {
                     "git": {
                         "dockerfileUrl": "Dockerfiles/Dockerfile",
-                        "revision": "fb5560373c6ba92cdef2250b187f463f9ff9da67",
+                        "revision": "7f7c709459383b70c873deb38eaf565b7b82517b",
                         "url": "https://github.com/rhoai-rhtap/rhods-operator"
                     }
                 }
             },
             {
-                "containerImage": "quay.io/rhoai/odh-ml-pipelines-persistenceagent-v2@sha256:60759f10e9aaea3af580c90d2e7e3a9e75c9c4609bacf72e9cda53a55b223174",
+                "containerImage": "quay.io/rhoai/odh-ml-pipelines-persistenceagent-v2-rhel8@sha256:7085d7125eba9d5a083054d7d9eebe8820d71788f420ca77fe183f68a0569433",
                 "name": "odh-ml-pipelines-persistenceagent-v2-v2-13",
                 "source": {
                     "git": {
                         "context": "./",
                         "dockerfileUrl": "backend/Dockerfile.persistenceagent",
-                        "revision": "3b59cc5789d39b39d3e3f10f272685d412205865",
+                        "revision": "1e541aa0e515b64fc16fb7f00548dcf0c0099da1",
                         "url": "https://github.com/rhoai-rhtap/data-science-pipelines-dsp.git"
                     }
                 }
             },
             {
-                "containerImage": "quay.io/rhoai/odh-ml-pipelines-scheduledworkflow@sha256:5fa9560976589735b276c46b69acdd5abb12900275a1c502a9c8d0c82f50e215",
+                "containerImage": "quay.io/rhoai/odh-ml-pipelines-scheduledworkflow-rhel8@sha256:11c42c38ced9bc73cebe401209ee523adebee186106cb97b5bc570fdfdba5b6f",
                 "name": "odh-ml-pipelines-scheduledworkflow-v2-13",
                 "source": {
                     "git": {
                         "context": "./",
                         "dockerfileUrl": "backend/Dockerfile.scheduledworkflow",
-                        "revision": "d656e6f112e3df4abffbc3338e7025300d635da1",
+                        "revision": "f18c5255db45894ba796482b1dbce3905c1b828f",
                         "url": "https://github.com/rhoai-rhtap/data-science-pipelines-tekton.git"
                     }
                 }
             },
             {
-                "containerImage": "quay.io/rhoai/odh-mm-rest-proxy@sha256:6233e994a20aac8c3b45ce58374e724c06370149b2ea99baf63b136fb488848f",
+                "containerImage": "quay.io/rhoai/odh-mm-rest-proxy-rhel8@sha256:e6577dd701aa76fdda922094ef058935cd718e599b4a378167f2986a98dde3ab",
                 "name": "odh-mm-rest-proxy-v2-13",
                 "source": {
                     "git": {
                         "context": "./",
                         "dockerfileUrl": "Dockerfile",
-                        "revision": "e0a41a3d31e61cff032e20c24c1ed492f4f840e7",
+                        "revision": "0b2715804ff9d2100ed9db8246eb136d136e9b9e",
                         "url": "https://github.com/rhoai-rhtap/rest-proxy.git"
                     }
                 }
             },
             {
-                "containerImage": "quay.io/redhat-user-workloads/rhoai-tenant/rhoai-v2-13/odh-dashboard-v2-13@sha256:595fb02d98824950458e18dbf406322aa7aa5eca28bc49e6734ee23e76371fed",
+                "containerImage": "quay.io/rhoai/odh-dashboard-rhel8@sha256:7021e04337e2ae3b1ff48de7296c0610718f4e2f5d05667b0b2a5e1f64eb063f",
                 "name": "odh-dashboard-v2-13",
                 "source": {
                     "git": {
                         "context": "./",
                         "dockerfileUrl": "Dockerfile",
-                        "revision": "8adeced78e2cd3c73a4c0869ce6a383af3695d7f",
+                        "revision": "437abab9a41a68c47748f7d469ab73def0cfd480",
                         "url": "https://github.com/rhoai-rhtap/odh-dashboard.git"
-                    }
-                }
-            },
-            {
-                "containerImage": "quay.io/rhoai/odh-ml-pipelines-launcher@sha256:b3709360a706b6d854932c09d60ba5871e627d3162391dcaab88deaa6b905d79",
-                "name": "odh-ml-pipelines-launcher-v2-13",
-                "source": {
-                    "git": {
-                        "context": "./",
-                        "dockerfileUrl": "backend/Dockerfile.launcher",
-                        "revision": "3b59cc5789d39b39d3e3f10f272685d412205865",
-                        "url": "https://github.com/rhoai-rhtap/data-science-pipelines-dsp.git"
-                    }
-                }
-            },
-            {
-                "containerImage": "quay.io/rhoai/odh-ml-pipelines-driver@sha256:c15d3b05c8e9dd4217c5d038a6cd5c55922da85b42029db90d7384fce1666308",
-                "name": "odh-ml-pipelines-driver-v2-13",
-                "source": {
-                    "git": {
-                        "context": "./",
-                        "dockerfileUrl": "backend/Dockerfile.driver",
-                        "revision": "3b59cc5789d39b39d3e3f10f272685d412205865",
-                        "url": "https://github.com/rhoai-rhtap/data-science-pipelines-dsp.git"
-                    }
-                }
-            },
-            {
-                "containerImage": "quay.io/rhoai/odh-data-science-pipelines-argo-workflowcontroller@sha256:7abb620d23009859713f5da02253f302ab3bcae223425d34b6236fcc55abe559",
-                "name": "odh-data-science-pipelines-argo-workflowcontroller-v2-13",
-                "source": {
-                    "git": {
-                        "context": "./",
-                        "dockerfileUrl": "rhoai/Dockerfile.workflowcontroller",
-                        "revision": "2b9952e25f8fa4d67b2764bb00db3a17b4c2c610",
-                        "url": "https://github.com/rhoai-rhtap/argo-workflows.git"
-                    }
-                }
-            },
-            {
-                "containerImage": "quay.io/rhoai/odh-kuberay-operator-controller@sha256:c916583fd6d1992435590e86a725439a7c5e466bcf28cdf5aaa547796013aa70",
-                "name": "odh-kuberay-operator-controller-v2-13",
-                "source": {
-                    "git": {
-                        "context": "./ray-operator/",
-                        "dockerfileUrl": "./ray-operator/Dockerfile",
-                        "revision": "4186739fb42314b4352256ece67574527f8cc568",
-                        "url": "https://github.com/rhoai-rhtap/kuberay.git"
-                    }
-                }
-            },
-            {
-                "containerImage": "quay.io/rhoai/odh-data-science-pipelines-operator-controller@sha256:0ccab38b94e9f22385e860168d16ede9030b887c3df1b33b5b6232c9b6ea6dbe",
-                "name": "odh-data-science-pipelines-operator-controller-v2-13",
-                "source": {
-                    "git": {
-                        "context": "./",
-                        "dockerfileUrl": "Dockerfile",
-                        "revision": "0e80729f67d1440260d72dcd0b0261e2d76fae3d",
-                        "url": "https://github.com/rhoai-rhtap/data-science-pipelines-operator.git"
-                    }
-                }
-            },
-            {
-                "containerImage": "quay.io/rhoai/odh-modelmesh-serving-controller@sha256:8985d51f117a842d20f2bf20324de6a926c6cf8a0acab9143c817989996147ea",
-                "name": "odh-modelmesh-serving-controller-v2-13",
-                "source": {
-                    "git": {
-                        "context": "./",
-                        "dockerfileUrl": "Dockerfile",
-                        "revision": "02ea375fb5bfd939ede7d2422fd01ddde79e8250",
-                        "url": "https://github.com/rhoai-rhtap/modelmesh-serving.git"
-                    }
-                }
-            },
-            {
-                "containerImage": "quay.io/rhoai/odh-data-science-pipelines-argo-argoexec@sha256:26c25840a2372af4415f5f3e6a502da9689019d976445a86f694ae80f8d3d7d9",
-                "name": "odh-data-science-pipelines-argo-argoexec-v2-13",
-                "source": {
-                    "git": {
-                        "context": "./",
-                        "dockerfileUrl": "rhoai/Dockerfile.argoexec",
-                        "revision": "2b9952e25f8fa4d67b2764bb00db3a17b4c2c610",
-                        "url": "https://github.com/rhoai-rhtap/argo-workflows.git"
-                    }
-                }
-            },
-            {
-                "containerImage": "quay.io/rhoai/odh-operator-bundle-rhel8@sha256:decebfee16c5395f2a472b897dfbb1a9a5dc8ff8f9652d18587d97dc3bbe6008",
-                "name": "odh-operator-bundle-v2-13",
-                "source": {
-                    "git": {
-                        "dockerfileUrl": "bundle/Dockerfile",
-                        "revision": "3ab0b6cbd309002efa6517860456f99e6a3d839e",
-                        "url": "https://github.com/rhoai-rhtap/RHOAI-Build-Config"
-                    }
-                }
-            },
-            {
-                "containerImage": "quay.io/rhoai/odh-notebook-controller@sha256:0dcd4948b05f87285305419008fd84abbc7c6ba714b1beabe3c218744115d9f0",
-                "name": "odh-notebook-controller-v2-13",
-                "source": {
-                    "git": {
-                        "context": "./components/",
-                        "dockerfileUrl": "odh-notebook-controller/Dockerfile",
-                        "revision": "4105542cd745ca23291f9c038a3df56afe1d89bd",
-                        "url": "https://github.com/rhoai-rhtap/kubeflow.git"
-                    }
-                }
-            },
-            {
-                "containerImage": "quay.io/rhoai/odh-training-operator@sha256:bbcb62907449eef53d160163d1e1c0205f0a4bbe91dabe68bd93409c0a702517",
-                "name": "odh-training-operator-v2-13",
-                "source": {
-                    "git": {
-                        "context": "./",
-                        "dockerfileUrl": "build/images/training-operator/Dockerfile",
-                        "revision": "cd1156c992489f0a369e3c3ca1275f61398b948a",
-                        "url": "https://github.com/rhoai-rhtap/training-operator.git"
-                    }
-                }
-            },
-            {
-                "containerImage": "quay.io/rhoai/odh-trustyai-service-operator@sha256:cd893e77fdadcf2953abaac19e848f1afe56b4b0d78ae4b106748202082d1820",
-                "name": "odh-trustyai-service-operator-v2-13",
-                "source": {
-                    "git": {
-                        "context": "./",
-                        "dockerfileUrl": "Dockerfile",
-                        "revision": "6d80a2254d6c01ca7630f4c7b4987950b457557a",
-                        "url": "https://github.com/rhoai-rhtap/trustyai-service-operator.git"
                     }
                 }
             }
@@ -394,32 +394,25 @@
     "status": {
         "conditions": [
             {
-                "lastTransitionTime": "2024-09-13T10:57:21Z",
+                "lastTransitionTime": "2024-09-15T08:47:48Z",
                 "message": "The Snapshot's component(s) was/were added to the global candidate list",
                 "reason": "Added",
                 "status": "True",
                 "type": "AddedToGlobalCandidateList"
             },
             {
-                "lastTransitionTime": "2024-09-13T11:01:51Z",
+                "lastTransitionTime": "2024-09-15T08:51:44Z",
                 "message": "Snapshot integration status condition is finished since all testing pipelines completed",
                 "reason": "Finished",
                 "status": "True",
                 "type": "AppStudioIntegrationStatus"
             },
             {
-                "lastTransitionTime": "2024-09-13T11:01:51Z",
-                "message": "All Integration Pipeline tests passed",
-                "reason": "Passed",
-                "status": "True",
+                "lastTransitionTime": "2024-09-15T08:51:44Z",
+                "message": "Some Integration pipeline tests failed",
+                "reason": "Failed",
+                "status": "False",
                 "type": "AppStudioTestSucceeded"
-            },
-            {
-                "lastTransitionTime": "2024-09-13T11:01:51Z",
-                "message": "Skipping auto-release of the Snapshot because no ReleasePlans have the 'auto-release' label set to 'true'",
-                "reason": "AutoReleased",
-                "status": "True",
-                "type": "AutoReleased"
             }
         ]
     }
