@@ -8,7 +8,7 @@ metadata:
     build.appstudio.redhat.com/target_branch: '{{target_branch}}'
     pipelinesascode.tekton.dev/max-keep-runs: "3"
     pipelinesascode.tekton.dev/on-cel-expression: event == "push" && target_branch
-      == "rhoai-2.13"
+      == "rhoai-2.13" && ( "catalog/**".pathChanged() || ".tekton/rhoai-fbc-fragment-v2-13-push.yaml".pathChanged() ) && !"catalog/catalog-patch.yaml".pathChanged()
   creationTimestamp: null
   labels:
     appstudio.openshift.io/application: rhoai-v2-13
@@ -23,7 +23,7 @@ spec:
   - name: revision
     value: '{{revision}}'
   - name: output-image
-    value: quay.io/redhat-user-workloads/rhoai-tenant/rhoai-v2-13/rhoai-fbc-fragment-v2-13:{{revision}}
+    value: quay.io/rhoai/rhoai-fbc-fragment:{{target_branch}}
   - name: dockerfile
     value: Dockerfile
   - name: path-context
@@ -225,7 +225,7 @@ spec:
         - name: name
           value: build-image-index
         - name: bundle
-          value: quay.io/konflux-ci/tekton-catalog/task-build-image-index:0.1@sha256:18eecec92fcdb96dc346aecbbe88fb5fd95e34ee6ef4ad714dc1303723a8e4ea
+          value: quay.io/konflux-ci/tekton-catalog/task-build-image-index:0.1@sha256:8619eabd7cf3340d1123afadac1f4296dc14472c8db0f774497748c762f46f33
         - name: kind
           value: task
         resolver: bundles
@@ -260,6 +260,9 @@ spec:
       params:
       - name: IMAGE
         value: $(tasks.build-image-index.results.IMAGE_URL)
+      - name: ADDITIONAL_TAGS
+        value: 
+          - '{{target_branch}}-{{revision}}'
       runAfter:
       - build-image-index
       taskRef:
