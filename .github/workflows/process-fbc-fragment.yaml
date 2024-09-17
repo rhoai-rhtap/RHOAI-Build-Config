@@ -117,8 +117,8 @@ jobs:
         
           
           SNAPSHOT_JSON_PATH=${BRANCH}/config/snapshot.json
-          LATEST_SNAPSHOT=$(oc get snapshots -l "pac.test.appstudio.openshift.io/event-type in (push, Push),appstudio.openshift.io/application=${APPLICATION_NAME}" --sort-by=.metadata.creationTimestamp | tail -1 | awk '{print $1}')
-          echo "LATEST_SNAPSHOT = ${LATEST_SNAPSHOT}"
+          #LATEST_SNAPSHOT=$(oc get snapshots -l "pac.test.appstudio.openshift.io/event-type in (push, Push),appstudio.openshift.io/application=${APPLICATION_NAME}" --sort-by=.metadata.creationTimestamp | tail -1 | awk '{print $1}')
+          #echo "LATEST_SNAPSHOT = ${LATEST_SNAPSHOT}"
           #oc get snapshots ${LATEST_SNAPSHOT} -o json > ${SNAPSHOT_JSON_PATH}
           echo "component-suffix = $COMPONENT_SUFFIX"
           
