@@ -127,7 +127,8 @@ jobs:
           #cat ${SNAPSHOT_JSON_PATH}
           #cat utils/snapshot_images.json
           echo "OPERATOR_BUNDLE_COMPONENT_NAME = $OPERATOR_BUNDLE_COMPONENT_NAME"
-          LATEST_BUNDLE_IMAGE=$(jq --arg OPERATOR_BUNDLE_COMPONENT_NAME "$OPERATOR_BUNDLE_COMPONENT_NAME" -r '.[]   | select(.name == $OPERATOR_BUNDLE_COMPONENT_NAME) | .imageUri' utils/snapshot_images.json)
+          #LATEST_BUNDLE_IMAGE=$(jq --arg OPERATOR_BUNDLE_COMPONENT_NAME "$OPERATOR_BUNDLE_COMPONENT_NAME" -r '.[]   | select(.name == $OPERATOR_BUNDLE_COMPONENT_NAME) | .imageUri' utils/snapshot_images.json)
+          LATEST_BUNDLE_IMAGE=$(jq --arg OPERATOR_BUNDLE_COMPONENT_NAME "$OPERATOR_BUNDLE_COMPONENT_NAME" -r '.[]   | select(.name == $OPERATOR_BUNDLE_COMPONENT_NAME) | .value' utils/snapshot_images.json)
           echo "LATEST_BUNDLE_IMAGE = $LATEST_BUNDLE_IMAGE"
           yq e -i '.stable.bundles[0].image = "$LATEST_BUNDLE_IMAGE"' utils/utils/fbc-processor/fbc-semver-template.yaml
           LATEST_BUNDLE_IMAGE="$LATEST_BUNDLE_IMAGE" yq e -i '.stable.bundles[0].image = env(LATEST_BUNDLE_IMAGE)' utils/utils/fbc-processor/fbc-semver-template.yaml
