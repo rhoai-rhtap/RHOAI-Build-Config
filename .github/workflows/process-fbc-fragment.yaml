@@ -2,9 +2,9 @@ name: Process FBC Fragment
 run-name: Process FBC Fragment
 on:
   workflow_dispatch:
-#  push:
-#    paths:
-#      - catalog/catalog-patch.yaml
+  push:
+    paths:
+      - catalog/catalog-patch.yaml
 permissions:
   contents: write
 jobs:

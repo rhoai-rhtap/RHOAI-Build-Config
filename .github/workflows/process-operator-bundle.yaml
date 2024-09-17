@@ -2,9 +2,9 @@ name: Process Operator Bundle
 run-name: Process Operator Bundle
 on:
   workflow_dispatch:
-#  push:
-#    paths:
-#      - bundle/bundle-patch.yaml
+  push:
+    paths:
+      - bundle/bundle-patch.yaml
 permissions:
   contents: write
 jobs:
