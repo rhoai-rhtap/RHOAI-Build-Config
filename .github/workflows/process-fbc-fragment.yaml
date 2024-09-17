@@ -75,7 +75,7 @@ jobs:
           RHOAI_VERSION=v${BRANCH/rhoai-/}
           COMPONENT_SUFFIX=${RHOAI_VERSION/./-}
           #OPERATOR_BUNDLE_COMPONENT_NAME=odh-operator-bundle-${COMPONENT_SUFFIX}
-          OPERATOR_BUNDLE_COMPONENT_NAME=odh-operator-bundle
+          OPERATOR_BUNDLE_COMPONENT_NAME=RELATED_IMAGE_ODH_OPERATOR_BUNDLE_IMAGE
           
           OC_TOKEN=$(echo $OC_TOKEN | awk '{$1=$1};1' | tr -d '\n')
           
