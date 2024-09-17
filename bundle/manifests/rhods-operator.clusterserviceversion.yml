@@ -101,7 +101,6 @@ metadata:
     certified: "False"
     containerImage: "registry-proxy.engineering.redhat.com/rh-osbs/managed-open-data-hub-odh-rhel8-operator:v2.13.0-18"
     createdAt: "2024-09-11T08:39:18Z"
-    olm.skipRange: ">=2.10.0 <2.13.0"
     operatorframework.io/initialization-resource: |-
       {
         "apiVersion": "datasciencecluster.opendatahub.io/v1",
@@ -1807,4 +1806,3 @@ spec:
   - name: 'Red Hat Openshift AI'
     email: managed-open-data-hub@redhat.com
   version: "2.13.0"
-  replaces: "rhods-operator.2.12.0"
