@@ -1,5 +1,6 @@
 apiVersion: operators.coreos.com/v1alpha1
 kind: ClusterServiceVersion
+#test
 metadata:
   annotations:
     alm-examples: |-
