@@ -1,6 +1,5 @@
 apiVersion: operators.coreos.com/v1alpha1
 kind: ClusterServiceVersion
-#test
 metadata:
   annotations:
     alm-examples: |-
@@ -1712,7 +1711,7 @@ spec:
                 - name: RELATED_IMAGE_ODH_TRUSTYAI_SERVICE_OPERATOR_IMAGE
                   value: "registry.redhat.io/rhoai/odh-trustyai-service-operator-rhel8@sha256:3c1b2e1691421dc81b4a021203fb4e5b895d7006fb60bc0c5428b1a9a32caba6"
                 - name: RELATED_IMAGE_ODH_CODEFLARE_OPERATOR_IMAGE
-                  value: "registry.redhat.io/rhoai/odh-codeflare-operator-rhel8@sha256:104886032b35dc8283edd0554b4da2688fe3f99ff103af1e94348eec830efff8"
+                  value: "registry.redhat.io/rhoai/odh-codeflare-operator-rhel8@sha256:d4f1c98c8cb2f46c6f20dbe867506d9e7d7e2c0325c08a0538aea7997dd9cbc6"
                 - name: RELATED_IMAGE_ODH_KUBERAY_OPERATOR_CONTROLLER_IMAGE
                   value: "registry.redhat.io/rhoai/odh-kuberay-operator-controller-rhel8@sha256:c5f9bcc109c4553cd8eb943def0ec58732dd839c9d428cef19e4565396e7d6a5"
                 - name: RELATED_IMAGE_ODH_KUEUE_CONTROLLER_IMAGE
