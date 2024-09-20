@@ -5,6 +5,9 @@ on:
   push:
     paths:
       - bundle/bundle-patch.yaml
+    branches:
+      - 'rhoai-*'
+
 permissions:
   contents: write
 jobs:

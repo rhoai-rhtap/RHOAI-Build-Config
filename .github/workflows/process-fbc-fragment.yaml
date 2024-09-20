@@ -5,6 +5,8 @@ on:
   push:
     paths:
       - catalog/catalog-patch.yaml
+    branches:
+      - 'rhoai-*'
 permissions:
   contents: write
 jobs:
