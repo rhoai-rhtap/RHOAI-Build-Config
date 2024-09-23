@@ -6,6 +6,9 @@ on:
       release_branch:
         description: 'Release Branch'
         required: true
+      rhoai_version:
+        description: 'Current RHOAI version, eg v2.14.0'
+        required: true
       commit:
         description: 'Commit sha of the catalog to be pushed to stage'
         default: ''
@@ -49,11 +52,11 @@ jobs:
       - name: Push To Stage
         env:
           BRANCH: ${{ github.event.inputs.release_branch }}
+          RHOAI_VERSION: ${{ github.event.inputs.rhoai_version }}
           COMMIT: ${{ github.event.inputs.commit }}
         run: |
           #Declare basic variables
           OPENSHIFT_VERSION=v4.13
-          RHOAI_VERSION=v${BRANCH/rhoai-/}
           COMPONENT_SUFFIX=${RHOAI_VERSION/./-}
           OPERATOR_BUNDLE_COMPONENT_NAME=odh-operator-bundle
           
@@ -66,7 +69,7 @@ jobs:
           OUTPUT_CATALOG_PATH=main/catalog/${OPENSHIFT_VERSION}/rhods-operator/catalog.yaml
 
           #Invoke the stage promoter to patch the main catalog with release branch
-          python3 utils/utils/stage-promoter/stage_promoter.py -op stage-catalog-patch -c ${CATALOG_YAML_PATH} -p ${PATCH_YAML_PATH} -r ${RELEASE_CATALOG_YAML_PATH} -o ${OUTPUT_CATALOG_PATH} -v ${BRANCH}
+          python3 utils/utils/stage-promoter/stage_promoter.py -op stage-catalog-patch -c ${CATALOG_YAML_PATH} -p ${PATCH_YAML_PATH} -r ${RELEASE_CATALOG_YAML_PATH} -o ${OUTPUT_CATALOG_PATH} -v ${RHOAI_VERSION}
       - name: Commit and push the changes to release branch
         uses: actions-js/push@master
         with:

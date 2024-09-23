@@ -32,3 +32,13 @@ config:
         rhoai/odh-ml-pipelines-api-server-v2-rhel8: rhoai/odh-ml-pipelines-api-server-v2-rhel8
         rhoai/odh-modelmesh-rhel8: rhoai/odh-modelmesh-rhel8
         rhoai/odh-trustyai-service-rhel8: rhoai/odh-trustyai-service-rhel8
+  supported-ocp-versions:
+    build:
+      - name: v4.14
+        base-image: registry.redhat.io/openshift4/ose-operator-registry:v4.14
+      - name: v4.15
+        base-image: registry.redhat.io/openshift4/ose-operator-registry-rhel9:v4.15
+    release:
+      - v4.13
+      - v4.14
+      - v4.15
