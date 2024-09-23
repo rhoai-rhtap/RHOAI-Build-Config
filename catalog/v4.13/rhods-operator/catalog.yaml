@@ -1,3 +1,7 @@
+<<<<<<< HEAD
+=======
+---
+>>>>>>> main
 name: rhods-operator
 schema: olm.package
 defaultChannel: stable
@@ -332,9 +336,12 @@ entries:
 - name: rhods-operator.2.8.3
   replaces: rhods-operator.2.8.2
   skipRange: '>=2.8.0 <2.8.3'
+<<<<<<< HEAD
 - name: rhods-operator.2.13.0
   replaces: rhods-operator.2.12.0
   skipRange: '>=2.10.0 <2.13.0'
+=======
+>>>>>>> main
 ---
 name: stable
 package: rhods-operator
@@ -412,9 +419,12 @@ entries:
 - name: rhods-operator.2.8.3
   replaces: rhods-operator.2.8.2
   skipRange: '>=2.8.0 <2.8.3'
+<<<<<<< HEAD
 - name: rhods-operator.2.13.0
   replaces: rhods-operator.2.12.0
   skipRange: '>=2.10.0 <2.13.0'
+=======
+>>>>>>> main
 ---
 name: stable-2.10
 package: rhods-operator
@@ -558,6 +568,7 @@ entries:
   replaces: rhods-operator.2.8.3
   skipRange: '>=2.8.0 <2.8.4'
 ---
+<<<<<<< HEAD
 name: stable-2.13
 package: rhods-operator
 schema: olm.channel
@@ -638,6 +649,8 @@ entries:
   replaces: rhods-operator.2.12.0
   skipRange: '>=2.10.0 <2.13.0'
 ---
+=======
+>>>>>>> main
 image: registry.redhat.io/rhods/odh-operator-bundle@sha256:26ab11ab19bc25bb0132949dce9f29f01b9674647057d30a1a0369736762308f
 name: rhods-operator.1.20.1-8
 package: rhods-operator
@@ -693,7 +706,11 @@ relatedImages:
 - image: registry.redhat.io/rhods/odh-openvino-servingruntime-rhel8@sha256:c2493682c2014665df180b6dd9244c4ff1c6b98da661124dc56fa542a200f6fa
   name: odh_openvino_image
 - image: registry.redhat.io/rhods/odh-operator-bundle@sha256:26ab11ab19bc25bb0132949dce9f29f01b9674647057d30a1a0369736762308f
+<<<<<<< HEAD
   name: ''
+=======
+  name: ""
+>>>>>>> main
 - image: registry.redhat.io/rhods/odh-operator-rhel8@sha256:598ab63aa069be8ac07541fe399937abc930691c9becefe87dc69864d771ac74
   name: odh-operator-rhel8-598ab63aa069be8ac07541fe399937abc930691c9becefe87dc69864d771ac74-annotation
 - image: registry.redhat.io/rhods/odh-operator-rhel8@sha256:598ab63aa069be8ac07541fe399937abc930691c9becefe87dc69864d771ac74
@@ -757,7 +774,11 @@ relatedImages:
 - image: registry.redhat.io/rhods/odh-openvino-servingruntime-rhel8@sha256:8af20e48bb480a7ba1ee1268a3cf0a507e05b256c5fcf988f8e4a3de8b87edc6
   name: odh_openvino_image
 - image: registry.redhat.io/rhods/odh-operator-bundle@sha256:dad3bd317baa6b17872ede29e33ae813805829abb9d18125dd947ab6765406f0
+<<<<<<< HEAD
   name: ''
+=======
+  name: ""
+>>>>>>> main
 - image: registry.redhat.io/rhods/odh-operator-rhel8@sha256:33f21350cc718ca2c50d2ee48a5bd85b8b4922070dd87fe8558a34c88ddaba20
   name: odh-operator-rhel8-33f21350cc718ca2c50d2ee48a5bd85b8b4922070dd87fe8558a34c88ddaba20-annotation
 - image: registry.redhat.io/rhods/odh-operator-rhel8@sha256:33f21350cc718ca2c50d2ee48a5bd85b8b4922070dd87fe8558a34c88ddaba20
@@ -821,7 +842,11 @@ relatedImages:
 - image: registry.redhat.io/rhods/odh-openvino-servingruntime-rhel8@sha256:e473a953276b9966f3294b7d7bd27c884a564ac7f59fa548ad2e64b75099ee1f
   name: odh_openvino_image
 - image: registry.redhat.io/rhods/odh-operator-bundle@sha256:19c2b3d6281c3e66c78c7e0608492836541f7d561ce937f5b124bfe36db95684
+<<<<<<< HEAD
   name: ''
+=======
+  name: ""
+>>>>>>> main
 - image: registry.redhat.io/rhods/odh-operator-rhel8@sha256:4ae7131c9886b3a286b0de76c88c1fab986ec4f1d248950e04a36e96d4f51978
   name: odh-operator-rhel8-4ae7131c9886b3a286b0de76c88c1fab986ec4f1d248950e04a36e96d4f51978-annotation
 - image: registry.redhat.io/rhods/odh-operator-rhel8@sha256:4ae7131c9886b3a286b0de76c88c1fab986ec4f1d248950e04a36e96d4f51978
@@ -885,7 +910,11 @@ relatedImages:
 - image: registry.redhat.io/rhods/odh-openvino-servingruntime-rhel8@sha256:ff1a2fa6336793ecbf68aabac021df2fbe0f37e7c37675a17b92819b64b9abb4
   name: odh_openvino_image
 - image: registry.redhat.io/rhods/odh-operator-bundle@sha256:af98395b01e9f5228dae2121a0a4b24a3336298f7687a47bad13ecd84a081b9f
+<<<<<<< HEAD
   name: ''
+=======
+  name: ""
+>>>>>>> main
 - image: registry.redhat.io/rhods/odh-operator-rhel8@sha256:73d2a93cd34600c25082fa2513ef0e5be91d1aa1150ec45ae42b8b9baeb530b8
   name: odh-operator-rhel8-73d2a93cd34600c25082fa2513ef0e5be91d1aa1150ec45ae42b8b9baeb530b8-annotation
 - image: registry.redhat.io/rhods/odh-operator-rhel8@sha256:73d2a93cd34600c25082fa2513ef0e5be91d1aa1150ec45ae42b8b9baeb530b8
@@ -949,7 +978,11 @@ relatedImages:
 - image: registry.redhat.io/rhods/odh-openvino-servingruntime-rhel8@sha256:ff1a2fa6336793ecbf68aabac021df2fbe0f37e7c37675a17b92819b64b9abb4
   name: odh_openvino_image
 - image: registry.redhat.io/rhods/odh-operator-bundle@sha256:ebed73864e605a53b61685eb3a1499293948b5352773ce9dbb2227e7b747c73e
+<<<<<<< HEAD
   name: ''
+=======
+  name: ""
+>>>>>>> main
 - image: registry.redhat.io/rhods/odh-operator-rhel8@sha256:73d2a93cd34600c25082fa2513ef0e5be91d1aa1150ec45ae42b8b9baeb530b8
   name: odh-operator-rhel8-73d2a93cd34600c25082fa2513ef0e5be91d1aa1150ec45ae42b8b9baeb530b8-annotation
 - image: registry.redhat.io/rhods/odh-operator-rhel8@sha256:73d2a93cd34600c25082fa2513ef0e5be91d1aa1150ec45ae42b8b9baeb530b8
@@ -1013,7 +1046,11 @@ relatedImages:
 - image: registry.redhat.io/rhods/odh-openvino-servingruntime-rhel8@sha256:c8e28103c980aed2ead8e781ba4655b449d93f2e5195f977888f3d9d688ecff2
   name: odh_openvino_image
 - image: registry.redhat.io/rhods/odh-operator-bundle@sha256:d8e3f0a77e9d91834849ac738435feca312f3e4dd6048a7430cf66676e1efd21
+<<<<<<< HEAD
   name: ''
+=======
+  name: ""
+>>>>>>> main
 - image: registry.redhat.io/rhods/odh-rhel8-operator@sha256:fa937659f7e945020ec331f86fb7c46017a3f510dd32629a6a135176418db406
   name: odh-rhel8-operator-fa937659f7e945020ec331f86fb7c46017a3f510dd32629a6a135176418db406-annotation
 - image: registry.redhat.io/rhods/odh-rhel8-operator@sha256:fa937659f7e945020ec331f86fb7c46017a3f510dd32629a6a135176418db406
@@ -1091,7 +1128,11 @@ relatedImages:
 - image: registry.redhat.io/rhods/odh-openvino-servingruntime-rhel8@sha256:1e732e333cda70ec8098cd0fd126cc56e54810b7c30484ebf040d47066dabf28
   name: odh_openvino_image
 - image: registry.redhat.io/rhods/odh-operator-bundle@sha256:215b2272a67b581b1d77da4c1d3d3642c953d227a5227b78f74c079201330e17
+<<<<<<< HEAD
   name: ''
+=======
+  name: ""
+>>>>>>> main
 - image: registry.redhat.io/rhods/odh-rhel8-operator@sha256:de5a22a25df285dba58ac0e55dc8423247c4d17b7726ea2b83c33e0d01ecdc2f
   name: odh-rhel8-operator-de5a22a25df285dba58ac0e55dc8423247c4d17b7726ea2b83c33e0d01ecdc2f-annotation
 - image: registry.redhat.io/rhods/odh-rhel8-operator@sha256:de5a22a25df285dba58ac0e55dc8423247c4d17b7726ea2b83c33e0d01ecdc2f
@@ -1173,7 +1214,11 @@ relatedImages:
 - image: registry.redhat.io/rhods/odh-openvino-servingruntime-rhel8@sha256:15a8a09b832810db3282ce5833c1609e67f65733ed94ff2c8c58c6733aeb0bd6
   name: odh_openvino_image
 - image: registry.redhat.io/rhods/odh-operator-bundle@sha256:678a39ebc422a3cc65577b51b3863b32613f95d039df1f6e4017eba22ba1d75e
+<<<<<<< HEAD
   name: ''
+=======
+  name: ""
+>>>>>>> main
 - image: registry.redhat.io/rhods/odh-rhel8-operator@sha256:372d86980e560cf4b7a209d360c650ec16a1fc6e1c8d0491d9635662dd529209
   name: odh-rhel8-operator-372d86980e560cf4b7a209d360c650ec16a1fc6e1c8d0491d9635662dd529209-annotation
 - image: registry.redhat.io/rhods/odh-rhel8-operator@sha256:372d86980e560cf4b7a209d360c650ec16a1fc6e1c8d0491d9635662dd529209
@@ -1255,7 +1300,11 @@ relatedImages:
 - image: registry.redhat.io/rhods/odh-notebook-controller-rhel8@sha256:bcaf3d4db9ddd4750cfb5ba784f0f5749daf7923ddef4dcdfee8406295350e61
   name: odh_notebook_controller_image
 - image: registry.redhat.io/rhods/odh-operator-bundle@sha256:563db1fda5cb47b9017b34bd59870e4a476640432b3d18e4219833c2b3439da3
+<<<<<<< HEAD
   name: ''
+=======
+  name: ""
+>>>>>>> main
 - image: registry.redhat.io/rhods/odh-rhel8-operator@sha256:7d2469dd66c88aff0600e8a62579a87edfeffe589d9a2917772e2502f64541c8
   name: odh-rhel8-operator-7d2469dd66c88aff0600e8a62579a87edfeffe589d9a2917772e2502f64541c8-annotation
 - image: registry.redhat.io/rhods/odh-rhel8-operator@sha256:7d2469dd66c88aff0600e8a62579a87edfeffe589d9a2917772e2502f64541c8
@@ -1341,7 +1390,11 @@ relatedImages:
 - image: registry.redhat.io/rhods/odh-notebook-controller-rhel8@sha256:7f19dc61aa80c394f80637bd5cfd40edb4ca804d132801c94494fc3d42ffc0fd
   name: odh_notebook_controller_image
 - image: registry.redhat.io/rhods/odh-operator-bundle@sha256:fff8e9937064a89fae484fc534f69ade338ff23bc6bd742c7c34ad93ee609a5a
+<<<<<<< HEAD
   name: ''
+=======
+  name: ""
+>>>>>>> main
 - image: registry.redhat.io/rhods/odh-rhel8-operator@sha256:388e3964de1c1cb823612bdaf2d0f22938bc31b7113f26d7efa97993c0c80fbb
   name: odh-rhel8-operator-388e3964de1c1cb823612bdaf2d0f22938bc31b7113f26d7efa97993c0c80fbb-annotation
 - image: registry.redhat.io/rhods/odh-rhel8-operator@sha256:388e3964de1c1cb823612bdaf2d0f22938bc31b7113f26d7efa97993c0c80fbb
@@ -1427,7 +1480,11 @@ relatedImages:
 - image: registry.redhat.io/rhods/odh-notebook-controller-rhel8@sha256:051e76b98a1e54767851115226d2923ded211fbe01001fbd53ba0ef6daff149a
   name: odh_notebook_controller_image
 - image: registry.redhat.io/rhods/odh-operator-bundle@sha256:158712b4cad1219e0d841359b96ba672f5eb015d209108a4aae962f84c3ef296
+<<<<<<< HEAD
   name: ''
+=======
+  name: ""
+>>>>>>> main
 - image: registry.redhat.io/rhods/odh-rhel8-operator@sha256:e596cea5b1822730b558666274f9c60f2f33e32519bb362f22639d270a644ef3
   name: odh-rhel8-operator-e596cea5b1822730b558666274f9c60f2f33e32519bb362f22639d270a644ef3-annotation
 - image: registry.redhat.io/rhods/odh-rhel8-operator@sha256:e596cea5b1822730b558666274f9c60f2f33e32519bb362f22639d270a644ef3
@@ -1515,7 +1572,11 @@ relatedImages:
 - image: registry.redhat.io/rhods/odh-notebook-controller-rhel8@sha256:395299f70103615763be8371ca889f4e8d628e78b67ecb28c8cac5d8c7350931
   name: odh_notebook_controller_image
 - image: registry.redhat.io/rhods/odh-operator-bundle@sha256:d5183af0ac362c1d316b9b45223b741815065b2366b6d224c451052a788df67e
+<<<<<<< HEAD
   name: ''
+=======
+  name: ""
+>>>>>>> main
 - image: registry.redhat.io/rhods/odh-rhel8-operator@sha256:1b89e794a8bf13905833f1ed0d3c80ba3f71278b6cd386791b4f2e91c853f87e
   name: odh-rhel8-operator-1b89e794a8bf13905833f1ed0d3c80ba3f71278b6cd386791b4f2e91c853f87e-annotation
 - image: registry.redhat.io/rhods/odh-rhel8-operator@sha256:1b89e794a8bf13905833f1ed0d3c80ba3f71278b6cd386791b4f2e91c853f87e
@@ -1601,7 +1662,11 @@ relatedImages:
 - image: registry.redhat.io/rhods/odh-notebook-controller-rhel8@sha256:324f7c33719e0f0fcac2c789baf3512a67b0d64b5fee6a3cfc47dd9b48b108b1
   name: odh_notebook_controller_image
 - image: registry.redhat.io/rhods/odh-operator-bundle@sha256:df99240f825bc82adc0e7424a3dd33621bf978819fb67c5a5010eb0b3523ab85
+<<<<<<< HEAD
   name: ''
+=======
+  name: ""
+>>>>>>> main
 - image: registry.redhat.io/rhods/odh-rhel8-operator@sha256:7e8fa1549352f21cc47b82f65cfc46d7d80e6311baa96bec7df142121cff8e0f
   name: odh-rhel8-operator-7e8fa1549352f21cc47b82f65cfc46d7d80e6311baa96bec7df142121cff8e0f-annotation
 - image: registry.redhat.io/rhods/odh-rhel8-operator@sha256:7e8fa1549352f21cc47b82f65cfc46d7d80e6311baa96bec7df142121cff8e0f
@@ -1689,7 +1754,11 @@ relatedImages:
 - image: registry.redhat.io/rhods/odh-notebook-controller-rhel8@sha256:d363e874b66b971fbb6f1d994a5fda9c278c437f03c8d7d8b15b99c82bc57682
   name: odh_notebook_controller_image
 - image: registry.redhat.io/rhods/odh-operator-bundle@sha256:49842e0c50b12720aeed6dad7c9d0b1db96ec3633dde76f61e5a89dce79e596e
+<<<<<<< HEAD
   name: ''
+=======
+  name: ""
+>>>>>>> main
 - image: registry.redhat.io/rhods/odh-rhel8-operator@sha256:f504c2825df2bf260286fa642e06c9beb778ecac09c0604e3d0d28b0f2973591
   name: odh-rhel8-operator-f504c2825df2bf260286fa642e06c9beb778ecac09c0604e3d0d28b0f2973591-annotation
 - image: registry.redhat.io/rhods/odh-rhel8-operator@sha256:f504c2825df2bf260286fa642e06c9beb778ecac09c0604e3d0d28b0f2973591
@@ -1779,7 +1848,11 @@ relatedImages:
 - image: registry.redhat.io/rhods/odh-notebook-controller-rhel8@sha256:2a447081fc62e561df5f68f784b761ec3a977340848df131816def9cef09ad08
   name: odh_notebook_controller_image
 - image: registry.redhat.io/rhods/odh-operator-bundle@sha256:4b6fd2de5f4ac3f7bd989ccfd453b0467df4180d6c13bb036fa11c3f7cd157ba
+<<<<<<< HEAD
   name: ''
+=======
+  name: ""
+>>>>>>> main
 - image: registry.redhat.io/rhods/odh-rhel8-operator@sha256:db450ca8e56afdce28fac696e304d4d0e2d8fecdb25493edcfcb3a1ea7d4b027
   name: odh-rhel8-operator-db450ca8e56afdce28fac696e304d4d0e2d8fecdb25493edcfcb3a1ea7d4b027-annotation
 - image: registry.redhat.io/rhods/odh-rhel8-operator@sha256:db450ca8e56afdce28fac696e304d4d0e2d8fecdb25493edcfcb3a1ea7d4b027
@@ -1869,7 +1942,11 @@ relatedImages:
 - image: registry.redhat.io/rhods/odh-notebook-controller-rhel8@sha256:a98ec3e282407debb646630d0545ffc14cf4784a4c91fe6981d80ef47265722d
   name: odh_notebook_controller_image
 - image: registry.redhat.io/rhods/odh-operator-bundle@sha256:40aff2fca5c4f9094baf673b48d1912a3f80cc301df7704c2e4bf436be93af69
+<<<<<<< HEAD
   name: ''
+=======
+  name: ""
+>>>>>>> main
 - image: registry.redhat.io/rhods/odh-rhel8-operator@sha256:f44acdb5bf46d1b7ed429eb977dbae8bbf3e70fb910b4ee5dc0f10b04d586075
   name: rhods-operator
 - image: registry.redhat.io/rhods/odh-rhel8-operator@sha256:f44acdb5bf46d1b7ed429eb977dbae8bbf3e70fb910b4ee5dc0f10b04d586075
@@ -1957,7 +2034,11 @@ relatedImages:
 - image: registry.redhat.io/rhods/odh-notebook-controller-rhel8@sha256:c1f27c9275e718375fc53573f1d99544b8e05b95fc1ab0643c53425feeeac76d
   name: odh_notebook_controller_image
 - image: registry.redhat.io/rhods/odh-operator-bundle@sha256:43554e804b01e24008574260656df15f4992fb5e78a62a4d074468588c07d944
+<<<<<<< HEAD
   name: ''
+=======
+  name: ""
+>>>>>>> main
 - image: registry.redhat.io/rhods/odh-rhel8-operator@sha256:d4beb19797029d6bb66b0517755ea4263c4b3027ca808358b42bfcae101c6036
   name: rhods-operator
 - image: registry.redhat.io/rhods/odh-rhel8-operator@sha256:d4beb19797029d6bb66b0517755ea4263c4b3027ca808358b42bfcae101c6036
@@ -2095,7 +2176,7 @@ relatedImages:
 - image: registry.redhat.io/rhoai/odh-notebook-controller-rhel8@sha256:b784078cccfd26a5267111e5688719456dface280af924db52df206696e8a7d0
   name: odh_notebook_controller_image
 - image: registry.redhat.io/rhoai/odh-operator-bundle@sha256:63c246a03a1a8b813f965ffeea41db327a9089655c62e5923ad68b491f4bfaa6
-  name: ''
+  name: ""
 - image: registry.redhat.io/rhoai/odh-rhel8-operator@sha256:26452baeacadbbf4f5ed4e15a01151f0ba558922c59fa7a11ead1cb4cadda112
   name: odh-rhel8-operator-26452baeacadbbf4f5ed4e15a01151f0ba558922c59fa7a11ead1cb4cadda112-annotation
 - image: registry.redhat.io/rhoai/odh-rhel8-operator@sha256:26452baeacadbbf4f5ed4e15a01151f0ba558922c59fa7a11ead1cb4cadda112
@@ -2237,7 +2318,7 @@ relatedImages:
 - image: registry.redhat.io/rhoai/odh-notebook-controller-rhel8@sha256:59d60094f0640fc56198ee382a99dc6d287b602142dc4398edb09d65c2fabe2a
   name: odh_notebook_controller_image
 - image: registry.redhat.io/rhoai/odh-operator-bundle@sha256:e53aa3f343e365b3b32f86ab37a2c4780a46aa50c15df98626205d66ec7f90de
-  name: ''
+  name: ""
 - image: registry.redhat.io/rhoai/odh-rhel8-operator@sha256:bd40f03b29fbf6c5b95183bc5fbad80fc2f61db6558478f9e93a1a4b17dbdae9
   name: odh-rhel8-operator-bd40f03b29fbf6c5b95183bc5fbad80fc2f61db6558478f9e93a1a4b17dbdae9-annotation
 - image: registry.redhat.io/rhoai/odh-rhel8-operator@sha256:bd40f03b29fbf6c5b95183bc5fbad80fc2f61db6558478f9e93a1a4b17dbdae9
@@ -2379,7 +2460,11 @@ relatedImages:
 - image: registry.redhat.io/rhoai/odh-notebook-controller-rhel8@sha256:aab0b7c5a1e5da6166a5c41d7bc703762913f2f4494f7899315960ab900487e6
   name: odh_notebook_controller_image
 - image: registry.redhat.io/rhoai/odh-operator-bundle@sha256:2707f3624c465b33a0e1c7575fcd269659a0699e98cac68b3d38ae89cfe07949
+<<<<<<< HEAD
   name: ''
+=======
+  name: ""
+>>>>>>> main
 - image: registry.redhat.io/rhoai/odh-rhel8-operator@sha256:28597805737470b5fad5c2fbb9564c49a84aff6018bcd6baa9a9f27edc03d9c3
   name: odh-rhel8-operator-28597805737470b5fad5c2fbb9564c49a84aff6018bcd6baa9a9f27edc03d9c3-annotation
 - image: registry.redhat.io/rhoai/odh-rhel8-operator@sha256:28597805737470b5fad5c2fbb9564c49a84aff6018bcd6baa9a9f27edc03d9c3
@@ -2490,7 +2575,11 @@ relatedImages:
 - image: registry.redhat.io/rhods/odh-notebook-controller-rhel8@sha256:753994fce63802f1e1121990a5c1dd722216446abee54cc1a7c50ab195134414
   name: odh_notebook_controller_image
 - image: registry.redhat.io/rhods/odh-operator-bundle@sha256:b637a02d23bd8364cc8914421049eb60169c163ac70bff2f33591df1a1193002
+<<<<<<< HEAD
   name: ''
+=======
+  name: ""
+>>>>>>> main
 - image: registry.redhat.io/rhods/odh-rhel8-operator@sha256:a4d7f020509b9720063e87e1c2f19af04e4c9b4986b199be4dc617831b971434
   name: odh-rhel8-operator-a4d7f020509b9720063e87e1c2f19af04e4c9b4986b199be4dc617831b971434-annotation
 - image: registry.redhat.io/rhods/odh-rhel8-operator@sha256:a4d7f020509b9720063e87e1c2f19af04e4c9b4986b199be4dc617831b971434
@@ -2603,7 +2692,11 @@ relatedImages:
 - image: registry.redhat.io/rhods/odh-notebook-controller-rhel8@sha256:59351187ef6a8157064cec3043bf40518aea48e00f14a29fc7f34bc9db1374da
   name: odh_notebook_controller_image
 - image: registry.redhat.io/rhods/odh-operator-bundle@sha256:9d500d861d3f35982df8874e5e7239b29e7056af56426605737d0e9c2c8cc1bf
+<<<<<<< HEAD
   name: ''
+=======
+  name: ""
+>>>>>>> main
 - image: registry.redhat.io/rhods/odh-rhel8-operator@sha256:1b50c842156b37d691eedfc952dc0e44001074a71d1a477404b9086db40435da
   name: odh-rhel8-operator-1b50c842156b37d691eedfc952dc0e44001074a71d1a477404b9086db40435da-annotation
 - image: registry.redhat.io/rhods/odh-rhel8-operator@sha256:1b50c842156b37d691eedfc952dc0e44001074a71d1a477404b9086db40435da
@@ -2716,7 +2809,7 @@ relatedImages:
 - image: registry.redhat.io/rhoai/odh-notebook-controller-rhel8@sha256:d64f29dde84d7c1382fb144abf485ce54a4dd1984a1411c83cc22fd565204ac4
   name: odh_notebook_controller_image
 - image: registry.redhat.io/rhoai/odh-operator-bundle@sha256:f54a941b4bf49ece4f0c28f3b0618307d67c31739fec33271ee091f838bddfc8
-  name: ''
+  name: ""
 - image: registry.redhat.io/rhoai/odh-rhel8-operator@sha256:6c53471131e2834623f098b801da57ce1411b62205ca8005e64111a1402d0f7a
   name: odh-rhel8-operator-6c53471131e2834623f098b801da57ce1411b62205ca8005e64111a1402d0f7a-annotation
 - image: registry.redhat.io/rhoai/odh-rhel8-operator@sha256:6c53471131e2834623f098b801da57ce1411b62205ca8005e64111a1402d0f7a
@@ -2829,7 +2922,7 @@ relatedImages:
 - image: registry.redhat.io/rhoai/odh-notebook-controller-rhel8@sha256:71c4bfafa414967cc7a63a0944bb804446d1928570945cfe719f2c0d77fbefa1
   name: odh_notebook_controller_image
 - image: registry.redhat.io/rhoai/odh-operator-bundle@sha256:74798dc367493e692e8ea24553641e564820fbdf76016e6b457d6900e439abba
-  name: ''
+  name: ""
 - image: registry.redhat.io/rhoai/odh-rhel8-operator@sha256:0218030e5d999a819770d61590538956ad980b40a44f0036d91ba1e6290af6c8
   name: odh-rhel8-operator-0218030e5d999a819770d61590538956ad980b40a44f0036d91ba1e6290af6c8-annotation
 - image: registry.redhat.io/rhoai/odh-rhel8-operator@sha256:0218030e5d999a819770d61590538956ad980b40a44f0036d91ba1e6290af6c8
@@ -2944,7 +3037,7 @@ relatedImages:
 - image: registry.redhat.io/rhoai/odh-notebook-controller-rhel8@sha256:715ef31d667609d4b780714e6a510cdc9d8dfa9952a8fca2113e6498551b48c7
   name: odh_notebook_controller_image
 - image: registry.redhat.io/rhoai/odh-operator-bundle@sha256:51bd700fcf37b39017fedf24655be77edfb03da3769c27db2351b3295bd5c144
-  name: ''
+  name: ""
 - image: registry.redhat.io/rhoai/odh-rhel8-operator@sha256:9c70691ba6180e679f3497b0df5c922c5dbc44d80cd85c80a58e8434645f9b87
   name: odh-rhel8-operator-9c70691ba6180e679f3497b0df5c922c5dbc44d80cd85c80a58e8434645f9b87-annotation
 - image: registry.redhat.io/rhoai/odh-rhel8-operator@sha256:9c70691ba6180e679f3497b0df5c922c5dbc44d80cd85c80a58e8434645f9b87
@@ -3059,7 +3152,7 @@ relatedImages:
 - image: registry.redhat.io/rhoai/odh-notebook-controller-rhel8@sha256:9e7f33e11e2fd3291d9d4a37ac9461294aa9ece9cca873e97d1c2a96e0b1f895
   name: odh_notebook_controller_image
 - image: registry.redhat.io/rhoai/odh-operator-bundle@sha256:c078ec5482589ec007b3215d5e39cdc38ac8dfa247ab22883e25f96ecbc421b5
-  name: ''
+  name: ""
 - image: registry.redhat.io/rhoai/odh-rhel8-operator@sha256:6ed6be2c04e15d169bcea9713299b87eb6c29400e81f75898fd284b7d62ea7f6
   name: odh-rhel8-operator-6ed6be2c04e15d169bcea9713299b87eb6c29400e81f75898fd284b7d62ea7f6-annotation
 - image: registry.redhat.io/rhoai/odh-rhel8-operator@sha256:6ed6be2c04e15d169bcea9713299b87eb6c29400e81f75898fd284b7d62ea7f6
@@ -3174,7 +3267,7 @@ relatedImages:
 - image: registry.redhat.io/rhoai/odh-notebook-controller-rhel8@sha256:d7262b8593482e68780fae4b4902d85564baa36fc1d5e8d50a1bd7d86afbc5cd
   name: odh_notebook_controller_image
 - image: registry.redhat.io/rhoai/odh-operator-bundle@sha256:387dc98a50accf0aa4b1f25181532d30cc91cc0db6bac5d769becb6330a2f804
-  name: ''
+  name: ""
 - image: registry.redhat.io/rhoai/odh-rhel8-operator@sha256:6a3cfa59524e1a9c8f827fa6fbd63a65b2d84243675394b5aa4ffb660bc4b393
   name: odh-rhel8-operator-6a3cfa59524e1a9c8f827fa6fbd63a65b2d84243675394b5aa4ffb660bc4b393-annotation
 - image: registry.redhat.io/rhoai/odh-rhel8-operator@sha256:6a3cfa59524e1a9c8f827fa6fbd63a65b2d84243675394b5aa4ffb660bc4b393
@@ -3289,7 +3382,7 @@ relatedImages:
 - image: registry.redhat.io/rhoai/odh-notebook-controller-rhel8@sha256:2786a8fd26df2feb871576978d2f4868e335d2264f25fbcd29114550479ac6cf
   name: odh_notebook_controller_image
 - image: registry.redhat.io/rhoai/odh-operator-bundle@sha256:3f8ad1085aeb45513994255539a501ff92a103ea66a80c37ae05d9c478fa769d
-  name: ''
+  name: ""
 - image: registry.redhat.io/rhoai/odh-rhel8-operator@sha256:559283765ff3887deffd648ffb05212b60d444b9d0671c2a7798f91300d8b1fa
   name: odh-rhel8-operator-559283765ff3887deffd648ffb05212b60d444b9d0671c2a7798f91300d8b1fa-annotation
 - image: registry.redhat.io/rhoai/odh-rhel8-operator@sha256:559283765ff3887deffd648ffb05212b60d444b9d0671c2a7798f91300d8b1fa
@@ -3404,7 +3497,11 @@ relatedImages:
 - image: registry.redhat.io/rhoai/odh-notebook-controller-rhel8@sha256:ab8792fcd16b1aa0065444ba54335cb3e747379740c3ec2d56beb46ff80cb044
   name: odh_notebook_controller_image
 - image: registry.redhat.io/rhoai/odh-operator-bundle@sha256:cb711fcb32b5ca0f34c4e3c67624bc4e035de4247617d988a9e841fd58c1c911
+<<<<<<< HEAD
   name: ''
+=======
+  name: ""
+>>>>>>> main
 - image: registry.redhat.io/rhoai/odh-rhel8-operator@sha256:b3563e201bf2720f60e73c0b04cb70566ea52eda7d09a28753f3a1487993c2e8
   name: odh-rhel8-operator-b3563e201bf2720f60e73c0b04cb70566ea52eda7d09a28753f3a1487993c2e8-annotation
 - image: registry.redhat.io/rhoai/odh-rhel8-operator@sha256:b3563e201bf2720f60e73c0b04cb70566ea52eda7d09a28753f3a1487993c2e8
@@ -3418,6 +3515,7 @@ relatedImages:
 - image: registry.redhat.io/ubi8/ubi-minimal@sha256:5d2d4d4dbec470f8ffb679915e2a8ae25ad754cd9193fa966deee1ecb7b3ee00
   name: ubi-minimal-5d2d4d4dbec470f8ffb679915e2a8ae25ad754cd9193fa966deee1ecb7b3ee00-annotation
 schema: olm.bundle
+<<<<<<< HEAD
 ---
 image: registry.redhat.io/rhoai/odh-operator-bundle@sha256:b6105c6334d1fbad5e58dc795421fe6e44a0d65d71882c6fff4780e8ac251990
 name: rhods-operator.2.13.0
@@ -3552,3 +3650,5 @@ relatedImages:
 - image: registry.redhat.io/ubi9@sha256:770cf07083e1c85ae69c25181a205b7cdef63c11b794c89b3b487d4670b4c328
   name: ubi9-770cf07083e1c85ae69c25181a205b7cdef63c11b794c89b3b487d4670b4c328-annotation
 schema: olm.bundle
+=======
+>>>>>>> main
