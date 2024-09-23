@@ -39,8 +39,8 @@ jobs:
       - name: Git checkout RBC release
         uses: actions/checkout@v4
         with:
-          ref: ${{ github.event.inputs.commit }}
-          path: ${{ steps.get-ref.outputs.ref }}
+          ref: ${{ steps.get-ref.outputs.ref }}
+          path: ${{ github.event.inputs.release_branch }}
       - name: Git checkout utils
         uses: actions/checkout@v4
         with:
