@@ -2,11 +2,16 @@ name: Process Operator Bundle
 run-name: Process Operator Bundle
 on:
   workflow_dispatch:
-#  push:
-#    paths:
-#      - bundle/bundle-patch.yaml
+  push:
+    paths:
+      - bundle/bundle-patch.yaml
+    branches:
+      - 'rhoai-*'
+
+permissions:
+  contents: write
 jobs:
-  process-fbc:
+  process-bundle:
     runs-on: ubuntu-latest
     container:
       image: quay.io/rhoai/rhoai-task-toolset:latest
@@ -38,12 +43,13 @@ jobs:
           ln -s $yq_filename yq
           cp $yq_filename /usr/local/bin/yq
   
-          pip install -r utils/utils/fbc-processor/requirements.txt
+          pip install -r utils/utils/bundle-processor/requirements.txt
       - name: Process Operator Bundle
         env:
           BRANCH: ${{ steps.get_branch.outputs.branch }}
           OC_TOKEN: ${{ secrets.KONFLUX_INTERNAL_OC_TOKEN }}
           CLUSTER: p02
+          RHOAI_QUAY_API_TOKEN: ${{ secrets.RHOAI_QUAY_API_TOKEN }}
         run: |
           #Declare basic variables
           OPENSHIFT_VERSION=v4.13
@@ -57,7 +63,7 @@ jobs:
           echo "current dir $(pwd)"
           echo "contents $(ls -l)"
           
-          #Declare FBC processing variables
+          #Declare Bundle processing variables
           BUILD_CONFIG_PATH=${BRANCH}/config/build-config.yaml
           BUNDLE_CSV_PATH=${BRANCH}/bundle/manifests/rhods-operator.clusterserviceversion.yml
           PATCH_YAML_PATH=${BRANCH}/bundle/bundle-patch.yaml
@@ -86,15 +92,15 @@ jobs:
           
           
           SNAPSHOT_JSON_PATH=${BRANCH}/config/snapshot.json
-          LATEST_SNAPSHOT=$(oc get snapshots -l "pac.test.appstudio.openshift.io/event-type in (push, Push),appstudio.openshift.io/application=${APPLICATION_NAME}" --sort-by=.metadata.creationTimestamp | tail -1 | awk '{print $1}')
-          echo "LATEST_SNAPSHOT = ${LATEST_SNAPSHOT}"
+          #LATEST_SNAPSHOT=$(oc get snapshots -l "pac.test.appstudio.openshift.io/event-type in (push, Push),appstudio.openshift.io/application=${APPLICATION_NAME}" --sort-by=.metadata.creationTimestamp | tail -1 | awk '{print $1}')
+          #echo "LATEST_SNAPSHOT = ${LATEST_SNAPSHOT}"
           #oc get snapshots ${LATEST_SNAPSHOT} -o json > ${SNAPSHOT_JSON_PATH}
           echo "component-suffix = $COMPONENT_SUFFIX"
           
           
           #Invoke Bundle processor to patch the catalog
-          python3 utils/utils/bundle-processor/bundle-processor.py -op bundle-patch -b ${BUILD_CONFIG_PATH} -c ${BUNDLE_CSV_PATH} -p ${PATCH_YAML_PATH} -sn ${SNAPSHOT_JSON_PATH} -o ${OUTPUT_FILE_PATH}
-          cat ${OUTPUT_FILE_PATH}
+          python3 utils/utils/bundle-processor/bundle-processor.py -op bundle-patch -b ${BUILD_CONFIG_PATH} -c ${BUNDLE_CSV_PATH} -p ${PATCH_YAML_PATH} -sn ${SNAPSHOT_JSON_PATH} -o ${OUTPUT_FILE_PATH} -v ${BRANCH}
+          #cat ${OUTPUT_FILE_PATH}
       - name: Commit and push the changes to release branch
         uses: actions-js/push@master
         with:

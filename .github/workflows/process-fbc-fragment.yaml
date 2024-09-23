@@ -2,9 +2,11 @@ name: Process FBC Fragment
 run-name: Process FBC Fragment
 on:
   workflow_dispatch:
-#  push:
-#    paths:
-#      - catalog/catalog-patch.yaml
+  push:
+    paths:
+      - catalog/catalog-patch.yaml
+    branches:
+      - 'rhoai-*'
 permissions:
   contents: write
 jobs:
@@ -68,12 +70,14 @@ jobs:
           CLUSTER: p02
           RHOAI_QUAY_RO_USERNAME: ${{ secrets.RHOAI_QUAY_RO_USERNAME }}
           RHOAI_QUAY_RO_TOKEN: ${{ secrets.RHOAI_QUAY_RO_TOKEN }}
+          RHOAI_QUAY_API_TOKEN: ${{ secrets.RHOAI_QUAY_API_TOKEN }}
         run: |
           #Declare basic variables
           OPENSHIFT_VERSION=v4.13
           RHOAI_VERSION=v${BRANCH/rhoai-/}
           COMPONENT_SUFFIX=${RHOAI_VERSION/./-}
-          OPERATOR_BUNDLE_COMPONENT_NAME=odh-operator-bundle-${COMPONENT_SUFFIX}
+          #OPERATOR_BUNDLE_COMPONENT_NAME=odh-operator-bundle-${COMPONENT_SUFFIX}
+          OPERATOR_BUNDLE_COMPONENT_NAME=odh-operator-bundle
           
           OC_TOKEN=$(echo $OC_TOKEN | awk '{$1=$1};1' | tr -d '\n')
           
@@ -109,23 +113,24 @@ jobs:
           #podman login quay.io -u ${RHOAI_QUAY_RO_USERNAME} -p ${RHOAI_QUAY_RO_TOKEN}
           BASE64_AUTH=$(echo -n "${RHOAI_QUAY_RO_USERNAME}:${RHOAI_QUAY_RO_TOKEN}" | base64 -w 0)
           mkdir ${HOME}/.docker
-          echo '{"auths":{"quay.io/rhoai/odh-operator-bundle-rhel8":{"username":"'"${RHOAI_QUAY_RO_USERNAME}"'","password":"'"${RHOAI_QUAY_RO_TOKEN}"'","email":"","auth":"'"${BASE64_AUTH}"'"}}}' > ${HOME}/.docker/config.json
+          echo '{"auths":{"quay.io/rhoai/odh-operator-bundle":{"username":"'"${RHOAI_QUAY_RO_USERNAME}"'","password":"'"${RHOAI_QUAY_RO_TOKEN}"'","email":"","auth":"'"${BASE64_AUTH}"'"}}}' > ${HOME}/.docker/config.json
           APPLICATION_NAME=rhoai-${COMPONENT_SUFFIX}
           echo "APPLICATION_NAME = $APPLICATION_NAME"
         
           
           SNAPSHOT_JSON_PATH=${BRANCH}/config/snapshot.json
-          LATEST_SNAPSHOT=$(oc get snapshots -l "pac.test.appstudio.openshift.io/event-type in (push, Push),appstudio.openshift.io/application=${APPLICATION_NAME}" --sort-by=.metadata.creationTimestamp | tail -1 | awk '{print $1}')
-          echo "LATEST_SNAPSHOT = ${LATEST_SNAPSHOT}"
+          #LATEST_SNAPSHOT=$(oc get snapshots -l "pac.test.appstudio.openshift.io/event-type in (push, Push),appstudio.openshift.io/application=${APPLICATION_NAME}" --sort-by=.metadata.creationTimestamp | tail -1 | awk '{print $1}')
+          #echo "LATEST_SNAPSHOT = ${LATEST_SNAPSHOT}"
           #oc get snapshots ${LATEST_SNAPSHOT} -o json > ${SNAPSHOT_JSON_PATH}
           echo "component-suffix = $COMPONENT_SUFFIX"
           
           #Invoke the FBC processor to extract the snapshot images
-          python3 utils/utils/fbc-processor/fbc-processor.py -op extract-snapshot-images -sn ${SNAPSHOT_JSON_PATH} -o utils/snapshot_images.json
+          python3 utils/utils/fbc-processor/fbc-processor.py -op extract-snapshot-images -o utils/snapshot_images.json -v ${BRANCH} -f ${OPERATOR_BUNDLE_COMPONENT_NAME} -b ${BUILD_CONFIG_PATH}
           #cat ${SNAPSHOT_JSON_PATH}
           #cat utils/snapshot_images.json
-          echo "OPERATOR_BUNDLE_COMPONENT_NAME = $OPERATOR_BUNDLE_COMPONENT_NAME"
-          LATEST_BUNDLE_IMAGE=$(jq --arg OPERATOR_BUNDLE_COMPONENT_NAME "$OPERATOR_BUNDLE_COMPONENT_NAME" -r '.[]   | select(.name == $OPERATOR_BUNDLE_COMPONENT_NAME) | .imageUri' utils/snapshot_images.json)
+          OPERATOR_BUNDLE_IMAGE_NAME=RELATED_IMAGE_ODH_OPERATOR_BUNDLE_IMAGE
+          echo "OPERATOR_BUNDLE_IMAGE_NAME = $OPERATOR_BUNDLE_IMAGE_NAME"
+          LATEST_BUNDLE_IMAGE=$(jq --arg OPERATOR_BUNDLE_IMAGE_NAME "$OPERATOR_BUNDLE_IMAGE_NAME" -r '.[]   | select(.name == $OPERATOR_BUNDLE_IMAGE_NAME) | .value' utils/snapshot_images.json)
           echo "LATEST_BUNDLE_IMAGE = $LATEST_BUNDLE_IMAGE"
           yq e -i '.stable.bundles[0].image = "$LATEST_BUNDLE_IMAGE"' utils/utils/fbc-processor/fbc-semver-template.yaml
           LATEST_BUNDLE_IMAGE="$LATEST_BUNDLE_IMAGE" yq e -i '.stable.bundles[0].image = env(LATEST_BUNDLE_IMAGE)' utils/utils/fbc-processor/fbc-semver-template.yaml
