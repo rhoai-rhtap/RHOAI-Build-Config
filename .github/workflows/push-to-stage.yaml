@@ -30,11 +30,12 @@ jobs:
         id: get-ref
         run: |
           REF=${{ github.event.inputs.release_branch }}
-          if [[ -n ${{ github.event.inputs.commit }} ]];
+          if [[ -n "${{ github.event.inputs.commit }}" ]];
           then
             ref=${{ github.event.inputs.commit }}
             echo "ref=${ref}" >> $GITHUB_OUTPUT
           fi
+          echo "ref=$ref"
       - name: Git checkout RBC release
         uses: actions/checkout@v4
         with:
