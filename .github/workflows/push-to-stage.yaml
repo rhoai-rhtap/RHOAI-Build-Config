@@ -87,7 +87,7 @@ jobs:
           OPENSHIFT_VERSION: v4.13
         with:
           name: stage-catalog
-          path: main/catalog/${OPENSHIFT_VERSION}/rhods-operator/catalog.yaml
+          path: main/catalog/v4.13/rhods-operator/catalog.yaml
 #      - name: Commit and push the changes to release branch
 #        uses: actions-js/push@master
 #        with:
