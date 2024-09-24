@@ -58,6 +58,8 @@ jobs:
           chmod +x $yq_filename
           ln -s $yq_filename yq
           cp $yq_filename /usr/local/bin/yq
+          
+          pip install -r utils/utils/bundle-processor/requirements.txt
 
       - name: Push To Stage
         env:
