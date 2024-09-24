@@ -81,20 +81,13 @@ jobs:
 
           #Invoke the stage promoter to patch the main catalog with release branch
           python3 utils/utils/stage-promoter/stage_promoter.py -op stage-catalog-patch -c ${CATALOG_YAML_PATH} -p ${PATCH_YAML_PATH} -r ${RELEASE_CATALOG_YAML_PATH} -o ${OUTPUT_CATALOG_PATH} -v ${RHOAI_VERSION}
-      - name: Store the stage catalog
-        uses: actions/upload-artifact@v4
-        env:
-          OPENSHIFT_VERSION: v4.13
+      - name: Commit and push the changes to release branch
+        uses: actions-js/push@master
         with:
-          name: stage-catalog
-          path: main/catalog/v4.13/rhods-operator/catalog.yaml
-#      - name: Commit and push the changes to release branch
-#        uses: actions-js/push@master
-#        with:
-#          github_token: ${{ secrets.GITHUB_TOKEN }}
-#          branch: main
-#          message: "Patching the stage catalog with ${{ github.event.inputs.release_branch }} ${{ github.event.inputs.commit }}"
-#          repository: rhoai-rhtap/RHOAI-Build-Config
-#          directory: main
-#          author_name: Openshift-AI DevOps
-#          author_email: openshift-ai-devops@redhat.com
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          branch: main
+          message: "Patching the stage catalog with ${{ github.event.inputs.release_branch }} ${{ github.event.inputs.commit }}"
+          repository: rhoai-rhtap/RHOAI-Build-Config
+          directory: main
+          author_name: Openshift-AI DevOps
+          author_email: openshift-ai-devops@redhat.com
