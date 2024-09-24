@@ -49,6 +49,43 @@ jobs:
           path: utils
       - name: Install dependencies
         run: |
-          cd ${{ github.event.inputs.release_branch }}
-          git branch
-          ls .tekton/
+          os="$(uname -s | tr '[:upper:]' '[:lower:]')"
+          arch="$(uname -m | sed 's/x86_64/amd64/')"
+          yq_version="v4.44.3"
+          yq_filename="yq-$yq_version"
+          echo "-> Downloading yq" >&2
+          curl -sSfLo "$yq_filename" "https://github.com/mikefarah/yq/releases/download/$yq_version/yq_${os}_${arch}"
+          chmod +x $yq_filename
+          ln -s $yq_filename yq
+          cp $yq_filename /usr/local/bin/yq
+
+      - name: Push To Stage
+        env:
+          BRANCH: ${{ github.event.inputs.release_branch }}
+          RHOAI_VERSION: ${{ github.event.inputs.rhoai_version }}
+          COMMIT: ${{ github.event.inputs.commit }}
+        run: |
+          #Declare basic variables
+          OPENSHIFT_VERSION=v4.13
+          COMPONENT_SUFFIX=${RHOAI_VERSION/./-}
+          OPERATOR_BUNDLE_COMPONENT_NAME=odh-operator-bundle
+
+          #Declare FBC processing variables
+          BUILD_CONFIG_PATH=${BRANCH}/config/build-config.yaml
+          CATALOG_YAML_PATH=main/catalog/${OPENSHIFT_VERSION}/rhods-operator/catalog.yaml
+          PATCH_YAML_PATH=${BRANCH}/catalog/catalog-patch.yaml
+          RELEASE_CATALOG_YAML_PATH=${BRANCH}/catalog/${OPENSHIFT_VERSION}/rhods-operator/catalog.yaml
+          OUTPUT_CATALOG_PATH=main/catalog/${OPENSHIFT_VERSION}/rhods-operator/catalog.yaml
+
+          #Invoke the stage promoter to patch the main catalog with release branch
+          python3 utils/utils/stage-promoter/stage_promoter.py -op stage-catalog-patch -c ${CATALOG_YAML_PATH} -p ${PATCH_YAML_PATH} -r ${RELEASE_CATALOG_YAML_PATH} -o ${OUTPUT_CATALOG_PATH} -v ${RHOAI_VERSION}
+      - name: Commit and push the changes to release branch
+        uses: actions-js/push@master
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          branch: main
+          message: "Patching the stage catalog with ${{ github.event.inputs.release_branch }}"
+          repository: rhoai-rhtap/RHOAI-Build-Config
+          directory: ${{ steps.get_branch.outputs.branch }}
+          author_name: Openshift-AI DevOps
+          author_email: openshift-ai-devops@redhat.com
