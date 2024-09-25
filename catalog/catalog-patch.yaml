@@ -1,7 +1,7 @@
 patch:
   olm.package:
     name: rhods-operator
-    defaultChannel: fast
+    defaultChannel: stable
   olm.channels:
     - name: stable
       entries:
