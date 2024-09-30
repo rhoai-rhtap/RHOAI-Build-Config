@@ -1,4 +1,4 @@
-name: Instant Merge Konflux PRs
+name: Instant Merge Bundle Nudges
 
 on:
   pull_request:
