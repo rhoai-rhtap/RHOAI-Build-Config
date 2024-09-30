@@ -26,7 +26,7 @@ jobs:
     steps:
       - name: Install dependencies
         run: |
-          BRANCH=${GITHUB_HEAD_REF:-${GITHUB_REF#refs/heads/}}
+          BRANCH=${GITHUB_BASE_REF:-${GITHUB_REF#refs/heads/}}
           echo "BRANCH=$BRANCH"
           VERSION=v${BRANCH/rhoai-/}
           echo "VERSION=$VERSION"
