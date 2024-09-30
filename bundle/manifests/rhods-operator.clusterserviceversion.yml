@@ -1734,8 +1734,6 @@ spec:
                   value: "registry.redhat.io/rhoai/odh-data-science-pipelines-argo-workflowcontroller-rhel8@sha256:a036e1e1655201ff292b062c973f4a908b05318ab5e2c255b5c7dc5bb01e898d"
                 - name: RELATED_IMAGE_ODH_TRAINING_OPERATOR_IMAGE
                   value: "registry.redhat.io/rhoai/odh-training-operator-rhel8@sha256:185128c0accdb94b1f3112ac1e018e9cc5e544b3831f0e019c2ebdf037134aad"
-                - name: RELATED_IMAGE_ODH_MODELMESH_SERVING_CONTROLLER_IMAGE
-                  value: "registry.redhat.io/rhoai/odh-modelmesh-serving-controller-rhel8@sha256:f1bf468b5c775eb84e37be7bc72b08b9d8484846e7128c1c927bc8126d033c08"
                 command:
                 - /manager
                 image: "registry.redhat.io/rhoai/odh-rhel8-operator@sha256:53b8c49f7f9102ab6bd66ee0463c5e2f417ecf76a44281a94f5530f4f9a13946"
