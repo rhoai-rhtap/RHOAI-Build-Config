@@ -6,11 +6,15 @@ on:
       - 'rhoai-*'  # Trigger the workflow on pushes to any rhoai-* branch
     types:
       - opened
+      - reopened
     paths:
       - bundle/bundle-patch.yaml
 
 env:
-  COMPONENT_NAME: odh-operator-bundle-v2-
+  COMPONENT: odh-operator-bundle-v2-
+  BRANCH: ${GITHUB_HEAD_REF:-${GITHUB_REF#refs/heads/}}
+  VERSION: v${BRANCH/rhoai-/}
+  SUFFIX: ${VERSION/./-}
 
 permissions:
   contents: write
@@ -23,8 +27,13 @@ jobs:
   instant-merge:
     runs-on: ubuntu-latest
     steps:
+      - name: Install dependencies
+        run: |
+          echo "BRANCH=$BRANCH"
+          echo "VERSION=$VERSION"
+          echo "SUFFIX=$SUFFIX"
       - name: instant-merge
-        if: ${{ github.event.sender.login == 'red-hat-konflux[bot]' && ( startsWith(github.event.pull_request.title, '$COMPONENT_NAME') || contains(github.event.pull_request.title, '$COMPONENT_NAME') ) }}
+        if: ${{ github.event.sender.login == 'konflux-internal-p02[bot]' && ( startsWith(github.event.pull_request.title, '$COMPONENT') || contains(github.event.pull_request.title, '$COMPONENT') ) }}
         env:
           GITHUB_TOKEN: ${{ github.token }}
         run: |
