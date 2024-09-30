@@ -29,9 +29,9 @@ jobs:
     steps:
       - name: Install dependencies
         run: |
-          echo "BRANCH=$BRANCH"
-          echo "VERSION=$VERSION"
-          echo "SUFFIX=$SUFFIX"
+          echo "BRANCH=${GITHUB_HEAD_REF:-${GITHUB_REF#refs/heads/}}"
+          echo "VERSION=v${BRANCH/rhoai-/}"
+          echo "SUFFIX=${VERSION/./-}"
       - name: instant-merge
         if: ${{ github.event.sender.login == 'konflux-internal-p02[bot]' && ( startsWith(github.event.pull_request.title, '$COMPONENT') || contains(github.event.pull_request.title, '$COMPONENT') ) }}
         env:
