@@ -12,9 +12,6 @@ on:
 
 env:
   COMPONENT: odh-operator-bundle-v2-
-  BRANCH: ${GITHUB_BASE_REF:-${GITHUB_REF#refs/heads/}}
-  VERSION: v${BRANCH/rhoai-/}
-  SUFFIX: ${VERSION/./-}
 
 permissions:
   contents: write
