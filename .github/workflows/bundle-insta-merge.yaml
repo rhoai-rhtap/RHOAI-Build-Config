@@ -33,7 +33,8 @@ jobs:
           BRANCH=${GITHUB_BASE_REF:-${GITHUB_REF#refs/heads/}}
           VERSION=v${BRANCH/rhoai-/}
           SUFFIX=${VERSION/./-}
-          REGEX="^Update.*-$SUFFIX to [0-9a-b]{1,40}$"
+          echo "SUFFIX=$SUFFIX"
+          REGEX="^Update.*-$SUFFIX to [0-9a-z]{1,40}$"
           
           #Check if PR title is as per the convention
           if [[ "${{ github.event.pull_request.title }}" =~ $REGEX ]]
