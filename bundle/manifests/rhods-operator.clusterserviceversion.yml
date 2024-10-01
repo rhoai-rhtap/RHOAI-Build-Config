@@ -95,7 +95,7 @@ metadata:
           }
         }
       ]
-    capabilities: Full Lifecycle
+    capabilities: Full Lifecycle #1
     categories: AI/Machine Learning, Big Data
     certified: "False"
     containerImage: "registry.redhat.io/rhoai/odh-rhel8-operator@sha256:c67ce9e80946af5498351d954dad2970e5b1d882b2aa2abe44f4bd592befd713"
