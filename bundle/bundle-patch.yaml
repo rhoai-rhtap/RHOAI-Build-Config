@@ -1,7 +1,7 @@
 patch:
   relatedImages:
     - name: RELATED_IMAGE_ODH_KF_NOTEBOOK_CONTROLLER_IMAGE
-      value: "quay.io/rhoai/odh-kf-notebook-controller-rhel8@sha256:79c44e946803cf65ecde572f3da3f81e55c079237a1fd7e70a8cba1d028bbf08"
+      value: "quay.io/rhoai/odh-kf-notebook-controller-rhel8@sha256:79c44e946803cf65ecde572f3da3f81e55c079237a1fd7e70a8cba1d028bbf09"
     - name: RELATED_IMAGE_ODH_DASHBOARD_IMAGE
       value: "quay.io/rhoai/odh-dashboard-rhel8@sha256:56b9b03f0a7102f4e976745b12bde3621a05b15b789fb0800bec278af758db4d"
     - name: RELATED_IMAGE_ODH_NOTEBOOK_CONTROLLER_IMAGE
