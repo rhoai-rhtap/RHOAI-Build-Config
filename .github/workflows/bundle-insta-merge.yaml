@@ -42,5 +42,5 @@ jobs:
           then
             gh pr merge --merge --admin ${{ github.event.pull_request.html_url }}
           else
-            echo "Insta-merge not configured to merge this PR, skipping.
+            echo "Insta-merge not configured to merge this PR, skipping."
           fi
