@@ -1679,7 +1679,7 @@ spec:
                 - name: DEFAULT_MANIFESTS_PATH
                   value: /opt/manifests
                 - name: RELATED_IMAGE_ODH_DASHBOARD_IMAGE
-                  value: "registry.redhat.io/rhoai/odh-dashboard-rhel8@sha256:6eac34b3cc7ea29b55b45c9d5e74363e8a9d3fefc916c45e50f66d160561d8df"
+                  value: "registry.redhat.io/rhoai/odh-dashboard-rhel8@sha256:6eac34b3cc7ea29b55b45c9d5e74363e8a9d3fefc916c45e50f66d160561d8d0"
                 - name: RELATED_IMAGE_ODH_KF_NOTEBOOK_CONTROLLER_IMAGE
                   value: "registry.redhat.io/rhoai/odh-kf-notebook-controller-rhel8@sha256:79c44e946803cf65ecde572f3da3f81e55c079237a1fd7e70a8cba1d028bbf06"
                 - name: RELATED_IMAGE_ODH_NOTEBOOK_CONTROLLER_IMAGE
