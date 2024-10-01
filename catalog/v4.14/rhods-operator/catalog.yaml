@@ -3419,7 +3419,7 @@ relatedImages:
   name: ubi-minimal-5d2d4d4dbec470f8ffb679915e2a8ae25ad754cd9193fa966deee1ecb7b3ee00-annotation
 schema: olm.bundle
 ---
-image: registry.redhat.io/rhoai/odh-operator-bundle@sha256:77f90134de59048a4bde1698a1affa9823c0311a692cc95d3e142706be567230
+image: registry.redhat.io/rhoai/odh-operator-bundle@sha256:bf15248154be5ac2acdcff82e72d758b45b141784734c6548601bd468eab721e
 name: rhods-operator.2.13.0
 package: rhods-operator
 properties:
@@ -3467,7 +3467,7 @@ properties:
   value:
     data: eyJhcGlWZXJzaW9uIjoidjEiLCJraW5kIjoiU2VydmljZSIsIm1ldGFkYXRhIjp7ImNyZWF0aW9uVGltZXN0YW1wIjpudWxsLCJsYWJlbHMiOnsibmFtZSI6InJob2RzLW9wZXJhdG9yIn0sIm5hbWUiOiJyZWRoYXQtb2RzLW9wZXJhdG9yLWNvbnRyb2xsZXItbWFuYWdlci1tZXRyaWNzLXNlcnZpY2UifSwic3BlYyI6eyJwb3J0cyI6W3sibmFtZSI6Imh0dHAiLCJwb3J0Ijo4NDQzLCJwcm90b2NvbCI6IlRDUCIsInRhcmdldFBvcnQiOiJodHRwIn1dLCJzZWxlY3RvciI6eyJuYW1lIjoicmhvZHMtb3BlcmF0b3IifX0sInN0YXR1cyI6eyJsb2FkQmFsYW5jZXIiOnt9fX0=
 relatedImages:
-- image: registry.redhat.io/rhoai/odh-operator-bundle@sha256:77f90134de59048a4bde1698a1affa9823c0311a692cc95d3e142706be567230
+- image: registry.redhat.io/rhoai/odh-operator-bundle@sha256:bf15248154be5ac2acdcff82e72d758b45b141784734c6548601bd468eab721e
   name: ''
 - image: registry.redhat.io/openshift-service-mesh/proxyv2-rhel8@sha256:a744c1b386fd5e4f94e43543e829df1bfdd1b564137917372a11da06872f4bcb
   name: proxyv2-rhel8-a744c1b386fd5e4f94e43543e829df1bfdd1b564137917372a11da06872f4bcb-annotation
