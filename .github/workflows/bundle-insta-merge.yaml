@@ -47,7 +47,7 @@ jobs:
           then
             echo "sender is correct"
           fi
-          if [[ ${{ github.event.pull_request.title }} =~ '^Update.*-$SUFFIX to [0-9a-b]{1,40}$' ]]
+          if [[ "${{ github.event.pull_request.title }}" =~ "^Update.*-$SUFFIX to [0-9a-b]{1,40}$" ]]
           then
             echo "title is correct"
           fi
