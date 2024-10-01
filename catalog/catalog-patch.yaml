@@ -93,5 +93,5 @@ patch:
         replaces: rhods-operator.2.12.0
         skipRange: '>=2.10.0 <2.13.0'
   olm.bundle:
-    - quay.io/rhoai/odh-operator-bundle@sha256:f703ac2fa389ab7d73e693fb7d3c00735b247a15e949a0452d1c80cb1ff34ee0
+    - quay.io/rhoai/odh-operator-bundle@sha256:41d53b8da7ad6b1308742a086860e370b10e10c10fcb61cbc3f7e0f950d5500d
     # only for nudging purpose
