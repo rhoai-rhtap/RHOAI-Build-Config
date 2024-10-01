@@ -21,7 +21,8 @@ permissions:
   statuses: write
 
 jobs:
-  instant-merge:
+  insta-merge:
+    if: ${{ github.event.sender.login == 'dchourasia'  && startsWith(github.event.pull_request.title, 'Update ') }}
     runs-on: ubuntu-latest
     steps:
       - name: Get Suffix
@@ -36,7 +37,6 @@ jobs:
           GITHUB_TOKEN: ${{ github.token }}
           SUFFIX: ${{ steps.get-suffix.outputs.SUFFIX }}
         #if: ${{ github.event.sender.login == 'konflux-internal-p02[bot]' }} && ${{ github.event.pull_request.title }} =~ '^Update.*-$SUFFIX to [0-9a-b]{1,40}$'
-        if: ${{ github.event.sender.login == 'dchourasia'  && startsWith(github.event.pull_request.title, 'Update ') }}
         run: |
           if [[ "${{ github.event.pull_request.title }}" =~ "^Update.*-$SUFFIX to [0-9a-b]{1,40}$" ]]
           then
