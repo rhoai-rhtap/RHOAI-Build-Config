@@ -22,7 +22,7 @@ permissions:
 
 jobs:
   insta-merge:
-    if: ${{ github.event.sender.login == 'konflux-internal-p02[bot]'  && startsWith(github.event.pull_request.title, 'Update $COMPONENT') }}
+    if: ${{ github.event.sender.login == 'konflux-internal-p02[bot]'  && startsWith(github.event.pull_request.title, 'Update odh-operator-bundle') }}
     runs-on: ubuntu-latest
     steps:
       - name: Generate github-app token
