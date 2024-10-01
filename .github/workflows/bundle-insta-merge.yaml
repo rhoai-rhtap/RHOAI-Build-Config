@@ -39,7 +39,16 @@ jobs:
           GITHUB_TOKEN: ${{ github.token }}
           SUFFIX: ${{ steps.get-suffix.outputs.SUFFIX }}
         #if: ${{ github.event.sender.login == 'konflux-internal-p02[bot]' }} && ${{ github.event.pull_request.title }} =~ '^Update.*-$SUFFIX to [0-9a-b]{1,40}$'
-        if: ${{ github.event.sender.login == 'dchourasia' }} && ${{ github.event.pull_request.title }} =~ '^Update.*-$SUFFIX to [0-9a-b]{1,40}$'
+        if: ${{ github.event.pull_request.title }} =~ '^Update.*-$SUFFIX to [0-9a-b]{1,40}$' && ${{ github.event.sender.login == 'dchourasia' }}
         run: |
-          
+          echo "sender = ${{ github.event.sender.login }}
+          echo "title = ${{ github.event.pull_request.title }}"
+          if [[ ${{ github.event.sender.login }} == 'dchourasia' ]]
+          then
+            echo "sender is correct"
+          fi
+          if [[ ${{ github.event.pull_request.title }} =~ '^Update.*-$SUFFIX to [0-9a-b]{1,40}$' ]]
+          then
+            echo "title is correct"
+          fi
           gh pr merge --merge --admin ${{ github.event.pull_request.html_url }}
