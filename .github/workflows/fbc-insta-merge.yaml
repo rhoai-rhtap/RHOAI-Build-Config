@@ -25,9 +25,15 @@ jobs:
     if: ${{ github.event.sender.login == 'konflux-internal-p02[bot]'  && startsWith(github.event.pull_request.title, 'Update $COMPONENT') }}
     runs-on: ubuntu-latest
     steps:
+      - name: Generate github-app token
+        id: app-token
+        uses: getsentry/action-github-app-token@v2
+        with:
+          app_id: ${{ secrets.RHOAI_DEVOPS_APP_ID }}
+          private_key: ${{ secrets.RHOAI_DEVOPS_APP_PRIVATE_KEY }}
       - name: instant-merge
         env:
-          GITHUB_TOKEN: ${{ github.token }}
+          GITHUB_TOKEN: ${{ steps.app-token.outputs.token }}
         run: |
           # Declare variables
           BRANCH=${GITHUB_BASE_REF:-${GITHUB_REF#refs/heads/}}
