@@ -41,7 +41,7 @@ jobs:
         #if: ${{ github.event.sender.login == 'konflux-internal-p02[bot]' }} && ${{ github.event.pull_request.title }} =~ '^Update.*-$SUFFIX to [0-9a-b]{1,40}$'
         if: ${{ github.event.pull_request.title }} =~ '^Update.*-$SUFFIX to [0-9a-b]{1,40}$' && ${{ github.event.sender.login == 'dchourasia' }}
         run: |
-          echo "sender = ${{ github.event.sender.login }}
+          echo "sender = ${{ github.event.sender.login }}"
           echo "title = ${{ github.event.pull_request.title }}"
           if [[ ${{ github.event.sender.login }} == 'dchourasia' ]]
           then
