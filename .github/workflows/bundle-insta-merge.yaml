@@ -30,13 +30,14 @@ jobs:
           GITHUB_TOKEN: ${{ github.token }}
         #if: ${{ github.event.sender.login == 'konflux-internal-p02[bot]' }} && ${{ github.event.pull_request.title }} =~ '^Update.*-$SUFFIX to [0-9a-b]{1,40}$'
         run: |
-          # Evaluate the release branch suffix
+          # Declare variables
           BRANCH=${GITHUB_BASE_REF:-${GITHUB_REF#refs/heads/}}
           VERSION=v${BRANCH/rhoai-/}
           SUFFIX=${VERSION/./-}
+          REGEX="^Update.*-$SUFFIX to [0-9a-b]{1,40}$"
           
           #Check if PR title is as per the convention
-          if [[ "${{ github.event.pull_request.title }}" =~ "^Update.*-$SUFFIX to [0-9a-b]{1,40}$" ]]
+          if [[ "${{ github.event.pull_request.title }}" =~ $REGEX ]]
           then
             gh pr merge --merge --admin ${{ github.event.pull_request.html_url }}
           else
