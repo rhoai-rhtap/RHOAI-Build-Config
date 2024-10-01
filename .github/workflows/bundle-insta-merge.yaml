@@ -25,19 +25,17 @@ jobs:
     if: ${{ github.event.sender.login == 'dchourasia'  && startsWith(github.event.pull_request.title, 'Update ') }}
     runs-on: ubuntu-latest
     steps:
-      - name: Get Suffix
-        id: get-suffix
-        run: |
-          BRANCH=${GITHUB_BASE_REF:-${GITHUB_REF#refs/heads/}}
-          VERSION=v${BRANCH/rhoai-/}
-          SUFFIX=${VERSION/./-}
-          echo "SUFFIX=$SUFFIX" >> $GITHUB_OUTPUT
       - name: instant-merge
         env:
           GITHUB_TOKEN: ${{ github.token }}
-          SUFFIX: ${{ steps.get-suffix.outputs.SUFFIX }}
         #if: ${{ github.event.sender.login == 'konflux-internal-p02[bot]' }} && ${{ github.event.pull_request.title }} =~ '^Update.*-$SUFFIX to [0-9a-b]{1,40}$'
         run: |
+          # Evaluate the release branch suffix
+          BRANCH=${GITHUB_BASE_REF:-${GITHUB_REF#refs/heads/}}
+          VERSION=v${BRANCH/rhoai-/}
+          SUFFIX=${VERSION/./-}
+          
+          #Check if PR title is as per the convention
           if [[ "${{ github.event.pull_request.title }}" =~ "^Update.*-$SUFFIX to [0-9a-b]{1,40}$" ]]
           then
             gh pr merge --merge --admin ${{ github.event.pull_request.html_url }}
