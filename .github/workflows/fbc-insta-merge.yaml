@@ -1,4 +1,4 @@
-name: Insta Merge Bundle Nudges
+name: Insta Merge FBC Nudges
 
 on:
   pull_request:
@@ -8,10 +8,10 @@ on:
       - opened
       - reopened
     paths:
-      - bundle/bundle-patch.yaml
+      - catalog/catalog-patch.yaml
 
 env:
-  COMPONENT: odh-operator-bundle-v2-
+  COMPONENT: odh-operator-bundle
 
 permissions:
   contents: write
@@ -22,7 +22,7 @@ permissions:
 
 jobs:
   insta-merge:
-    if: ${{ github.event.sender.login == 'konflux-internal-p02[bot]'  && startsWith(github.event.pull_request.title, 'Update ') }}
+    if: ${{ github.event.sender.login == 'konflux-internal-p02[bot]'  && startsWith(github.event.pull_request.title, 'Update $COMPONENT') }}
     runs-on: ubuntu-latest
     steps:
       - name: instant-merge
@@ -33,7 +33,7 @@ jobs:
           BRANCH=${GITHUB_BASE_REF:-${GITHUB_REF#refs/heads/}}
           VERSION=v${BRANCH/rhoai-/}
           SUFFIX=${VERSION/./-}
-          REGEX="^Update.*-$SUFFIX to [0-9a-b]{1,40}$"
+          REGEX="^Update $COMPONENT-$SUFFIX to [0-9a-b]{1,40}$"
           
           #Check if PR title is as per the convention
           if [[ "${{ github.event.pull_request.title }}" =~ $REGEX ]]
