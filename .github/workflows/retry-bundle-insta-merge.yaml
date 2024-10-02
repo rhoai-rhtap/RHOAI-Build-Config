@@ -24,7 +24,7 @@ permissions:
 
 jobs:
   insta-merge:
-    if: ${{ github.event.sender.login == 'dchourasia'  && startsWith(github.event.pull_request.title, 'Update ') }}
+    if: ${{ github.event.sender.login == 'konflux-internal-p02[bot]'  && startsWith(github.event.pull_request.title, 'Update ') }}
     runs-on: ubuntu-latest
     steps:
       - name: Generate github-app token
