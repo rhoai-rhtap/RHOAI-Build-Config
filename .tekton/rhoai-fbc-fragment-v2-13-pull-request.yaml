@@ -9,7 +9,7 @@ metadata:
     pipelinesascode.tekton.dev/max-keep-runs: "3"
     pipelinesascode.tekton.dev/on-cel-expression: event == "pull_request" && target_branch
       == "rhoai-2.13" && ( "catalog/v4.13/***".pathChanged() || ".tekton/rhoai-fbc-fragment-v2-13-pull-request.yaml".pathChanged()
-      )
+      ) && !"bundle/bundle-patch.yaml".pathChanged() && !"catalog/catalog-patch.yaml".pathChanged()
   creationTimestamp: null
   labels:
     appstudio.openshift.io/application: rhoai-v2-13
