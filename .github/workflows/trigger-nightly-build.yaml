@@ -2,8 +2,6 @@ name: Trigger Nightly Build
 run-name: Process Operator Bundle
 on:
   workflow_dispatch:
-  schedule:
-    - cron: '0 0 * * *'
 #  push:
 #    paths:
 #      - bundle/bundle-patch.yaml
