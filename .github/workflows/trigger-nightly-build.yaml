@@ -2,11 +2,13 @@ name: Trigger Nightly Build
 run-name: Process Operator Bundle
 on:
   workflow_dispatch:
-  push:
-    paths:
-      - bundle/bundle-patch.yaml
-    branches:
-      - 'rhoai-*'
+  schedule:
+    - cron: '0 0 * * *'
+#  push:
+#    paths:
+#      - bundle/bundle-patch.yaml
+#    branches:
+#      - 'rhoai-*'
 
 permissions:
   contents: write
@@ -74,6 +76,10 @@ jobs:
           #Invoke Bundle processor to patch the catalog
           python3 utils/utils/bundle-processor/bundle-processor.py -op bundle-patch -b ${BUILD_CONFIG_PATH} -c ${BUNDLE_CSV_PATH} -p ${PATCH_YAML_PATH} -sn ${SNAPSHOT_JSON_PATH} -o ${OUTPUT_FILE_PATH} -v ${BRANCH}
           #cat ${OUTPUT_FILE_PATH}
+          
+          # Update the schedule file to trigger the nightly build 
+          echo $(date +'%d-%m-%Y %H:%M:%S:%3N') > ${BRANCH}/schedule/bundle-scheduled-trigger.txt
+
       - name: Commit and push the changes to release branch
         uses: actions-js/push@master
         with:
