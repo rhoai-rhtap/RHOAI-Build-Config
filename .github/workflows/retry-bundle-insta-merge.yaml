@@ -1,12 +1,14 @@
 name: Insta Merge Bundle Nudges
 
 on:
-  pull_request:
+  pull_request_target:
     branches:
       - 'rhoai-*'  # Trigger the workflow on pushes to any rhoai-* branch
     types:
       - opened
       - reopened
+    paths-ignore:
+      - .github/**
     paths:
       - bundle/bundle-patch.yaml
 
