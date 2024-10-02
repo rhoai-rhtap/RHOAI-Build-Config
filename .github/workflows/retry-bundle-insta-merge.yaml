@@ -7,8 +7,6 @@ on:
     types:
       - opened
       - reopened
-    paths-ignore:
-      - .github/**
     paths:
       - bundle/bundle-patch.yaml
 
