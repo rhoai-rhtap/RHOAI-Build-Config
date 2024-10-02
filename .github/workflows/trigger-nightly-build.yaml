@@ -1,4 +1,4 @@
-name: Process Operator Bundle
+name: Trigger Nightly Build
 run-name: Process Operator Bundle
 on:
   workflow_dispatch:
