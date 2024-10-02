@@ -42,7 +42,7 @@ jobs:
           done
 
       - name: Merge Feasibility Check
-        if: ${{ steps.changed-files.outputs.all_changed_files == '$RESOLVE_CONFLICTS_FOR' }}
+        if: ${{ steps.changed-files.outputs.all_changed_files == 'bundle/bundle-patch.yaml' }}
         id: merge-feasibility-check
         run: |
           # Declare variables
