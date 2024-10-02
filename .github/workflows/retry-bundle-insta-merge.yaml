@@ -23,7 +23,7 @@ permissions:
 
 jobs:
   insta-merge:
-    if: ${{ github.event.sender.login == 'konflux-internal-p02[bot]'  && startsWith(github.event.pull_request.title, 'Update ') }}
+    if: ${{ github.event.sender.login == 'dchourasia'  && startsWith(github.event.pull_request.title, 'Update ') }}
     runs-on: ubuntu-latest
     steps:
       - name: Generate github-app token
@@ -70,7 +70,7 @@ jobs:
             downstream_repo: "https://github.com/${GITHUB_ORG}/RHOAI-Build-Config.git"
             downstream_branch: "${{ steps.merge-feasibility-check.outputs.HEAD_BRANCH }}"
             token: ${{ steps.app-token.outputs.token }}
-            ignore_files: "${RESOLVE_CONFLICTS_FOR}"
+            resolve_conflicts_for: "${RESOLVE_CONFLICTS_FOR}"
             merge_args: "--no-edit"
             pr_url: "${{ github.event.pull_request.html_url }}"
 #      - name: Insta Merge
