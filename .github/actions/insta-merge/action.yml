@@ -1,0 +1,14 @@
+name: Insta Merge
+description: Rebase the PR branch and merge the PR to resolve conflicts
+inputs:
+  ignore_files:
+    description: Comma separated list of globbing paths which needs to be ignored while merge
+    required: false
+    default: ""
+runs:
+  using: "composite"
+  steps:
+    - name: Setup KServe dependencies
+      shell: bash
+      run: |
+        
