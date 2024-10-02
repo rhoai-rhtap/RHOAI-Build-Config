@@ -9,6 +9,7 @@ on:
       - reopened
     paths:
       - catalog/catalog-patch.yaml
+      - schedule/catalog-scheduled-trigger.txt
 
 env:
   COMPONENT: odh-operator-bundle
