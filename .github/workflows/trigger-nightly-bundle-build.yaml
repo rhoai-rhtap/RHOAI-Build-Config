@@ -1,5 +1,5 @@
-name: Trigger Nightly Build
-run-name: Process Operator Bundle
+name: Trigger Nightly Bundle Build
+run-name: Trigger Nightly Bundle Build
 on:
   workflow_dispatch:
 #  push:
@@ -76,7 +76,7 @@ jobs:
           #cat ${OUTPUT_FILE_PATH}
           
           # Update the schedule file to trigger the nightly build 
-          echo $(date +'%d-%m-%Y %H:%M:%S:%3N') > ${BRANCH}/schedule/bundle-scheduled-trigger.txt
+          echo $(date +'%d-%m-%Y %H:%M:%S:%3N') > ${BRANCH}/schedule/bundle-tekton-trigger.txt
 
       - name: Commit and push the changes to release branch
         uses: actions-js/push@master
