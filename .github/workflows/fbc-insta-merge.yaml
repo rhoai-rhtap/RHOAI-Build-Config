@@ -26,6 +26,18 @@ jobs:
     if: ${{ github.event.sender.login == 'konflux-internal-p02[bot]'  && startsWith(github.event.pull_request.title, 'Update odh-operator-bundle') }}
     runs-on: ubuntu-latest
     steps:
+      - uses: actions/checkout@v4
+      - name: Get changed files
+        id: changed-files
+        uses: tj-actions/changed-files@v45
+      - name: List all changed files
+        env:
+          ALL_CHANGED_FILES: ${{ steps.changed-files.outputs.all_changed_files }}
+        run: |
+          echo $ALL_CHANGED_FILES
+          for file in ${ALL_CHANGED_FILES}; do
+            echo "$file was changed"
+          done
       - name: Generate github-app token
         id: app-token
         uses: getsentry/action-github-app-token@v2
@@ -33,6 +45,7 @@ jobs:
           app_id: ${{ secrets.RHOAI_DEVOPS_APP_ID }}
           private_key: ${{ secrets.RHOAI_DEVOPS_APP_PRIVATE_KEY }}
       - name: instant-merge
+        if: ${{ steps.changed-files.outputs.all_changed_files == 'bundle/bundle-patch.yaml' }}
         env:
           GITHUB_TOKEN: ${{ steps.app-token.outputs.token }}
         run: |
