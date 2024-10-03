@@ -8,10 +8,10 @@ patch:
       value: "quay.io/rhoai/odh-notebook-controller-rhel8@sha256:9dbb8d0edda4335a5e00f60fbb2696de4806df5c0318e914648010070940546c"
     - name: RELATED_IMAGE_ODH_ML_PIPELINES_PERSISTENCEAGENT_IMAGE
       value: "quay.io/rhoai/odh-ml-pipelines-persistenceagent-rhel8@sha256:8139c5eb94e510b2d4f2097873aad7e5a98910252f90b5da5255ca617b773cde"
-    - name: RELATED_IMAGE_ODH_ML_PIPELINES_API_SERVER_IMAGE
-      value: "quay.io/rhoai/odh-ml-pipelines-api-server-rhel8@sha256:8139c5eb94e510b2d4f2097873aad7e5a98910252f90b5da5255ca617b773cde"
-    - name: RELATED_IMAGE_ODH_ML_PIPELINES_CACHE_IMAGE
-      value: "quay.io/rhoai/odh-ml-pipelines-cache-rhel8@sha256:8139c5eb94e510b2d4f2097873aad7e5a98910252f90b5da5255ca617b773cde"
+#    - name: RELATED_IMAGE_ODH_ML_PIPELINES_API_SERVER_IMAGE
+#      value: "quay.io/rhoai/odh-ml-pipelines-api-server-rhel8@sha256:8139c5eb94e510b2d4f2097873aad7e5a98910252f90b5da5255ca617b773cde"
+#    - name: RELATED_IMAGE_ODH_ML_PIPELINES_CACHE_IMAGE
+#      value: "quay.io/rhoai/odh-ml-pipelines-cache-rhel8@sha256:8139c5eb94e510b2d4f2097873aad7e5a98910252f90b5da5255ca617b773cde"
     - name: RELATED_IMAGE_ODH_ML_PIPELINES_SCHEDULEDWORKFLOW_IMAGE
       value: "quay.io/rhoai/odh-ml-pipelines-scheduledworkflow-rhel8@sha256:35c1ba7b2732a5291327c921cd4afa0ed2eb7f3ee722aaee3ec9bc4c665d4216"
     - name: RELATED_IMAGE_ODH_ML_PIPELINES_ARTIFACT_MANAGER_IMAGE
@@ -39,7 +39,7 @@ patch:
     - name: RELATED_IMAGE_ODH_KUEUE_CONTROLLER_IMAGE
       value: "quay.io/rhoai/odh-kueue-controller-rhel8@sha256:555199b258ae8b8b1928621c44ad25e4f0017e57c956a446fee8fa0b6fc446fa"
     - name: RELATED_IMAGE_ODH_MLMD_GRPC_SERVER_IMAGE
-      value: "quay.io/rhoai/odh-mlmd-grpc-server@sha256:555199b258ae8b8b1928621c44ad25e4f0017e57c956a446fee8fa0b6fc446fa"
+      value: "quay.io/rhoai/odh-mlmd-grpc-server-rhel8@sha256:555199b258ae8b8b1928621c44ad25e4f0017e57c956a446fee8fa0b6fc446fa"
     - name: RELATED_IMAGE_ODH_ML_PIPELINES_API_SERVER_V2_IMAGE
       value: "quay.io/rhoai/odh-ml-pipelines-api-server-v2-rhel8@sha256:ba80bf9e32674286f923311cf77704de717a44ad777dade2bf5e140ca0db5ea8"
     - name: RELATED_IMAGE_ODH_ML_PIPELINES_PERSISTENCEAGENT_V2_IMAGE
