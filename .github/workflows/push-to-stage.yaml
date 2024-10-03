@@ -1,7 +1,7 @@
 name: Push To Stage
 run-name: Push To Stage
-on:
-  workflow_dispatch:
+#on:
+  #workflow_dispatch:
     inputs:
       release_branch:
         description: 'Release Branch'
