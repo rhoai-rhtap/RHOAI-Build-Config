@@ -6,7 +6,7 @@ on:
     paths:
       - bundle/bundle-patch.yaml
     branches:
-      - 'rhoai-*'
+      - 'rhoai-2.13'
 
 permissions:
   contents: write
