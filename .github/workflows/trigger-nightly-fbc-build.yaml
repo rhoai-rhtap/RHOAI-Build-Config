@@ -1,12 +1,12 @@
 name: Trigger Nightly FBC Build
 run-name: Trigger Nightly FBC Build
-#on:
- # workflow_dispatch:
+on:
+  workflow_dispatch:
   #push:
-    paths:
-      - schedule/catalog-github-trigger.txt
-    branches:
-      - 'rhoai-2.13'
+#    paths:
+#      - schedule/catalog-github-trigger.txt
+#    branches:
+#      - 'rhoai-2.13'
 permissions:
   contents: write
 jobs:

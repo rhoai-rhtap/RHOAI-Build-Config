@@ -1,6 +1,8 @@
 name: Insta Merge Bundle Nudges
 
-#on:
+on:
+  workflow_dispatch:
+
   #pull_request_target:
    # branches:
     #  - 'rhoai-*'  # Trigger the workflow on pushes to any rhoai-* branch
