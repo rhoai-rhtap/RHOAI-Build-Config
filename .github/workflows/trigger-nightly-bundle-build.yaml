@@ -2,6 +2,8 @@ name: Trigger Nightly Bundle Build
 run-name: Trigger Nightly Bundle Build
 on:
   workflow_dispatch:
+  schedule:
+    - "0 0 * * *"
 #  push:
 #    paths:
 #      - bundle/bundle-patch.yaml
