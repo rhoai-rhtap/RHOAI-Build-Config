@@ -33,7 +33,7 @@ patch:
     - name: RELATED_IMAGE_ODH_TRUSTYAI_SERVICE_OPERATOR_IMAGE
       value: "quay.io/rhoai/odh-trustyai-service-operator-rhel8@sha256:3c1b2e1691421dc81b4a021203fb4e5b895d7006fb60bc0c5428b1a9a32caba6"
     - name: RELATED_IMAGE_ODH_CODEFLARE_OPERATOR_IMAGE
-      value: "quay.io/rhoai/odh-codeflare-operator-rhel8@sha256:41d6caeffc6245ce334bfa104029ccb07419663ee97098d01d7d0d478b8677f9"
+      value: "quay.io/rhoai/odh-codeflare-operator-rhel8@sha256:624823f3734143f9666f3fb594c1f7baa114e7e542096e613bdb2af6beb10005"
     - name: RELATED_IMAGE_ODH_KUBERAY_OPERATOR_CONTROLLER_IMAGE
       value: "quay.io/rhoai/odh-kuberay-operator-controller-rhel8@sha256:c5f9bcc109c4553cd8eb943def0ec58732dd839c9d428cef19e4565396e7d6a5"
     - name: RELATED_IMAGE_ODH_KUEUE_CONTROLLER_IMAGE
