@@ -5,6 +5,8 @@ on:
   push:
     paths:
       - bundle/bundle-patch.yaml
+      - bundle/csv-patch.yaml
+      - to-be-processed/bundle/**
     branches:
       - 'rhoai-*'
 
@@ -57,16 +59,10 @@ jobs:
           COMPONENT_SUFFIX=${RHOAI_VERSION/./-}
           OPERATOR_BUNDLE_COMPONENT_NAME=odh-operator-bundle-${COMPONENT_SUFFIX}
           
-          OC_TOKEN=$(echo $OC_TOKEN | awk '{$1=$1};1' | tr -d '\n')
-          
-          #check the playpen
-          echo "current dir $(pwd)"
-          echo "contents $(ls -l)"
           #copy all the raw content to tmp location
           RAW_INPUTS_DIR=utils/tmp/bundle
-          
           mkdir -p $RAW_INPUTS_DIR
-          cp -r ${BRANCH}/raw/bundle/* $RAW_INPUTS_DIR
+          cp -r ${BRANCH}/to-be-processed/bundle/* $RAW_INPUTS_DIR
           
           #Declare Bundle processing variables
           BUILD_CONFIG_PATH=${BRANCH}/config/build-config.yaml

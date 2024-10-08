@@ -1,4 +1,5 @@
 patch:
+  version: 2.13.0
   relatedImages:
     - name: RELATED_IMAGE_ODH_KF_NOTEBOOK_CONTROLLER_IMAGE
       value: "quay.io/rhoai/odh-kf-notebook-controller-rhel8@sha256:79c44e946803cf65ecde572f3da3f81e55c079237a1fd7e70a8cba1d028bbf09"
@@ -56,4 +57,7 @@ patch:
       value: "quay.io/rhoai/odh-data-science-pipelines-argo-workflowcontroller-rhel8@sha256:a036e1e1655201ff292b062c973f4a908b05318ab5e2c255b5c7dc5bb01e898d"
     - name: RELATED_IMAGE_ODH_OPERATOR_IMAGE
       value: "quay.io/rhoai/odh-rhel8-operator@sha256:d48a82a554199966f04d5848718e9a26eff0c7f4fb74d7243b87c8404e3458a2"
+  additional-fields:
+    file: csv-patch.yaml
+
 
