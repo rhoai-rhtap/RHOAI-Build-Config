@@ -62,6 +62,11 @@ jobs:
           #check the playpen
           echo "current dir $(pwd)"
           echo "contents $(ls -l)"
+          #copy all the raw content to tmp location
+          RAW_INPUTS_DIR=utils/tmp/bundle
+          
+          mkdir -p $RAW_INPUTS_DIR
+          cp -r ${BRANCH}/raw/bundle/* $RAW_INPUTS_DIR
           
           #Declare Bundle processing variables
           BUILD_CONFIG_PATH=${BRANCH}/config/build-config.yaml
@@ -70,10 +75,12 @@ jobs:
           SINGLE_BUNDLE_PATH=utils/utils/single_bundle_catalog_semver.yaml
           OUTPUT_FILE_PATH=${BRANCH}/bundle/manifests/rhods-operator.clusterserviceversion.yaml
           SNAPSHOT_JSON_PATH=${BRANCH}/config/snapshot.json
+          ANNOTATION_YAML_PATH=${RAW_INPUTS_DIR}/metadata/annotations.yaml
+          
           
           #Invoke Bundle processor to patch the catalog
-          python3 utils/utils/bundle-processor/bundle-processor.py -op bundle-patch -b ${BUILD_CONFIG_PATH} -c ${BUNDLE_CSV_PATH} -p ${PATCH_YAML_PATH} -sn ${SNAPSHOT_JSON_PATH} -o ${OUTPUT_FILE_PATH} -v ${BRANCH}
-          #cat ${OUTPUT_FILE_PATH}
+          python3 utils/utils/bundle-processor/bundle-processor.py -op bundle-patch -b ${BUILD_CONFIG_PATH} -c ${BUNDLE_CSV_PATH} -p ${PATCH_YAML_PATH} -sn ${SNAPSHOT_JSON_PATH} -o ${OUTPUT_FILE_PATH} -v ${BRANCH} -a ${ANNOTATION_YAML_PATH}
+          cp -r ${RAW_INPUTS_DIR}/* ${BRANCH}/bundle/*
       - name: Commit and push the changes to release branch
         uses: actions-js/push@master
         with:
