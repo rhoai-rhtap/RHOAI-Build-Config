@@ -73,7 +73,7 @@ jobs:
           BUNDLE_CSV_PATH=${BRANCH}/bundle/manifests/rhods-operator.clusterserviceversion.yaml
           PATCH_YAML_PATH=${BRANCH}/bundle/bundle-patch.yaml
           SINGLE_BUNDLE_PATH=utils/utils/single_bundle_catalog_semver.yaml
-          OUTPUT_FILE_PATH=${BRANCH}/bundle/manifests/rhods-operator.clusterserviceversion.yaml
+          OUTPUT_FILE_PATH=${RAW_INPUTS_DIR}/manifests/rhods-operator.clusterserviceversion.yaml
           SNAPSHOT_JSON_PATH=${BRANCH}/config/snapshot.json
           ANNOTATION_YAML_PATH=${RAW_INPUTS_DIR}/metadata/annotations.yaml
           
