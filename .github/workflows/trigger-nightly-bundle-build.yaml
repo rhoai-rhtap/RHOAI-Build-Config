@@ -75,7 +75,7 @@ jobs:
           
           #Invoke Bundle processor to patch the catalog
           python3 utils/utils/bundle-processor/bundle-processor.py -op bundle-patch -b ${BUILD_CONFIG_PATH} -c ${BUNDLE_CSV_PATH} -p ${PATCH_YAML_PATH} -sn ${SNAPSHOT_JSON_PATH} -o ${OUTPUT_FILE_PATH} -v ${BRANCH} -a ${ANNOTATION_YAML_PATH}
-          cp -r ${RAW_INPUTS_DIR}/* ${BRANCH}/bundle/*
+          cp -r ${RAW_INPUTS_DIR}/* ${BRANCH}/bundle
           
           # Update the schedule file to trigger the nightly build 
           echo $(date +'%d-%m-%Y %H:%M:%S:%3N') > ${BRANCH}/schedule/bundle-tekton-trigger.txt
