@@ -45,7 +45,7 @@ jobs:
           app_id: ${{ secrets.RHOAI_DEVOPS_APP_ID }}
           private_key: ${{ secrets.RHOAI_DEVOPS_APP_PRIVATE_KEY }}
       - name: instant-merge
-        if: ${{ steps.changed-files.outputs.all_changed_files == 'bundle/bundle-patch.yaml' }}
+        if: ${{ steps.changed-files.outputs.all_changed_files == 'catalog/catalog-patch.yaml' || steps.changed-files.outputs.all_changed_files == 'schedule/catalog-github-trigger.txt' }}
         env:
           GITHUB_TOKEN: ${{ steps.app-token.outputs.token }}
         run: |
