@@ -1,6 +1,5 @@
 apiVersion: tekton.dev/v1
 kind: PipelineRun
-#test3
 metadata:
   annotations:
     build.appstudio.openshift.io/repo: https://github.com/rhoai-rhtap/RHOAI-Build-Config?rev={{revision}}
@@ -9,8 +8,10 @@ metadata:
     pipelinesascode.tekton.dev/max-keep-runs: "3"
     build.appstudio.openshift.io/build-nudge-files: "catalog/catalog-patch.yaml"
     pipelinesascode.tekton.dev/on-cel-expression: event == "push" && target_branch
-      == "rhoai-2.13" && ( "bundle/**".pathChanged() || ".tekton/odh-operator-bundle-v2-13-push.yaml".pathChanged() ) && !"bundle/bundle-patch.yaml".pathChanged() && !".github/workflows/**".pathChanged()
-  creationTimestamp: null
+      == "rhoai-2.13" && ( "bundle/**".pathChanged() || ".tekton/odh-operator-bundle-v2-13-push.yaml".pathChanged()
+      ) && !"bundle/bundle-patch.yaml".pathChanged() && !".github/workflows/**".pathChanged()
+      && "non-existent-file.non-existent-ext".pathChanged()
+  creationTimestamp:
   labels:
     appstudio.openshift.io/application: rhoai-v2-13
     appstudio.openshift.io/component: odh-operator-bundle-v2-13
@@ -142,7 +143,7 @@ spec:
       - name: rebuild
         value: $(params.rebuild)
       - name: skip-checks
-        value: "false" #$(params.skip-checks)
+        value: "false"
       taskRef:
         params:
         - name: name
@@ -419,7 +420,7 @@ spec:
         value: $(tasks.build-image-index.results.IMAGE_URL)
       - name: ADDITIONAL_TAGS
         value:
-          - '{{target_branch}}-{{revision}}'
+        - '{{target_branch}}-{{revision}}'
       runAfter:
       - build-image-index
       taskRef:
@@ -466,7 +467,7 @@ spec:
   - name: workspace
     volumeClaimTemplate:
       metadata:
-        creationTimestamp: null
+        creationTimestamp:
       spec:
         accessModes:
         - ReadWriteOnce
