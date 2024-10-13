@@ -6,7 +6,7 @@ patch:
     - name: RELATED_IMAGE_ODH_DASHBOARD_IMAGE
       value: "quay.io/rhoai/odh-dashboard-rhel8@sha256:56b9b03f0a7102f4e976745b12bde3621a05b15b789fb0800bec278af758db4d"
     - name: RELATED_IMAGE_ODH_NOTEBOOK_CONTROLLER_IMAGE
-      value: "quay.io/rhoai/odh-notebook-controller-rhel8@sha256:9dbb8d0edda4335a5e00f60fbb2696de4806df5c0318e914648010070940546c"
+      value: "quay.io/rhoai/odh-notebook-controller-rhel8@sha256:b6ae2f4346d07128e389ab1b0cffe1ff2fbee9666895070bc3bcc8d1a4bb3a45"
     - name: RELATED_IMAGE_ODH_ML_PIPELINES_PERSISTENCEAGENT_IMAGE
       value: "quay.io/rhoai/odh-ml-pipelines-persistenceagent-rhel8@sha256:8139c5eb94e510b2d4f2097873aad7e5a98910252f90b5da5255ca617b773cde"
 #    - name: RELATED_IMAGE_ODH_ML_PIPELINES_API_SERVER_IMAGE
