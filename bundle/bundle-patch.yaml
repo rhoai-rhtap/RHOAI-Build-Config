@@ -2,7 +2,7 @@ patch:
   version: 2.13.0
   relatedImages:
     - name: RELATED_IMAGE_ODH_KF_NOTEBOOK_CONTROLLER_IMAGE
-      value: "quay.io/rhoai/odh-kf-notebook-controller-rhel8@sha256:563b8d8277203b6c969d39ab66cdbd5edeb09469c131a890b95d39a758b58bde"
+      value: "quay.io/rhoai/odh-kf-notebook-controller-rhel8@sha256:56383c87a38b1dab7aa06cc6be7261b18f920e3ce722154aea318178004a95c7"
     - name: RELATED_IMAGE_ODH_DASHBOARD_IMAGE
       value: "quay.io/rhoai/odh-dashboard-rhel8@sha256:56b9b03f0a7102f4e976745b12bde3621a05b15b789fb0800bec278af758db4d"
     - name: RELATED_IMAGE_ODH_NOTEBOOK_CONTROLLER_IMAGE
