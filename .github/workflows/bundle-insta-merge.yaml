@@ -12,7 +12,7 @@ on:
 
 env:
   GITHUB_ORG: rhoai-rhtap
-  RESOLVE_CONFLICTS_FOR: bundle/bundle-patch.yaml
+  RESOLVE_CONFLICTS_FOR: 'bundle/bundle-patch.yaml,schedule/bundle-github-trigger.txt'
 
 permissions:
   contents: write
@@ -41,7 +41,7 @@ jobs:
           done
 
       - name: Merge Feasibility Check
-        if: ${{ steps.changed-files.outputs.all_changed_files == 'bundle/bundle-patch.yaml' }}
+        if: ${{ steps.changed-files.outputs.all_changed_files == 'bundle/bundle-patch.yaml' || steps.changed-files.outputs.all_changed_files == 'schedule/bundle-github-trigger.txt' }}
         id: merge-feasibility-check
         run: |
           # Declare variables

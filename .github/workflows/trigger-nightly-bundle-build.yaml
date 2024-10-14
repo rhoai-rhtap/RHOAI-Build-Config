@@ -2,13 +2,11 @@ name: Trigger Nightly Bundle Build
 run-name: Trigger Nightly Bundle Build
 on:
   workflow_dispatch:
-  schedule:
-    - cron: "0 0 * * *"
-#  push:
-#    paths:
-#      - bundle/bundle-patch.yaml
-#    branches:
-#      - 'rhoai-*'
+  push:
+    paths:
+      - schedule/bundle-github-trigger.txt
+    branches:
+      - 'rhoai-*'
 
 permissions:
   contents: write

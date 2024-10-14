@@ -13,7 +13,7 @@ on:
 
 env:
   GITHUB_ORG: rhoai-rhtap
-  RESOLVE_CONFLICTS_FOR: catalog/catalog-patch.yaml
+  RESOLVE_CONFLICTS_FOR: 'catalog/catalog-patch.yaml,schedule/catalog-github-trigger.txt'
 
 
 permissions:
