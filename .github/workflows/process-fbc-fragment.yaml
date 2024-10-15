@@ -9,6 +9,10 @@ on:
       - 'rhoai-*'
 permissions:
   contents: write
+
+env:
+  GITHUB_ORG: rhoai-rhtap
+
 jobs:
   process-fbc:
     runs-on: ubuntu-latest
@@ -33,7 +37,7 @@ jobs:
       - name: Git checkout utils
         uses: actions/checkout@v4
         with:
-          repository: rhoai-rhtap/RHOAI-Konflux-Automation
+          repository: ${{ env.GITHUB_ORG }}/RHOAI-Konflux-Automation
           ref: main
           path: utils
       - name: Install dependencies
@@ -124,7 +128,7 @@ jobs:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           branch: ${{ steps.get_branch.outputs.branch }}
           message: "Updating the catalog.yaml with latest images and patches"
-          repository: rhoai-rhtap/RHOAI-Build-Config
+          repository: ${{ env.GITHUB_ORG }}/RHOAI-Build-Config
           directory: ${{ steps.get_branch.outputs.branch }}
           author_name: Openshift-AI DevOps
           author_email: openshift-ai-devops@redhat.com

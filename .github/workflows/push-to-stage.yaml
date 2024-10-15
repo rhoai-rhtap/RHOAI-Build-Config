@@ -14,6 +14,9 @@ on:
         default: ''
 permissions:
   contents: write
+env:
+  GITHUB_ORG: rhoai-rhtap
+
 jobs:
   push-to-stage:
     runs-on: ubuntu-latest
@@ -44,7 +47,7 @@ jobs:
       - name: Git checkout utils
         uses: actions/checkout@v4
         with:
-          repository: rhoai-rhtap/RHOAI-Konflux-Automation
+          repository: ${{ env.GITHUB_ORG }}/RHOAI-Konflux-Automation
           ref: main
           path: utils
       - name: Install dependencies
@@ -92,7 +95,7 @@ jobs:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           branch: main
           message: "Patching the stage catalog with ${{ github.event.inputs.release_branch }} ${{ github.event.inputs.commit }}"
-          repository: rhoai-rhtap/RHOAI-Build-Config
+          repository: ${{ env.GITHUB_ORG }}/RHOAI-Build-Config
           directory: main
           author_name: Openshift-AI DevOps
           author_email: openshift-ai-devops@redhat.com
