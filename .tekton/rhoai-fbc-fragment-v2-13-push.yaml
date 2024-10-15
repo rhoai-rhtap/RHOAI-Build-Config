@@ -65,7 +65,7 @@ spec:
       workspaces:
       - name: workspace
         workspace: workspace
-    - name: Send Slack Notificaton
+    - name: send-slack-notification
       params:
       - name: message
         value: "A new FBC-Fragment build is done"
