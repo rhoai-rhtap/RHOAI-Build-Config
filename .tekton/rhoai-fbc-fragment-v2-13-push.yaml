@@ -67,8 +67,8 @@ spec:
         workspace: workspace
     - name: Send Slack Notificaton
       params:
-      - name: "A new FBC-Fragment build is done"
-        value: $(context.pipelineRun.name)
+      - name: message
+        value: "A new FBC-Fragment build is done"
       - name: secret-name
         value: rhoai-konflux-secret
       - name: key-name
