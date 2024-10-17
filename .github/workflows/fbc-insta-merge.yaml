@@ -3,7 +3,7 @@ name: Insta Merge FBC Nudges
 on:
   pull_request:
     branches:
-      - 'rhoai-2.16'  # Trigger the workflow on pushes to any rhoai-2.16 branch
+      - '${{ vars.KONFLUX_ENABLED_BRANCHES }}'  # Trigger the workflow on pushes to any rhoai-2.16 branch
     types:
       - opened
       - reopened
@@ -25,7 +25,7 @@ permissions:
 
 jobs:
   insta-merge:
-    if: ${{ github.event.sender.login == 'konflux-internal-p02[bot]'  && contains(github.event.pull_request.title, 'update odh-operator-bundle-')}}
+    if: ${{ ( github.event.sender.login == 'dchourasia' || github.event.sender.login == 'konflux-internal-p02[bot]')  && contains(github.event.pull_request.title, 'update odh-operator-bundle-')}}
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
