@@ -3,7 +3,7 @@ name: Insta Merge FBC Nudges
 on:
   pull_request:
     branches:
-      - '${{ vars.KONFLUX_ENABLED_BRANCHES }}'  # Trigger the workflow on pushes to any rhoai-2.16 branch
+      - 'rhoai-2.13'  # Trigger the workflow on pushes to any rhoai-2.16 branch
     types:
       - opened
       - reopened
@@ -14,6 +14,7 @@ on:
 
 env:
   GITHUB_ORG: rhoai-rhtap
+  GITHUB_RKA_ORG: rhoai-rhtap
   RESOLVE_CONFLICTS_FOR: 'catalog/catalog-patch.yaml,schedule/catalog-github-trigger.txt'
 
 

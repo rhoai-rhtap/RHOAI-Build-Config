@@ -3,7 +3,7 @@ name: Insta Merge Bundle Nudges
 on:
   pull_request_target:
     branches:
-      - 'rhoai-2.1[3-9]+'  # Trigger the workflow on pushes to any rhoai-2.16 branch
+      - 'rhoai-2.13'  # Trigger the workflow on pushes to any rhoai-2.16 branch
     types:
       - opened
       - reopened
@@ -14,6 +14,7 @@ on:
 
 env:
   GITHUB_ORG: rhoai-rhtap
+  GITHUB_RKA_ORG: rhoai-rhtap
   RESOLVE_CONFLICTS_FOR: 'bundle/bundle-patch.yaml,schedule/bundle-github-trigger.txt'
 
 permissions:
@@ -26,7 +27,7 @@ permissions:
 jobs:
   insta-merge:
     #    we also have the author and title check to be on safer side since we are using pull_request_target event,
-    if: ${{ ( github.event.sender.login == 'dchourasia' || github.event.sender.login == 'konflux-internal-p02[bot]')  && contains(github.event.pull_request.title, 'update odh-operator-') }}
+    if: ${{ github.event.sender.login == 'konflux-internal-p02[bot]'  && contains(github.event.pull_request.title, 'update odh-operator-') }}
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4

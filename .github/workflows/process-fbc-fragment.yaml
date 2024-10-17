@@ -6,15 +6,17 @@ on:
     paths:
       - catalog/catalog-patch.yaml
     branches:
-      - 'rhoai-2.16'
+      - 'rhoai-2.13'
 permissions:
   contents: write
 
 env:
   GITHUB_ORG: rhoai-rhtap
+  GITHUB_RKA_ORG: rhoai-rhtap
 
 jobs:
   process-fbc:
+    if: ${{ github.ref_name != 'main' }}
     runs-on: ubuntu-latest
     container:
       image: quay.io/rhoai/rhoai-task-toolset:latest
@@ -37,7 +39,7 @@ jobs:
       - name: Git checkout utils
         uses: actions/checkout@v4
         with:
-          repository: ${{ env.GITHUB_ORG }}/RHOAI-Konflux-Automation
+          repository: ${{ env.GITHUB_RKA_ORG }}/RHOAI-Konflux-Automation
           ref: main
           path: utils
       - name: Install dependencies
