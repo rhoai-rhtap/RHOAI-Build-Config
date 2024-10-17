@@ -9,6 +9,7 @@ on:
       - reopened
     paths:
       - bundle/bundle-patch.yaml
+      - schedule/bundle-github-trigger.txt
 
 env:
   GITHUB_ORG: rhoai-rhtap
