@@ -7,6 +7,7 @@ on:
     types:
       - opened
       - reopened
+      - edited
     paths:
       - bundle/bundle-patch.yaml
       - schedule/bundle-github-trigger.txt
