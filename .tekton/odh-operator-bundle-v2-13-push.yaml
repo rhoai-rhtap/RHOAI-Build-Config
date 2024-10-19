@@ -230,7 +230,7 @@ spec:
         value: $(params.build-args-file)
       - name: LABELS
         value:
-        - version=v2.16.0
+        - version=v2.13.0
         - url=$(params.git-url)
         - git.url=$(params.git-url)
         - git.commit=$(params.revision)
