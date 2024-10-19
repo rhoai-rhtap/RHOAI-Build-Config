@@ -111,7 +111,7 @@ spec:
       description: Skip checks against built image
       name: skip-checks
       type: string
-    - default: "false"
+    - default: "true"
       description: Execute the build with network isolation
       name: hermetic
       type: string
@@ -205,9 +205,11 @@ spec:
         value: $(tasks.clone-repository.results.commit)
       - name: LABELS
         value:
-          - version=v2.13.0
-          - git.url=$(params.git-url)
-          - git.commit=$(params.revision)
+        - version=v2.16.0
+        - url=$(params.git-url)
+        - git.url=$(params.git-url)
+        - git.commit=$(params.revision)
+        - release='$(tasks.clone-repository.results.commit-timestamp)'
       runAfter:
       - clone-repository
       taskRef:
