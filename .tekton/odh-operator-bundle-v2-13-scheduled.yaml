@@ -27,6 +27,8 @@ spec:
     value: quay.io/rhoai/odh-operator-bundle:{{target_branch}}
   - name: dockerfile
     value: bundle/Dockerfile
+  - name: build-args-file
+    value: bundle/bundle_build_args.map.map
   pipelineSpec:
     finally:
     - name: show-sbom
