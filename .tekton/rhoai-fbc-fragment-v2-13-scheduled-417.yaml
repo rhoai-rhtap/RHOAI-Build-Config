@@ -28,6 +28,8 @@ spec:
     value: Dockerfile
   - name: path-context
     value: catalog/v4.17
+  - name: build-args-file
+    value: catalog/catalog_build_args.map
   pipelineSpec:
     finally:
     - name: show-sbom
