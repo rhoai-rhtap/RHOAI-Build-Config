@@ -116,6 +116,8 @@ jobs:
           RHOAI_VERSION: ${{ github.event.inputs.rhoai_version }}
         run: |
           #install opm cli
+          os="$(uname -s | tr '[:upper:]' '[:lower:]')"
+          arch="$(uname -m | sed 's/x86_64/amd64/')"
           opm_version="v1.47.0"
           opm_filename="opm-$opm_version"
           echo "-> Downloading opm" >&2
