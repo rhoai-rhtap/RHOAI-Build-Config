@@ -126,6 +126,9 @@ jobs:
           ln -fs "$opm_filename" opm
           cp "$opm_filename" /usr/local/bin/opm
           
+          microdnf install -y findutils && \
+              microdnf clean all && rm -rf /var/cache/dnf/*
+          
           #Declare basic variables
           COMPONENT_SUFFIX=${RHOAI_VERSION/./-}
           OPERATOR_BUNDLE_COMPONENT_NAME=odh-operator-bundle
