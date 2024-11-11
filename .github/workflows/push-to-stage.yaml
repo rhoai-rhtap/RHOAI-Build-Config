@@ -80,7 +80,7 @@ jobs:
       - name: Git checkout RBC release
         uses: actions/checkout@v4
         with:
-          ref: ${{ steps.get-ref.outputs.ref }}
+          ref: ${{ steps.validate-fbc-image.outputs.ref }}
           path: ${{ github.event.inputs.release_branch }}
       - name: Git checkout utils
         uses: actions/checkout@v4
