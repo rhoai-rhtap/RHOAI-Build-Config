@@ -165,7 +165,17 @@ jobs:
           done < <(find main/pcc/ -maxdepth 1 -mindepth 1 -type d -printf '%f\n')
           
           ls -l main/pcc/*/
-          
+      - name: Push latest PCC Cache
+        if: ${{ steps.check-if-pcc-cache-valid.outputs.PCC_CACHE_VALID == 'NO' }}
+        uses: actions-js/push@master
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          branch: main
+          message: "Regeneratd the PCC Cache"
+          repository: ${{ env.GITHUB_ORG }}/RHOAI-Build-Config
+          directory: main
+          author_name: Openshift-AI DevOps
+          author_email: openshift-ai-devops@redhat.com
 
 #      - name: Push To Stage
 #        env:
