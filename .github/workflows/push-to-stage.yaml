@@ -126,7 +126,7 @@ jobs:
           ln -fs "$opm_filename" opm
           cp "$opm_filename" /usr/local/bin/opm
           
-          microdnf install -y findutils && \
+          microdnf install -y findutils tree && \
               microdnf clean all && rm -rf /var/cache/dnf/*
           
           #Declare basic variables
