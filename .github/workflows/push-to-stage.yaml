@@ -73,7 +73,7 @@ jobs:
           echo "Validation successful, preparing to push the image to stage - ${image_uri}"
           
           ref=${DIGEST}
-          echo "ref=${ref}" >> $GITHUB_OUTPUT
+          echo "ref=${GIT_COMMIT}" >> $GITHUB_OUTPUT
           echo "digest=${DIGEST}" >> $GITHUB_OUTPUT
           echo "image_uri=${image_uri}" >> $GITHUB_OUTPUT
           echo "ref=$ref"
