@@ -14,8 +14,13 @@ on:
         default: 'LATEST_NIGHTLY'
 permissions:
   contents: write
+env:
+  GITHUB_ORG: rhoai-rhtap
+  GITHUB_RKA_ORG: rhoai-rhtap
+
 jobs:
   push-to-stage:
+    if: ${{ github.ref_name == 'main' }}
     runs-on: ubuntu-latest
     container:
       image: quay.io/rhoai/rhoai-task-toolset:latest
@@ -26,18 +31,10 @@ jobs:
         with:
           ref: main
           path: main
-      - name: Git checkout RBC release
-        uses: actions/checkout@v4
-        with:
-          ref: ${{ github.event.inputs.release_branch }}
-          path: ${{ github.event.inputs.release_branch }}
-      - name: Git checkout utils
-        uses: actions/checkout@v4
-        with:
-          repository: rhoai-rhtap/RHOAI-Konflux-Automation
-          ref: dchouras
-          path: utils
       - name: Install dependencies
+        env:
+          RHOAI_QUAY_RO_USERNAME: ${{ secrets.RHOAI_QUAY_RO_USERNAME }}
+          RHOAI_QUAY_RO_TOKEN: ${{ secrets.RHOAI_QUAY_RO_TOKEN }}
         run: |
           os="$(uname -s | tr '[:upper:]' '[:lower:]')"
           arch="$(uname -m | sed 's/x86_64/amd64/')"
@@ -48,43 +45,79 @@ jobs:
           chmod +x $yq_filename
           ln -s $yq_filename yq
           cp $yq_filename /usr/local/bin/yq
-
-      - name: Push To Stage
-        env:
-          BRANCH: ${{ github.event.inputs.release_branch }}
-          RHOAI_VERSION: ${{ github.event.inputs.rhoai_version }}
-          COMMIT: ${{ github.event.inputs.commit }}
+          
+          pip install -r utils/utils/bundle-processor/requirements.txt
+          
+          sudo apt-get update
+          sudo apt-get -y install skopeo
+          
+          skopeo login -u "${RHOAI_QUAY_RO_USERNAME}" -p "${RHOAI_QUAY_RO_TOKEN}" quay.io/rhoai
+      - name: Validate FBC Image
+        id: validate-fbc-image
         run: |
-          #Declare basic variables
-          OPENSHIFT_VERSION=v4.13
-          COMPONENT_SUFFIX=${RHOAI_VERSION/./-}
-          OPERATOR_BUNDLE_COMPONENT_NAME=odh-operator-bundle
+          BASE_URI=docker://quay.io/rhoai/rhoai-fbc-fragment
+          release_branch=${{ github.event.inputs.release_branch }}
+          image_uri=${{ github.event.inputs.fbc_image_uri }}
+          if [[ $image_uri == LATEST_NIGHTLY ]]; then image_uri=${BASE_URI}:${release_branch}-nightly; fi
+          if [[ "$image_uri" != docker* ]]; then image_uri="docker://${image_uri}"; fi
           
+          META=$(skopeo inspect "${image_uri}")
+          DIGEST=$(echo $META | jq -r .Digest)
+          GIT_COMMIT=$(echo $META | jq -r '.Labels | ."git.commit"')
+          SIG_TAG=${DIGEST/:/-}.sig
+          SIG_DIGEST=$(skopeo inspect ${BASE_URI}:${SIG_TAG}  | jq -r .Digest)
+          if [[ -z $SIG_DIGEST ]]; then echo "Invalid FBC image, no valid signatures found."; exit 1; fi
+          echo "Valid signature found with the digest - ${SIG_DIGEST}"
+          echo "Validation successful, preparing to push the image to stage - ${image_uri}"
           
-          #Declare FBC processing variables
-          BUILD_CONFIG_PATH=${BRANCH}/config/build-config.yaml
-          CATALOG_YAML_PATH=main/catalog/${OPENSHIFT_VERSION}/rhods-operator/catalog.yaml
-          PATCH_YAML_PATH=${BRANCH}/catalog/catalog-patch.yaml
-          RELEASE_CATALOG_YAML_PATH=${BRANCH}/catalog/${OPENSHIFT_VERSION}/rhods-operator/catalog.yaml
-          OUTPUT_CATALOG_PATH=main/catalog/${OPENSHIFT_VERSION}/rhods-operator/catalog.yaml
-
-          #Invoke the stage promoter to patch the main catalog with release branch
-          python3 utils/utils/stage-promoter/stage_promoter.py -op stage-catalog-patch -c ${CATALOG_YAML_PATH} -p ${PATCH_YAML_PATH} -r ${RELEASE_CATALOG_YAML_PATH} -o ${OUTPUT_CATALOG_PATH} -v ${RHOAI_VERSION}
-      - name: Store the stage catalog
-        uses: actions/upload-artifact@v4
-        env:
-          OPENSHIFT_VERSION: v4.13
+          ref=${DIGEST}
+          echo "ref=${ref}" >> $GITHUB_OUTPUT
+          echo "ref=$ref"
+      - name: Git checkout RBC release
+        uses: actions/checkout@v4
         with:
-          name: stage-catalog
-          path: main/catalog/${OPENSHIFT_VERSION}/rhods-operator/catalog.yaml
-#      - name: Commit and push the changes to release branch
+          ref: ${{ steps.get-ref.outputs.ref }}
+          path: ${{ github.event.inputs.release_branch }}
+      - name: Git checkout utils
+        uses: actions/checkout@v4
+        with:
+          repository: ${{ env.GITHUB_RKA_ORG }}/RHOAI-Konflux-Automation
+          ref: dchouras
+          path: utils
+
+
+#      - name: Push To Stage
+#        env:
+#          BRANCH: ${{ github.event.inputs.release_branch }}
+#          RHOAI_VERSION: ${{ github.event.inputs.rhoai_version }}
+#          COMMIT: ${{ github.event.inputs.commit }}
+#        run: |
+#          #Declare basic variables
+#          COMPONENT_SUFFIX=${RHOAI_VERSION/./-}
+#          OPERATOR_BUNDLE_COMPONENT_NAME=odh-operator-bundle
+#
+#          #Declare FBC processing variables
+#          BUILD_CONFIG_PATH=${BRANCH}/config/build-config.yaml
+#          PATCH_YAML_PATH=${BRANCH}/catalog/catalog-patch.yaml
+#
+#          while IFS= read -r value;
+#          do
+#              OPENSHIFT_VERSION=$value
+#              echo "OPENSHIFT_VERSION=$OPENSHIFT_VERSION"
+#              CATALOG_YAML_PATH=main/catalog/${OPENSHIFT_VERSION}/rhods-operator/catalog.yaml
+#              RELEASE_CATALOG_YAML_PATH=${BRANCH}/catalog/${OPENSHIFT_VERSION}/rhods-operator/catalog.yaml
+#              OUTPUT_CATALOG_PATH=main/catalog/${OPENSHIFT_VERSION}/rhods-operator/catalog.yaml
+#
+#              #Invoke the stage promoter to patch the main catalog with release branch
+#              python3 utils/utils/stage-promoter/stage_promoter.py -op stage-catalog-patch -c ${CATALOG_YAML_PATH} -p ${PATCH_YAML_PATH} -r ${RELEASE_CATALOG_YAML_PATH} -o ${OUTPUT_CATALOG_PATH} -v ${RHOAI_VERSION}
+#          done < <(yq eval '.config.supported-ocp-versions.build[].name' $BUILD_CONFIG_PATH)
+#      - name: Commit and push the changes to main branch
 #        uses: actions-js/push@master
 #        with:
 #          github_token: ${{ secrets.GITHUB_TOKEN }}
 #          branch: main
-#          message: "Patching the stage catalog with ${{ github.event.inputs.release_branch }}"
-#          repository: rhoai-rhtap/RHOAI-Build-Config
-#          directory: ${{ steps.get_branch.outputs.branch }}
+#          message: "Patching the stage catalog with ${{ github.event.inputs.release_branch }} ${{ github.event.inputs.commit }}"
+#          repository: ${{ env.GITHUB_ORG }}/RHOAI-Build-Config
+#          directory: main
 #          author_name: Openshift-AI DevOps
 #          author_email: openshift-ai-devops@redhat.com
-
