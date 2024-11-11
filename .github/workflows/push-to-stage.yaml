@@ -103,7 +103,7 @@ jobs:
           echo "latest_shipped_rhoai_versions = "
           cat latest_shipped_rhoai_versions.txt
           echo "shipped_rhoai_versions = "
-          cat shipped_rhoai_versions.txt
+          cat main/pcc/shipped_rhoai_versions.txt
           
           diff=$(cmp --silent latest_shipped_rhoai_versions.txt main/pcc/shipped_rhoai_versions.txt || echo "files are different")
           if [[ -n diff ]]
