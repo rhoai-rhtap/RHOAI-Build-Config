@@ -140,8 +140,8 @@ jobs:
           CSV_META_CATALOG_YAML_PATH=csv_meta_catalog.yaml
           
           opm migrate registry.redhat.io/redhat/redhat-operator-index:${CATALOG_GENERATION_REF_OCP_VERSION} ./catalog-migrate
-          opm alpha convert-template basic catalog-migrate/rhods-operator/catalog.json -o yaml > ${BUNDLE_OBJECT_CATALOG_YAML_PATH}
-          opm alpha render-template basic catalog-template.yaml -o yaml > catalog.yaml
+          opm alpha convert-template basic catalog-migrate/rhods-operator/catalog.json -o yaml > catalog-template.yaml
+          opm alpha render-template basic catalog-template.yaml -o yaml > ${BUNDLE_OBJECT_CATALOG_YAML_PATH}
           opm alpha render-template basic catalog-template.yaml --migrate-level=bundle-object-to-csv-metadata -o yaml > ${CSV_META_CATALOG_YAML_PATH}
           
           while IFS= read -r value;
