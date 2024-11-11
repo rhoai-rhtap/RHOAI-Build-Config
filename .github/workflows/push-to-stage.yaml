@@ -9,9 +9,9 @@ on:
       rhoai_version:
         description: 'Current RHOAI version, eg v2.14.0'
         required: true
-      commit:
-        description: 'Commit sha of the catalog to be pushed to stage'
-        default: ''
+      fbc_image_uri:
+        description: 'Full image uri of the FBC fragment image'
+        default: 'LATEST_NIGHTLY'
 permissions:
   contents: write
 jobs:
