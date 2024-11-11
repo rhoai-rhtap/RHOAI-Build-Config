@@ -6,9 +6,11 @@ on:
       release_branch:
         description: 'Release Branch'
         required: true
+        default: rhoai-2.13
       rhoai_version:
         description: 'Current RHOAI version, eg v2.14.0'
         required: true
+        default: v2.13.0
       fbc_image_uri:
         description: 'Full image uri of the FBC fragment image'
         default: 'LATEST_NIGHTLY'
@@ -46,9 +48,10 @@ jobs:
           ln -s $yq_filename yq
           cp $yq_filename /usr/local/bin/yq
           
-          sudo apt-get update
-          sudo apt-get -y install skopeo
-          
+#          sudo apt-get update
+#          sudo apt-get -y install skopeo
+          microdnf install -y skopeo && \
+              microdnf clean all && rm -rf /var/cache/dnf/*
           skopeo login -u "${RHOAI_QUAY_RO_USERNAME}" -p "${RHOAI_QUAY_RO_TOKEN}" quay.io/rhoai
       - name: Validate FBC Image
         id: validate-fbc-image
