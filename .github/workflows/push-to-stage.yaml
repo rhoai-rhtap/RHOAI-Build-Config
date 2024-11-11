@@ -126,7 +126,7 @@ jobs:
           ln -fs "$opm_filename" opm
           cp "$opm_filename" /usr/local/bin/opm
           
-          microdnf install -y findutils tree && \
+          microdnf install -y findutils && \
               microdnf clean all && rm -rf /var/cache/dnf/*
           
           #Declare basic variables
@@ -164,7 +164,7 @@ jobs:
               cp ${CATALOG_YAML_PATH} ${CATALOG_DIR}/catalog.yaml
           done < <(find main/pcc/ -maxdepth 1 -mindepth 1 -type d -printf '%f\n')
           
-          tree main/pcc
+          ls -l main/pcc/*/
           
 
 #      - name: Push To Stage
