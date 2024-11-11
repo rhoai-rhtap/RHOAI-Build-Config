@@ -46,8 +46,6 @@ jobs:
           ln -s $yq_filename yq
           cp $yq_filename /usr/local/bin/yq
           
-          pip install -r utils/utils/bundle-processor/requirements.txt
-          
           sudo apt-get update
           sudo apt-get -y install skopeo
           
@@ -84,8 +82,9 @@ jobs:
           repository: ${{ env.GITHUB_RKA_ORG }}/RHOAI-Konflux-Automation
           ref: dchouras
           path: utils
-
-
+      - name: Install python dependencies
+        run: |
+          pip install -r utils/utils/bundle-processor/requirements.txt
 #      - name: Push To Stage
 #        env:
 #          BRANCH: ${{ github.event.inputs.release_branch }}
