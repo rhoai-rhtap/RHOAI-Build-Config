@@ -6,11 +6,11 @@ on:
       release_branch:
         description: 'Release Branch'
         required: true
-        default: rhoai-2.13
+        default: 'rhoai-2.13'
       rhoai_version:
         description: 'Current RHOAI version, eg v2.14.0'
         required: true
-        default: v2.13.0
+        default: 'v2.13.0'
       fbc_image_uri:
         description: 'Full image uri of the FBC fragment image'
         default: 'LATEST_NIGHTLY'
