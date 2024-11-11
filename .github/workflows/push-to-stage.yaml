@@ -105,7 +105,8 @@ jobs:
           echo "shipped_rhoai_versions = "
           cat main/pcc/shipped_rhoai_versions.txt
           
-          diff=$(cmp --silent latest_shipped_rhoai_versions.txt main/pcc/shipped_rhoai_versions.txt || echo "files are different")
+          diff=$(cmp --silent latest_shipped_rhoai_versions.txt main/pcc/shipped_rhoai_versions.txt)
+          echo "diff = $diff"
           if [[ -n diff ]]
           then
             cp latest_shipped_rhoai_versions.txt main/pcc/shipped_rhoai_versions.txt
