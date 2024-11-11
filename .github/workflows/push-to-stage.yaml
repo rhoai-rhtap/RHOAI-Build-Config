@@ -48,8 +48,8 @@ jobs:
           ln -s $yq_filename yq
           cp $yq_filename /usr/local/bin/yq
           
-#          sudo apt-get update
-#          sudo apt-get -y install skopeo
+          #sudo apt-get update
+          #sudo apt-get -y install skopeo
           microdnf install -y skopeo && \
               microdnf clean all && rm -rf /var/cache/dnf/*
           skopeo login -u "${RHOAI_QUAY_RO_USERNAME}" -p "${RHOAI_QUAY_RO_TOKEN}" quay.io/rhoai
