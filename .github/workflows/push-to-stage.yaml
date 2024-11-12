@@ -33,6 +33,10 @@ jobs:
         with:
           ref: main
           path: main
+          sparse-checkout: |
+            pcc
+            catalog/${{ github.event.inputs.release_branch }}
+          sparse-checkout-cone-mode: false
       - name: Install dependencies
         env:
           RHOAI_QUAY_RO_USERNAME: ${{ secrets.RHOAI_QUAY_RO_USERNAME }}
