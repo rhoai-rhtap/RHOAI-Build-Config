@@ -194,6 +194,18 @@ spec:
         value: $(params.image-expires-after)
       - name: COMMIT_SHA
         value: $(tasks.clone-repository.results.commit)
+      - name: BUILD_ARGS
+        value:
+        - $(params.build-args[*])
+      - name: BUILD_ARGS_FILE
+        value: $(params.build-args-file)
+      - name: LABELS
+        value:
+        - version=v2.13.0
+        - url=$(params.git-url)
+        - git.url=$(params.git-url)
+        - git.commit=$(params.revision)
+        - release='$(tasks.clone-repository.results.commit-timestamp)'
       runAfter:
       - clone-repository
       taskRef:
