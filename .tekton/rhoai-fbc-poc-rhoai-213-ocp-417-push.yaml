@@ -26,7 +26,7 @@ spec:
   - name: ocp-version
     value: 'ocp-4.17'
   - name: output-image
-    value: quay.io/rhoai/rhoai-fbc-fragment:{{ocp-version}}-{{rhoai-version}}
+    value: quay.io/rhoai/rhoai-fbc-fragment:$(params.ocp-version)-$(params.rhoai-version)
   - name: dockerfile
     value: Dockerfile
   - name: path-context
@@ -205,8 +205,6 @@ spec:
             slack_message=${slack_message/__BUILD__TIME__/$build_time}
 
             echo -en "${slack_message}" > "$(results.slack-message-failure-text.path)"
-      runAfter:
-      - rhoai-init
     - name: init
       params:
       - name: image-url
@@ -224,6 +222,8 @@ spec:
         - name: kind
           value: task
         resolver: bundles
+      runAfter:
+      - rhoai-init
     - name: clone-repository
       params:
       - name: url
