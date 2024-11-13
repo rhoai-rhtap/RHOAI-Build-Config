@@ -152,6 +152,14 @@ spec:
       description: Path to a file with build arguments for buildah, see https://www.mankier.com/1/buildah-build#--build-arg-file
       name: build-args-file
       type: string
+    - default: ""
+      description: current OCP version
+      name: ocp-version
+      type: string
+    - default: ""
+      description: current RHOAI version
+      name: rhoai-version
+      type: string
     results:
     - description: ""
       name: IMAGE_URL
