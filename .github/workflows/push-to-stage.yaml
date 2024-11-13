@@ -17,6 +17,7 @@ on:
       forced_slack_notification:
         type: choice
         description: Send duplicate slack notification
+        default: NO
         options:
           - NO
           - YES
