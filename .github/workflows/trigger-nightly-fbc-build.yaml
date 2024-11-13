@@ -78,6 +78,8 @@ jobs:
           RHOAI_CATALOG_SA_USERNAME: ${{ secrets.RHOAI_CATALOG_SA_USERNAME }}
           RHOAI_CATALOG_SA_TOKEN: ${{ secrets.RHOAI_CATALOG_SA_TOKEN }}
         run: |
+          microdnf install -y coreutils-single && \
+              microdnf clean all && rm -rf /var/cache/dnf/*
           PCC_CACHE_VALID=YES
           skopeo login registry.redhat.io -u "${RHOAI_CATALOG_SA_USERNAME}" -p "${RHOAI_CATALOG_SA_TOKEN}"
           skopeo list-tags docker://registry.redhat.io/rhoai/odh-operator-bundle | jq -r '.Tags | .[] | select(. | startswith ("v"))' | sort > latest_shipped_rhoai_versions.txt
@@ -86,9 +88,13 @@ jobs:
           echo "shipped_rhoai_versions = "
           cat main/pcc/shipped_rhoai_versions.txt
           
-          diff=$(cmp --silent latest_shipped_rhoai_versions.txt main/pcc/shipped_rhoai_versions.txt || echo "files are different")
-          if [[ -n $diff ]]
+          #diff=$(cmp --silent latest_shipped_rhoai_versions.txt main/pcc/shipped_rhoai_versions.txt || echo "files are different")
+          diff=$(python -c 'print(list(set(open("latest_shipped_rhoai_versions.txt").readlines()) - set(open("main/pcc/shipped_rhoai_versions.txt").readlines())).__len__())')
+          
+          if [[ $diff -gt 0 ]]
           then
+            diff=$(python -c 'print(list(set(open("latest_shipped_rhoai_versions.txt").readlines()) - set(open("main/pcc/shipped_rhoai_versions.txt").readlines())))')
+            echo "following new versions are shipped - $diff"
             cp latest_shipped_rhoai_versions.txt main/pcc/shipped_rhoai_versions.txt
             PCC_CACHE_VALID=NO
           fi
@@ -100,9 +106,28 @@ jobs:
           BRANCH: ${{ github.event.inputs.release_branch }}
           RHOAI_VERSION: ${{ github.event.inputs.rhoai_version }}
         run: |
+          #install opm cli
+          os="$(uname -s | tr '[:upper:]' '[:lower:]')"
+          arch="$(uname -m | sed 's/x86_64/amd64/')"
+          opm_version="v1.47.0"
+          opm_filename="opm-$opm_version"
+          echo "-> Downloading opm" >&2
+          curl -sSfLo "$opm_filename" "https://github.com/operator-framework/operator-registry/releases/download/$opm_version/$os-$arch-opm"
+          chmod +x "$opm_filename"
+          ln -fs "$opm_filename" opm
+          cp "$opm_filename" /usr/local/bin/opm
+          
           microdnf install -y findutils && \
               microdnf clean all && rm -rf /var/cache/dnf/*
+          
+          #Declare basic variables
+          COMPONENT_SUFFIX=${RHOAI_VERSION/./-}
+          OPERATOR_BUNDLE_COMPONENT_NAME=odh-operator-bundle
 
+          #Declare FBC processing variables
+          BUILD_CONFIG_PATH=${BRANCH}/config/build-config.yaml
+          PATCH_YAML_PATH=${BRANCH}/catalog/catalog-patch.yaml
+          
           CATALOG_GENERATION_REF_OCP_VERSION=v4.17
           CSV_META_MIN_OCP_VERSION=417
           BUNDLE_OBJECT_CATALOG_YAML_PATH=bundle_object_catalog.yaml
