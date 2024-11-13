@@ -132,7 +132,7 @@ jobs:
             diff=$(python -c 'print(list(set(open("latest_shipped_rhoai_versions.txt").readlines()) - set(open("main/pcc/shipped_rhoai_versions.txt").readlines())))')
             echo "following new versions are shipped - $diff"
             cp latest_shipped_rhoai_versions.txt main/pcc/shipped_rhoai_versions.txt
-            PCC_CACHE_VALID=YES
+            PCC_CACHE_VALID=NO
           fi
           echo "PCC_CACHE_VALID=${PCC_CACHE_VALID}" >> $GITHUB_OUTPUT
       - name: Regenerate PCC Cache
@@ -260,7 +260,7 @@ jobs:
         run: |
           LATEST_RBC_MAIN_COMMIT=$(git -C main log -1 | grep ^commit | cut -d " " -f 2)
           BUILD_CONFIG_PATH=latest_rbc_release/config/build-config.yaml
-          python3 -u utils/utils/stage-promoter/stage_promoter.py -op monitor-fbc-builds -o utils/fbc_images.json -v ${BRANCH} --timeout 2 -b ${BUILD_CONFIG_PATH} --git-commit ${LATEST_RBC_MAIN_COMMIT}
+          python3 -u utils/utils/stage-promoter/stage_promoter.py -op monitor-fbc-builds -o utils/fbc_images.json -v ${BRANCH} --timeout 20 -b ${BUILD_CONFIG_PATH} --git-commit ${LATEST_RBC_MAIN_COMMIT}
           SLACK_MESSAGE=$(cat utils/slack_message.txt)
           echo "SLACK_MESSAGE=${SLACK_MESSAGE}" >> $GITHUB_OUTPUT
 
