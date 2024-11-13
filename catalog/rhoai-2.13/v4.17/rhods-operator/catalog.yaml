@@ -584,14 +584,13 @@ entries:
   skipRange: '>=2.8.0 <2.10.0'
 - name: rhods-operator.2.11.0
   skipRange: '>=2.10.0 <2.11.0'
-  replaces: rhods-operator.2.10.0
 - name: rhods-operator.2.11.0-0.1727935135.p
   replaces: rhods-operator.2.10.0
   skipRange: '>=2.10.0 <2.11.0'
   skips:
   - rhods-operator.2.11.0
 - name: rhods-operator.2.12.0
-  replaces: rhods-operator.2.11.0
+  replaces: rhods-operator.2.11.0-0.1727935135.p
   skipRange: '>=2.11.0 <2.12.0'
 - name: rhods-operator.2.13.0
   replaces: rhods-operator.2.12.0
