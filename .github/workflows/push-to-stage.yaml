@@ -260,7 +260,7 @@ jobs:
         run: |
           LATEST_RBC_MAIN_COMMIT=$(git -C main log -1 | grep ^commit | cut -d " " -f 2)
           BUILD_CONFIG_PATH=latest_rbc_release/config/build-config.yaml
-          python3 -u utils/utils/stage-promoter/stage_promoter.py -op monitor-fbc-builds -o utils/fbc_images.json -v ${BRANCH} --timeout 120 -b ${BUILD_CONFIG_PATH} --git-commit ${LATEST_RBC_MAIN_COMMIT}
+          python3 -u utils/utils/stage-promoter/stage_promoter.py -op monitor-fbc-builds -o utils/fbc_images.json -v ${BRANCH} --timeout 2 -b ${BUILD_CONFIG_PATH} --git-commit ${LATEST_RBC_MAIN_COMMIT}
           SLACK_MESSAGE=$(cat utils/slack_message.txt)
           echo "SLACK_MESSAGE=${SLACK_MESSAGE}" >> $GITHUB_OUTPUT
 
