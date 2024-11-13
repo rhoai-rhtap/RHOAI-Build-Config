@@ -261,7 +261,7 @@ jobs:
           echo "SLACK_MESSAGE=${SLACK_MESSAGE}" >> $GITHUB_OUTPUT
 
       - name: Send Slack Notification
-        if: ${{ success() }}
+        if: ${{ success() && ( steps.push-to-stage.outputs.CATALOGS_CHANGED == 'YES' || github.event.inputs.forced_slack_notification == 'Yes' ) }}
         uses: rtCamp/action-slack-notify@v2
         env:
           SLACK_MESSAGE: '${{ steps.monitor-fbc-builds.outputs.SLACK_MESSAGE }}'
