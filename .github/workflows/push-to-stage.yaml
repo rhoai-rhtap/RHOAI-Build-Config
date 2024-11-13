@@ -131,7 +131,7 @@ jobs:
             diff=$(python -c 'print(list(set(open("latest_shipped_rhoai_versions.txt").readlines()) - set(open("main/pcc/shipped_rhoai_versions.txt").readlines())))')
             echo "following new versions are shipped - $diff"
             cp latest_shipped_rhoai_versions.txt main/pcc/shipped_rhoai_versions.txt
-            PCC_CACHE_VALID=NO
+            PCC_CACHE_VALID=YES
           fi
           echo "PCC_CACHE_VALID=${PCC_CACHE_VALID}" >> $GITHUB_OUTPUT
       - name: Regenerate PCC Cache
