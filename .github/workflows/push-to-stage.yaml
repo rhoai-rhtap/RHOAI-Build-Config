@@ -124,12 +124,14 @@ jobs:
           cat main/pcc/shipped_rhoai_versions.txt
           
           #diff=$(cmp --silent latest_shipped_rhoai_versions.txt main/pcc/shipped_rhoai_versions.txt || echo "files are different")
-          diff=$(python -c 'print(list(set(open("latest_shipped_rhoai_versions.txt").readlines()) - set(open("main/pcc/shipped_rhoai_versions.txt").readlines())))')
-          echo "diff = $diff"
+          diff=$(python -c 'print(list(set(open("latest_shipped_rhoai_versions.txt").readlines()) - set(open("main/pcc/shipped_rhoai_versions.txt").readlines())).__len__())')
+          
           if [[ $diff -gt 0 ]]
           then
+            diff=$(python -c 'print(list(set(open("latest_shipped_rhoai_versions.txt").readlines()) - set(open("main/pcc/shipped_rhoai_versions.txt").readlines())))')
+            echo "following new versions are shipped - $diff"
             cp latest_shipped_rhoai_versions.txt main/pcc/shipped_rhoai_versions.txt
-            PCC_CACHE_VALID=YES
+            PCC_CACHE_VALID=NO
           fi
           echo "PCC_CACHE_VALID=${PCC_CACHE_VALID}" >> $GITHUB_OUTPUT
       - name: Regenerate PCC Cache
@@ -230,8 +232,8 @@ jobs:
           
           git -C main/catalog/${BRANCH} status
           GIT_STATUS=$(git -C main/catalog/${BRANCH} status)
-          CATALOGS_CHANGED=NO
-          if [[ $GIT_STATUS == *"nothing to commit"* ]]; then CATALOGS_CHANGED=YES; fi
+          CATALOGS_CHANGED=YES
+          if [[ $GIT_STATUS == *"nothing to commit"* ]]; then CATALOGS_CHANGED=NO; fi
           echo "CATALOGS_CHANGED=${CATALOGS_CHANGED}" >> $GITHUB_OUTPUT
 
       - name: Commit and push the changes to main branch
