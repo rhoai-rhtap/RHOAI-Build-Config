@@ -26,7 +26,7 @@ spec:
   - name: ocp-version
     value: 'ocp-4.13'
   - name: output-image
-    value: quay.io/rhoai/rhoai-fbc-fragment:{{ocp-version}}-{{rhoai-version}}
+    value: quay.io/rhoai/rhoai-fbc-fragment:{{revision}}
   - name: dockerfile
     value: Dockerfile
   - name: path-context
@@ -151,6 +151,14 @@ spec:
     - default: ""
       description: Path to a file with build arguments for buildah, see https://www.mankier.com/1/buildah-build#--build-arg-file
       name: build-args-file
+      type: string
+    - default: ""
+      description: current OCP version
+      name: ocp-version
+      type: string
+    - default: ""
+      description: current RHOAI version
+      name: rhoai-version
       type: string
     results:
     - description: ""
@@ -353,7 +361,8 @@ spec:
         value: $(tasks.build-image-index.results.IMAGE_URL)
       - name: ADDITIONAL_TAGS
         value:
-          - '{{ocp-version}}-{{rhoai-version}}-{{revision}}'
+          - '$(params.ocp-version)-$(params.rhoai-version)'
+          - '$(params.ocp-version)-$(params.rhoai-version)-{{revision}}'
       runAfter:
       - build-image-index
       taskRef:
