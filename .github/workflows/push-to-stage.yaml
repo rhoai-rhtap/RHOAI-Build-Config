@@ -122,10 +122,10 @@ jobs:
           cat latest_shipped_rhoai_versions.txt
           echo "shipped_rhoai_versions = "
           cat main/pcc/shipped_rhoai_versions.txt
-          cmp --silent latest_shipped_rhoai_versions.txt main/pcc/shipped_rhoai_versions.txt
           
-          diff=$(cmp --silent latest_shipped_rhoai_versions.txt main/pcc/shipped_rhoai_versions.txt || echo "files are different")
-          if [[ -n $diff ]]
+          #diff=$(cmp --silent latest_shipped_rhoai_versions.txt main/pcc/shipped_rhoai_versions.txt || echo "files are different")
+          diff=$(python -c 'print(list(set(open("latest_shipped_rhoai_versions.txt").readlines()) - set(open("main/pcc/shipped_rhoai_versions.txt").readlines())).__len__())')
+          if [[ $diff -gt 0 ]]
           then
             cp latest_shipped_rhoai_versions.txt main/pcc/shipped_rhoai_versions.txt
             PCC_CACHE_VALID=NO
