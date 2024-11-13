@@ -17,10 +17,10 @@ on:
       forced_slack_notification:
         type: choice
         description: Send duplicate slack notification
-        default: NO
+        default: No
         options:
-          - NO
-          - YES
+          - No
+          - Yes
 permissions:
   contents: write
 env:
@@ -249,7 +249,7 @@ jobs:
           author_name: Openshift-AI DevOps
           author_email: openshift-ai-devops@redhat.com
       - name: Monitor FBC builds
-        if: ${{ steps.push-to-stage.outputs.CATALOGS_CHANGED == 'YES' || github.event.inputs.forced_slack_notification == 'Yes' }}
+        if: ${{ steps.push-to-stage.outputs.CATALOGS_CHANGED == 'YES' || github.event.inputs.forced_slack_notification == 'true' }}
         id: monitor-fbc-builds
         env:
           BRANCH: ${{ github.event.inputs.release_branch }}
@@ -265,7 +265,7 @@ jobs:
           echo "SLACK_MESSAGE=${SLACK_MESSAGE}" >> $GITHUB_OUTPUT
 
       - name: Send Slack Notification
-        if: ${{ success() && ( steps.push-to-stage.outputs.CATALOGS_CHANGED == 'YES' || github.event.inputs.forced_slack_notification == 'Yes' ) }}
+        if: ${{ success() && ( steps.push-to-stage.outputs.CATALOGS_CHANGED == 'YES' || github.event.inputs.forced_slack_notification == 'true' ) }}
         uses: rtCamp/action-slack-notify@v2
         env:
           SLACK_MESSAGE: '${{ steps.monitor-fbc-builds.outputs.SLACK_MESSAGE }}'
