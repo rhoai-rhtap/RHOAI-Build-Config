@@ -18,8 +18,8 @@ on:
         type: choice
         description: Send duplicate slack notification
         options:
-          - No
-          - Yes
+          - NO
+          - YES
 permissions:
   contents: write
 env:
