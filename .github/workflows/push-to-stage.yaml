@@ -113,7 +113,7 @@ jobs:
           RHOAI_CATALOG_SA_USERNAME: ${{ secrets.RHOAI_CATALOG_SA_USERNAME }}
           RHOAI_CATALOG_SA_TOKEN: ${{ secrets.RHOAI_CATALOG_SA_TOKEN }}
         run: |
-          microdnf install -y coreutils && \
+          microdnf install -y coreutils-single && \
               microdnf clean all && rm -rf /var/cache/dnf/*
           PCC_CACHE_VALID=YES
           skopeo login registry.redhat.io -u "${RHOAI_CATALOG_SA_USERNAME}" -p "${RHOAI_CATALOG_SA_TOKEN}"
