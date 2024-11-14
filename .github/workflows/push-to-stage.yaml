@@ -264,7 +264,12 @@ jobs:
           #${LATEST_RBC_MAIN_COMMIT}
           cat utils/slack_message.txt
           SLACK_MESSAGE=$(cat utils/slack_message.txt)
-          echo -en "SLACK_MESSAGE=${SLACK_MESSAGE}" >> $GITHUB_OUTPUT
+          #echo -en "SLACK_MESSAGE=${SLACK_MESSAGE}" >> $GITHUB_OUTPUT
+          {
+            echo "SLACK_MESSAGE<<EOF"
+            echo -e "${SLACK_MESSAGE}"
+            echo "EOF"
+          } >> $GITHUB_OUTPUT
 
       - name: Send Slack Notification
         if: ${{ success() && ( steps.push-to-stage.outputs.CATALOGS_CHANGED == 'YES' || github.event.inputs.forced_slack_notification == 'true' ) }}
