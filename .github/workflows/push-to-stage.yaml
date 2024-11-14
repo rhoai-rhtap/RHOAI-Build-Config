@@ -233,7 +233,8 @@ jobs:
           
           #Copy the build-args-map
           cp ${BRANCH}/catalog/catalog_build_args.map main/catalog/${BRANCH}/tmp_args.map
-          { echo -en 'RBC_RELEASE_BRANCH_COMMIT=${{ steps.validate-fbc-image.outputs.ref }}\n'; cat catalog/${BRANCH}/tmp_args.map; } > catalog/${BRANCH}/catalog_build_args.map
+          { echo -en 'RBC_RELEASE_BRANCH_COMMIT=${{ steps.validate-fbc-image.outputs.ref }}\n'; cat main/catalog/${BRANCH}/tmp_args.map; } > main/catalog/${BRANCH}/catalog_build_args.map
+          rm -rf main/catalog/${BRANCH}/tmp_args.map
           
           git -C main/catalog/${BRANCH} status
           GIT_STATUS=$(git -C main/catalog/${BRANCH} status)
