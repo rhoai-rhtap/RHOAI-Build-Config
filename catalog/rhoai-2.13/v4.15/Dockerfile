@@ -124,7 +124,7 @@ LABEL \
       odh-model-registry-operator.git.commit="${ODH_MODEL_REGISTRY_OPERATOR_GIT_COMMIT}" \
       odh-operator-bundle.git.url="${ODH_OPERATOR_BUNDLE_GIT_URL}" \
       odh-operator-bundle.git.commit="${ODH_OPERATOR_BUNDLE_GIT_COMMIT}" \
-      odh-release-branch.commit="${RBC_RELEASE_BRANCH_COMMIT}"
+      rbc-release-branch.commit="${RBC_RELEASE_BRANCH_COMMIT}"
 
 LABEL com.redhat.component="rhoai-fbc-fragment" \
       description="rhoai-fbc-fragment" \
