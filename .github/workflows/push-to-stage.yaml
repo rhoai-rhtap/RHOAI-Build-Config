@@ -55,6 +55,7 @@ jobs:
           sparse-checkout: |
             pcc
             catalog/${{ github.event.inputs.release_branch }}
+            builds
           sparse-checkout-cone-mode: false
       - name: Git checkout RBC Release Latest
         uses: actions/checkout@v4
