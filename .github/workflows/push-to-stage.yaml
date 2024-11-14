@@ -30,7 +30,7 @@ env:
 jobs:
   push-to-stage:
     if: ${{ github.ref_name == 'main' }}
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-22.04
     container:
       image: quay.io/rhoai/rhoai-task-toolset:latest
       options: --privileged
