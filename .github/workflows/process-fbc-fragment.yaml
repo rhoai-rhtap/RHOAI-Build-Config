@@ -34,7 +34,7 @@ jobs:
         uses: actions/checkout@v4
         with:
           repository: rhoai-rhtap/RHOAI-Konflux-Automation
-          ref: main
+          ref: dchouras
           path: utils
       - name: Install dependencies
         run: |
@@ -142,7 +142,7 @@ jobs:
               #Invoke FBC processor to patch the catalog
               python3 utils/utils/fbc-processor/fbc-processor.py -op catalog-patch -b ${BUILD_CONFIG_PATH} -c ${CATALOG_YAML_PATH} -p ${PATCH_YAML_PATH} -s ${SINGLE_BUNDLE_PATH} -o ${OUTPUT_CATALOG_PATH}
               #cat ${OUTPUT_CATALOG_PATH}
-          done < <(yq eval '.config.supported-ocp-versions.build[].name' $BUILD_CONFIG_PATH
+          done < <(yq eval '.config.supported-ocp-versions.build[].name' $BUILD_CONFIG_PATH)
       - name: Commit and push the changes to release branch
         uses: actions-js/push@master
         with:
