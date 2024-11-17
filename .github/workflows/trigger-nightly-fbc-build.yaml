@@ -168,7 +168,6 @@ jobs:
           author_name: Openshift-AI DevOps
           author_email: openshift-ai-devops@redhat.com
 
-
       - name: Process FBC Fragment
         env:
           BRANCH: ${{ steps.get_branch.outputs.branch }}
@@ -178,7 +177,7 @@ jobs:
           RHOAI_QUAY_RO_TOKEN: ${{ secrets.RHOAI_QUAY_RO_TOKEN }}
           RHOAI_QUAY_API_TOKEN: ${{ secrets.RHOAI_QUAY_API_TOKEN }}
         run: |
-           #Declare basic variables
+          #Declare basic variables
           BUILD_CONFIG_PATH=${BRANCH}/config/build-config.yaml
           RHOAI_VERSION=v${BRANCH/rhoai-/}
           COMPONENT_SUFFIX=${RHOAI_VERSION/./-}
