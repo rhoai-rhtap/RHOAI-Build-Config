@@ -99,7 +99,7 @@ metadata:
     capabilities: Full Lifecycle
     categories: AI/Machine Learning, Big Data
     certified: "False"
-    containerImage: "registry.redhat.io/rhoai/odh-rhel8-operator@sha256:0ec0296c6b72022b8dc0d1ed3d73fec3c3e42f15d8eef7dc185adf2bff632a92"
+    containerImage: "registry.redhat.io/rhoai/odh-rhel8-operator@sha256:a25421ab9aefa07983d0fc383a232fd16659d3ea7d5029ac9494c58730480fa5"
     operatorframework.io/initialization-resource: |-
       {
         "apiVersion": "datasciencecluster.opendatahub.io/v1",
@@ -162,7 +162,7 @@ metadata:
     operators.operatorframework.io/internal-objects: '[dscinitialization.opendatahub.io]'
     operators.operatorframework.io/project_layout: go.kubebuilder.io/v3
     repository: https://github.com/red-hat-data-services/rhods-operator
-    createdAt: '2024-11-26T01:14:07Z'
+    createdAt: '2024-11-27T01:14:08Z'
     anaconda-cronjob-image: registry.redhat.io/openshift4/ose-cli@sha256:75bf9b911b6481dcf29f7942240d1555adaa607eec7fc61bedb7f624f87c36d4
     odh-etcd-image: registry.redhat.io/rhel7/etcd@sha256:d3495b263b103681f1b09a558be43c21989bfc269eb90f84c2609042cebdc626
     ose-oauth-proxy-image: registry.redhat.io/openshift4/ose-oauth-proxy@sha256:4bef31eb993feb6f1096b51b4876c65a6fb1f4401fee97fa4f4542b6b7c9bc46
@@ -1737,7 +1737,7 @@ spec:
                   value: "registry.redhat.io/rhoai/odh-training-operator-rhel8@sha256:0703cde62ee08cf51eec7536426263ffbc2137ea49b505f3d2d184070a8ec5d1"
                 command:
                 - /manager
-                image: "registry.redhat.io/rhoai/odh-rhel8-operator@sha256:0ec0296c6b72022b8dc0d1ed3d73fec3c3e42f15d8eef7dc185adf2bff632a92"
+                image: "registry.redhat.io/rhoai/odh-rhel8-operator@sha256:a25421ab9aefa07983d0fc383a232fd16659d3ea7d5029ac9494c58730480fa5"
                 imagePullPolicy: Always
                 livenessProbe:
                   httpGet:
@@ -1806,8 +1806,8 @@ spec:
   - name: Red Hat Openshift AI
     email: managed-open-data-hub@redhat.com
   relatedImages:
-  - name: odh-rhel8-operator-0ec0296c6b72022b8dc0d1ed3d73fec3c3e42f15d8eef7dc185adf2bff632a92-annotation
-    image: "registry.redhat.io/rhoai/odh-rhel8-operator@sha256:0ec0296c6b72022b8dc0d1ed3d73fec3c3e42f15d8eef7dc185adf2bff632a92"
+  - name: odh-rhel8-operator-a25421ab9aefa07983d0fc383a232fd16659d3ea7d5029ac9494c58730480fa5-annotation
+    image: "registry.redhat.io/rhoai/odh-rhel8-operator@sha256:a25421ab9aefa07983d0fc383a232fd16659d3ea7d5029ac9494c58730480fa5"
   - name: ose-cli-75bf9b911b6481dcf29f7942240d1555adaa607eec7fc61bedb7f624f87c36d4-annotation
     image: registry.redhat.io/openshift4/ose-cli@sha256:75bf9b911b6481dcf29f7942240d1555adaa607eec7fc61bedb7f624f87c36d4
   - name: etcd-d3495b263b103681f1b09a558be43c21989bfc269eb90f84c2609042cebdc626-annotation
