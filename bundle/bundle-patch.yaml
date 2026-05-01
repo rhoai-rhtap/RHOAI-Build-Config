@@ -216,6 +216,8 @@ patch:
     - name: RELATED_IMAGE_ODH_KSERVE_AUTOGLUON_SERVER_IMAGE
       value: "quay.io/rhoai/odh-kserve-autogluon-server-rhel9@sha256:a3c901e75472ce551d49a79161115faa4ee60300e5a0c5060cc2acc64fed7d96"
 
+    - name: RELATED_IMAGE_ODH_AI_FIFTH_DEMO_IMAGE
+      value: quay.io/rhoai/odh-ai-fifth-demo-rhel9@sha256:b959c77b886775dec9177fadf3c602388e70a40f47fb7e2a4bddc3bf8b921071
   additional-related-images:
     file: additional-images-patch.yaml
   additional-fields:
