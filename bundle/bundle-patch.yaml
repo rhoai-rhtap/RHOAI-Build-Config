@@ -218,6 +218,8 @@ patch:
 
     - name: RELATED_IMAGE_ODH_AI_FIFTH_DEMO_IMAGE
       value: quay.io/rhoai/odh-ai-fifth-demo-rhel9@sha256:6487e9c28de964341f96ed14e369c1e7cb97091225703c291661f98e3041a09e
+    - name: RELATED_IMAGE_ODH_AI_SIXTH_DEMO_IMAGE
+      value: quay.io/rhoai/odh-ai-sixth-demo-rhel9@sha256:1697fb4e532231391fd23c26bfc0ad3f40559641a2a17fae4b1eae3c1ea9f413
   additional-related-images:
     file: additional-images-patch.yaml
   additional-fields:
