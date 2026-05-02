@@ -110,6 +110,7 @@ config:
         rhoai/odh-model-serving-api-rhel9: rhoai/odh-model-serving-api-rhel9
         rhoai/odh-kserve-autogluon-server-rhel9: rhoai/odh-kserve-autogluon-server-rhel9
         rhoai/odh-ai-fifth-demo-rhel9: rhoai/odh-ai-fifth-demo-rhel9
+        rhoai/odh-ai-sixth-demo-rhel9: rhoai/odh-ai-sixth-demo-rhel9
   supported-ocp-versions:
     build:
       - name: v4.19
