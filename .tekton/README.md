@@ -4,7 +4,7 @@ The `.tekton/` directory in each component repository is **automatically synchro
 
 All Tekton file updates **must be made in the `konflux-central` repository**.
 
-## ✅ How to Make Changes
+## ✅ How to Make Changes for gatekeeper
 
 To modify the pipelines for `RHOAI-Build-Config` in the `rhoai-3.5-ea.1` release:
 
